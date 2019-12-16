@@ -6,24 +6,16 @@
 
 namespace App\Model;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Tymon\JWTAuth\Contracts\JWTSubject;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
+use LiamWiltshire\LaravelJitLoader\Concerns\AutoloadsRelationships;
 
-class MUser extends Authenticatable implements JWTSubject
+class MUser extends Authenticatable
 {
-    use HasRoles;
-    use Notifiable;
 	use SoftDeletes;
-	
-	protected $table = 'users';
-	protected $dateFormat = 'Y-m-d H:i:s.v';
+    use AutoloadsRelationships;
+
+    protected $table = 'users';
 	public static $snakeAttributes = false;
 
 	protected $casts = [
@@ -70,15 +62,5 @@ class MUser extends Authenticatable implements JWTSubject
 
     public  function role() {
         return $this->belongsTo(Role::class, 'role_id');
-    }
-
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
     }
 }

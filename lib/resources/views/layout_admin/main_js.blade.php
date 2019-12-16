@@ -22,7 +22,6 @@
 <script type="text/javascript" src="{{asset('assets/lib/simple-timer/simple-timer.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/lazyload/jquery.lazy.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/lazyload/jquery.lazy.plugins.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/lib/cascading-dropdown/jquery.cascadingdropdown.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/context-menu/jquery.contextMenu.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/context-menu/jquery.ui.position.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/isotope/isotope.js')}}"></script>

@@ -2,14 +2,11 @@
 
 namespace App\Model;
 
-use Spatie\Permission\Guard;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasPermissions;
-use Spatie\Permission\Exceptions\RoleDoesNotExist;
-use Spatie\Permission\Contracts\Role as RoleContract;
 use Spatie\Permission\Traits\RefreshesPermissionCache;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use \LiamWiltshire\LaravelJitLoader\Concerns\AutoloadsRelationships;
 
 class Role extends Model
@@ -17,6 +14,11 @@ class Role extends Model
     use AutoloadsRelationships;
     use HasPermissions;
     use RefreshesPermissionCache;
+    use AutoloadsRelationships;
+
+    protected $table = 'roles';
+    protected $dateFormat = 'Y-m-d H:i:s.v';
+    public static $snakeAttributes = false;
 
     protected $guarded = ['id'];
 

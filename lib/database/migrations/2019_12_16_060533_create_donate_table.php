@@ -27,6 +27,7 @@ class CreateDonateTable extends Migration
             $table->longText('category_detail')->nullable();
             $table->tinyInteger('is_delete')->default(0);
 
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
 
@@ -50,6 +51,7 @@ class CreateDonateTable extends Migration
                 ->on('donate_categories')
                 ->onDelete('cascade');
 
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
 
@@ -59,6 +61,7 @@ class CreateDonateTable extends Migration
             $table->longText('activity_detail')->nullable();
             $table->tinyInteger('is_delete')->default(0);
 
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
 
@@ -71,6 +74,7 @@ class CreateDonateTable extends Migration
             $table->foreign('donate_id')->references('id')->on('donates')->onDelete('cascade');
             $table->foreign('activity_id')->references('id')->on('donate_activities')->onDelete('cascade');
 
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
 
@@ -78,6 +82,7 @@ class CreateDonateTable extends Migration
             $table->bigIncrements('id');
             $table->string('location_name')->nullable();
 
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
 
@@ -90,6 +95,7 @@ class CreateDonateTable extends Migration
             $table->foreign('donate_id')->references('id')->on('donates')->onDelete('cascade');
             $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
 
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
 
@@ -113,6 +119,7 @@ class CreateDonateTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

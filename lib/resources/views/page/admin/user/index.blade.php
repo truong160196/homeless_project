@@ -6,7 +6,7 @@
 @endsection
 
 @section('css')
-    <link href="{{asset('assets/css_admin/page/auction.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css_admin/page/user.css')}}" rel="stylesheet">
 @endsection
 
 @section('page_content')
@@ -33,78 +33,15 @@
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table" id="user_table">
-                                            <thead class="text-primary">
-                                            <tr>
-                                                <th>
-                                                    ID
-                                                </th>
-                                                <th>
-                                                    Name
-                                                </th>
-                                                <th>
-                                                    Country
-                                                </th>
-                                                <th>
-                                                    City
-                                                </th>
-                                                <th>
-                                                    Salary
-                                                </th>
-                                            </tr>
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Username</th>
+                                                    <th>Full name</th>
+                                                    <th>Phone</th>
+                                                    <th>Action</th>
+                                                </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    1
-                                                </td>
-                                                <td>
-                                                    Dakota Rice
-                                                </td>
-                                                <td>
-                                                    Niger
-                                                </td>
-                                                <td>
-                                                    Oud-Turnhout
-                                                </td>
-                                                <td class="text-primary">
-                                                    $36,738
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2
-                                                </td>
-                                                <td>
-                                                    Minerva Hooper
-                                                </td>
-                                                <td>
-                                                    Curaçao
-                                                </td>
-                                                <td>
-                                                    Sinaai-Waas
-                                                </td>
-                                                <td class="text-primary">
-                                                    $23,789
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    3
-                                                </td>
-                                                <td>
-                                                    Sage Rodriguez
-                                                </td>
-                                                <td>
-                                                    Netherlands
-                                                </td>
-                                                <td>
-                                                    Baileux
-                                                </td>
-                                                <td class="text-primary">
-                                                    $56,142
-                                                </td>
-                                            </tr>
-                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -118,5 +55,5 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('assets/js_admin/page/auction.js')}}"></script>
+    <script src="{{asset('assets/js_admin/page/user.js')}}"></script>
 @endsection

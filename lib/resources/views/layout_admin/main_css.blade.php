@@ -11,7 +11,6 @@
  <link rel="stylesheet" href="{{asset('assets/lib/fileuploader/css/font-roboto/font-roboto.css')}}">
  <link rel="stylesheet" href="{{asset('assets/lib/lobibox/css/lobibox.css')}}"/>
  <link rel="stylesheet" href="{{asset('assets/lib/waitme/css/waitMe.min.css')}}"/>
- <link rel="stylesheet" href="{{asset('assets/lib/iCheck/all.css')}}">
  <link rel="stylesheet" href="{{asset('assets/lib/SpinKit/css/spinkit.css')}}">
  <link rel="stylesheet" href="{{asset('assets/lib/context-menu/jquery.contextMenu.min.css')}}">
  <link rel="stylesheet" href="{{asset('assets/lib/sweet2/sweet2.css')}}">

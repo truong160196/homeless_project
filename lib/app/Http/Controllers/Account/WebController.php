@@ -15,12 +15,12 @@ class WebController extends Controller
 
 //            dd($user->role->name);
             if (Auth::check()) {
-                return redirect()->route('admin.page.home');
+                return redirect()->route('admin.page.dashboard');
             } else {
                 return view('page.account.login');
             }
         } catch (\Exception $e) {
-            return redirect()->route('admin.page.login');
+            return redirect()->route('account.page.login');
         }
     }
 

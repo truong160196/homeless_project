@@ -15,7 +15,7 @@ class AuthenticateAdmin extends Middleware
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            return route('admin.page.login');
+            return route('account.page.login');
         }
     }
 }

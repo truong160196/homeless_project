@@ -1,13 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\User\Account;
+namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Validator;
+use App\Model\MUser;
+use Yajra\Datatables\Datatables;
 
 class AjaxController extends Controller
 {
-   //
+    public function list()
+    {
+        try {
+            $data = MUser::query();
+            return Datatables::of($data)->make(true);
+        } catch (\Exception $e) {
+            dd($e);
+            throw new \App\Exceptions\ExceptionDatatable();
+        }
+    }
+
 }
