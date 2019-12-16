@@ -1,0 +1,54 @@
+
+.header-style-1, .header-style-2, .header-style-3 {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background: #242632;
+}
+
+.header-style-1 .topbar, .header-style-2 .topbar, .header-style-3 .topbar {
+    background-color: #242632;
+    padding: 10px 0;
+    display: none;
+}
+
+.site-footer .upper-footer {
+    padding: 90px 0;
+    display: none;
+}
+
+.blog-sidebar .widget {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.account .tabs {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.account .tabs .btn-tab {
+    font-size: 16px;
+    font-weight: 500;
+    color: #242632;
+    padding: 8px 20px;
+    border: 1px solid #e6e6e6;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -o-border-radius: 25px;
+    -ms-border-radius: 25px;
+    border-radius: 25px;
+    background: #f8f8f8;
+}
+
+.account .tabs .btn-tab.active {
+    background-color: #f28d35;
+    border-color: #f6ba18;
+    color: #fff;
+}

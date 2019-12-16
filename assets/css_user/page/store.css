@@ -1,0 +1,23 @@
+.shop-panel {
+
+}
+
+.search-product {
+    margin-bottom: 15px;
+}
+
+.shop-grids {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.scrollable {
+    height: 300px;
+    overflow-y:auto;
+    width: 100%;
+}
+
+.pay-out {
+    height: 200px;
+    overflow: hidden;
+}
