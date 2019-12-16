@@ -75,5 +75,25 @@ class UserTableSeeder extends Seeder
             'created_at' => date("Y-m-d H:i:s.v"),
             'updated_at' => date("Y-m-d H:i:s.v")
         ]);
+
+        $roleStore = Role::create(['name' => 'Store', 'guard_name' => 'web']);
+
+        // Homeless
+        Model\MUser::create([
+            'access_key' => Hash::make('0900000000'),
+            'phone' => '0900000000',
+            'full_name' => 'Store',
+            'email' => 'store@admin.com',
+            'birthday' => '16-01-1996',
+            'username' => 'store',
+            'password' => Hash::make('123456'),
+            'code' => Str::random(5),
+            'status' => 1,
+            'role_id' => $roleStore->id,
+            'last_update_password' => date("Y-m-d H:i:s.v"),
+            'remember_token' => Str::random(10),
+            'created_at' => date("Y-m-d H:i:s.v"),
+            'updated_at' => date("Y-m-d H:i:s.v")
+        ]);
     }
 }

@@ -23,9 +23,12 @@ class Role extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
+        'pivot'
+    ];
+
+    protected $fillable = [
         'name',
         'guard_name',
-        'pivot'
     ];
 
     /**
