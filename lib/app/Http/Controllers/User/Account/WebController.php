@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\User\Account;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 
-class AccountController extends Controller
+class WebController extends Controller
 {
      public function index()
     {

@@ -11,52 +11,100 @@
 |
 */
 
-Route::get('/', function () {
-    return view('web.page.dashboard.index');
-});
 
 //
 Route::group(['namespace' => 'Account'], function () {
-    Route::get('/login', 'WebController@login')->name('admin.page.login');
-    Route::get('/register', 'WebController@register')->name('admin.page.register');
+    Route::get('/login', 'WebController@login')->name('account.page.login');
+    Route::get('/register', 'WebController@register')->name('account.page.register');
 });
 
 
-Route::group(['middleware' => ['auth.admin']], function () {
-    Route::group(['namespace' => 'Admin'], function () {
-        Route::get('/dashboard', 'AdminController@dashboard')->name('admin.page.dashboard');
+Route::group(['middleware' => ['auth.admin'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    //dashboard
+    Route::get('/dashboard', 'AdminController@dashboard')->name('admin.page.dashboard');
+
+    // auction
+    Route::group(['namespace' => 'Auction', 'prefix' => 'auction'], function () {
+        Route::get('/', 'WebController@index')->name('admin.page.auction');
     });
+
+    // donate
+    Route::group(['namespace' => 'Donate', 'prefix' => 'donate'], function () {
+        Route::get('/', 'WebController@index')->name('admin.page.donate');
+    });
+
+    // history
+    Route::group(['namespace' => 'History', 'prefix' => 'history'], function () {
+        Route::get('/', 'WebController@index')->name('admin.page.history');
+    });
+
+    // Order
+    Route::group(['namespace' => 'Order', 'prefix' => 'order'], function () {
+        Route::get('/', 'WebController@index')->name('admin.page.order');
+    });
+
+    // Setting
+    Route::group(['namespace' => 'Setting', 'prefix' => 'setting'], function () {
+        Route::get('/', 'WebController@index')->name('admin.page.setting');
+    });
+
+    // User
+    Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
+        Route::get('/', 'WebController@index')->name('admin.page.user');
+    });
+
 });
 
+// User role
 Route::group(['namespace' => 'User'], function () {
     // home
-    Route::get('/', 'HomeController@home')->name('admin.page.home');
+    Route::get('/', 'HomeController@home')->name('user.page.home');
     Route::get('/home', 'HomeController@home');
 
     // donate
-    Route::get('/donate', 'DonateController@list')->name('admin.page.donate.list');
-    Route::get('/donate/detail/{id}', 'DonateController@detail')->name('admin.page.donate.detail');
+    Route::group(['namespace' => 'Donate', 'prefix' => 'donate'], function () {
+        Route::get('/', 'WebController@list')->name('user.page.donate.list');
+        Route::get('/detail/{id}', 'WebController@detail')->name('user.page.donate.detail');
+    });
 
     // question
-    Route::get('/faq', 'QuestionController@index')->name('admin.page.faq');
+    Route::get('/faq', 'QuestionController@index')->name('user.page.faq');
 
     // contact
-    Route::get('/contact', 'ContactController@index')->name('admin.page.contact');;
+    Route::get('/contact', 'ContactController@index')->name('user.page.contact');;
 
     // about
-    Route::get('/about', 'AboutController@index')->name('admin.page.about');
+    Route::get('/about', 'AboutController@index')->name('user.page.about');
 
     // auction
-    Route::get('/auction', 'AuctionController@list')->name('admin.page.auction.list');
-    Route::get('/auction/detail/{id}', 'AuctionController@detail')->name('admin.page.auction.detail');
+    Route::group(['namespace' => 'Auction', 'prefix' => 'auction'], function () {
+        Route::get('/', 'WebController@list')->name('user.page.auction.list');
+        Route::get('/detail/{id}', 'WebController@detail')->name('user.page.auction.detail');
+    });
 
     // account
-    Route::get('/account', 'AccountController@index')->name('admin.page.account');
-    Route::get('/account/deposit', 'AccountController@deposit')->name('admin.page.deposit');
-    Route::get('/account/withdraw', 'AccountController@withdraw')->name('admin.page.withdraw');
-    Route::get('/account/setting', 'AccountController@setting')->name('admin.page.setting');
+    Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
+        Route::get('/', 'WebController@index')->name('user.page.account');
+        Route::get('/deposit', 'WebController@deposit')->name('user.page.deposit');
+        Route::get('/withdraw', 'WebController@withdraw')->name('user.page.withdraw');
+        Route::get('/setting', 'WebController@setting')->name('user.page.setting');
+    });
 });
 
-Route::group(['namespace' => 'Store'], function () {
-    Route::get('/store', 'StoreController@home')->name('admin.page.store.home');
+Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
+
+    // home
+    Route::group(['namespace' => 'Home'], function () {
+        Route::get('/', 'WebController@index')->name('store.page.store.home');
+    });
+
+    // Account
+    Route::group(['namespace' => 'Account'], function () {
+        Route::get('/', 'WebController@index')->name('store.page.store.account');
+    });
+
+    // Setting
+    Route::group(['namespace' => 'Setting'], function () {
+        Route::get('/', 'WebController@index')->name('store.page.store.setting');
+    });
 });

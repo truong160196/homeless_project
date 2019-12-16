@@ -7,9 +7,9 @@
                     <div class="social">
                         <ul>
                             <li>
-                                <a href="{{route('admin.page.faq')}}">Faq</a>
+                                <a href="{{route('user.page.faq')}}">Faq</a>
                             </li>
-                            <li><a href="{{route('admin.page.account')}}">Account</a></li>
+                            <li><a href="{{route('user.page.account')}}">Account</a></li>
                         </ul>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col col-sm-4">
                     <div class="text">
-                        <p><a href="{{route('admin.page.login')}}"><span>Login</span></a> </p>
+                        <p><a href="{{route('account.page.login')}}"><span>Login</span></a> </p>
                     </div>
                 </div>
             </div>
@@ -48,19 +48,19 @@
                 <button class="close-navbar"><i class="ti-close"></i></button>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{route('admin.page.home')}}">Home</a>
+                        <a href="{{route('user.page.home')}}">Home</a>
                     </li>
                     <li>
-                        <a href="{{route('admin.page.donate.list')}}">Donate</a>
+                        <a href="{{route('user.page.donate.list')}}">Donate</a>
                     </li>
                     <li>
-                        <a href="{{route('admin.page.auction.list')}}">Auction</a>
+                        <a href="{{route('user.page.auction.list')}}">Auction</a>
                     </li>
                     <li>
-                        <a href="{{route('admin.page.contact')}}">Contact</a>
+                        <a href="{{route('user.page.contact')}}">Contact</a>
                     </li>
                     <li>
-                        <a href="{{route('admin.page.about')}}">About</a>
+                        <a href="{{route('user.page.about')}}">About</a>
                     </li>
                 </ul>
             </div><!-- end of nav-collapse -->
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="contact">
-                    <a href="{{route('admin.page.donate.list')}}" class="theme-btn">Donate Now</a>
+                    <a href="{{route('user.page.donate.list')}}" class="theme-btn">Donate Now</a>
                 </div>
             </div>
             <div class="separator"></div>

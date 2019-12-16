@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\User\Donate;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DonateController extends Controller
+class WebController extends Controller
 {
      public function list()
     {

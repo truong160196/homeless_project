@@ -43,7 +43,7 @@
                             </ul>
                             <p>Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur.</p>
 
-                            <a href="{{route('admin.page.auction.detail', ['id' => 1])}}" class="theme-btn">Bidding</a>
+                            <a href="{{route('user.page.auction.detail', ['id' => 1])}}" class="theme-btn">Bidding</a>
                         </div>
                         <div class="row mar-60">
                             <div class="col-md-6">
@@ -150,7 +150,7 @@
                                         <img src="assets/images/recent-posts/img-1.jpg" alt>
                                     </div>
                                     <div class="details">
-                                        <h4><a href="{{route('admin.page.auction.detail', ['id' => 1])}}">Beautiful Day With Friends..</a></h4>
+                                        <h4><a href="{{route('user.page.auction.detail', ['id' => 1])}}">Beautiful Day With Friends..</a></h4>
                                         <span class="date"><i class="ti-timer"></i>Oct 13 2019</span>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@
                                         <img src="assets/images/recent-posts/img-2.jpg" alt>
                                     </div>
                                     <div class="details">
-                                        <h4><a href="{{route('admin.page.auction.detail', ['id' => 1])}}">Beautiful Day With Friends..</a></h4>
+                                        <h4><a href="{{route('user.page.auction.detail', ['id' => 1])}}">Beautiful Day With Friends..</a></h4>
                                         <span class="date"><i class="ti-timer"></i>Oct 13 2019</span>
                                     </div>
                                 </div>
@@ -168,7 +168,7 @@
                                         <img src="assets/images/recent-posts/img-3.jpg" alt>
                                     </div>
                                     <div class="details">
-                                        <h4><a href="{{route('admin.page.auction.detail', ['id' => 1])}}">Beautiful Day With Friends..</a></h4>
+                                        <h4><a href="{{route('user.page.auction.detail', ['id' => 1])}}">Beautiful Day With Friends..</a></h4>
                                         <span class="date"><i class="ti-timer"></i>Oct 13 2019</span>
                                     </div>
                                 </div>

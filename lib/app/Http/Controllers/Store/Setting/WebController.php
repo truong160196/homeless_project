@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Store;
+namespace App\Http\Controllers\Store\Setting;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,10 +13,10 @@ use Aris\LaravelLocalization\Facades\LaravelLocalization;
 use Validator;
 use Carbon\Carbon;
 
-class StoreController extends Controller
+class WebController extends Controller
 {
-     public function home()
+     public function index()
     {
-        return view('page.store.index');
+        return view('page.store.setting.index');
     }
 }

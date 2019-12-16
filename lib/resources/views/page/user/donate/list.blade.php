@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -48,8 +48,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -76,8 +76,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                         <div class="slider">
@@ -90,7 +90,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -100,8 +100,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                         <div class="slider">
@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -124,8 +124,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -152,8 +152,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -190,8 +190,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -218,8 +218,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                         <div class="slider">
@@ -232,7 +232,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -242,8 +242,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                         <div class="slider">
@@ -256,7 +256,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -266,8 +266,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                     </div>
@@ -284,7 +284,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="{{route('admin.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
+                                <h3><a href="{{route('user.page.donate.detail', ['id' => 1])}}">Supply Quality Foods To Africa's Village Area</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
                                         <p> Goal : <span class="color-yeollo">17000$</span></p>
@@ -294,8 +294,8 @@
                                     </div>
                                 </div>
                                 <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us by your hand to be a better life</p>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
-                                <a href="{{route('admin.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s4">Donate Now</a>
+                                <a href="{{route('user.page.donate.detail', ['id' => 1])}}" class="theme-btn-s5">Read Now</a>
                             </div>
                         </div>
                     </div>

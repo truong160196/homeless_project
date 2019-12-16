@@ -4,10 +4,10 @@
 /storage/*.key
 /vendor
 /lib/vendor/
+/.idea/
 .env
 .env.backup
 .phpunit.result.cache
-.idea/workspace.xml
 Homestead.json
 Homestead.yaml
 npm-debug.log
