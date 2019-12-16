@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use LiamWiltshire\LaravelJitLoader\Concerns\AutoloadsRelationships;
 
-class DonateHistory extends Model
+class AuctionHistory extends Model
 {
     use SoftDeletes;
     use AutoloadsRelationships;
 
-    protected $table = 'donate_histories';
+    protected $table = 'auction_histories';
     protected $dateFormat = "Y-m-d";
     public static $snakeAttributes = false;
 
@@ -30,12 +30,12 @@ class DonateHistory extends Model
         'hash',
         'status',
         'is_delete',
-        'donate_id',
+        'auction_id',
         'user_id',
     ];
 
-    public  function donates() {
-        return $this->belongsTo(Donate::class);
+    public  function auctions() {
+        return $this->belongsTo(Auction::class);
     }
 
     public  function users() {

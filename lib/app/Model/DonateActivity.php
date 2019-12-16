@@ -14,7 +14,7 @@ class DonateActivity extends Model
     use AutoloadsRelationships;
 
     protected $table = 'donate_activities';
-    protected $dateFormat = 'Y-m-d H:i:s.v';
+    protected $dateFormat = "Y-m-d";
     public static $snakeAttributes = false;
 
     protected $guarded = ['id'];

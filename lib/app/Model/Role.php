@@ -17,7 +17,7 @@ class Role extends Model
     use AutoloadsRelationships;
 
     protected $table = 'roles';
-    protected $dateFormat = 'Y-m-d H:i:s.v';
+    protected $dateFormat = "Y-m-d";
     public static $snakeAttributes = false;
 
     protected $guarded = ['id'];
