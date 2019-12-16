@@ -28,10 +28,10 @@ class UserTableSeeder extends Seeder
             'code' => Str::random(5),
             'status' => 1,
             'role_id' => $roleAdmin->id,
-            'last_update_password' => date("Y-m-d H:i:s.v"),
+            'last_update_password' => date("Y-m-d"),
             'remember_token' => Str::random(10),
-            'created_at' => date("Y-m-d H:i:s.v"),
-            'updated_at' => date("Y-m-d H:i:s.v")
+            'created_at' => date("Y-m-d"),
+            'updated_at' => date("Y-m-d")
         ]);
 
         $roleUser = Role::create(['name' => 'User', 'guard_name' => 'web']);
@@ -48,10 +48,10 @@ class UserTableSeeder extends Seeder
             'code' => Str::random(5),
             'status' => 1,
             'role_id' => $roleUser->id,
-            'last_update_password' => date("Y-m-d H:i:s.v"),
+            'last_update_password' => date("Y-m-d"),
             'remember_token' => Str::random(10),
-            'created_at' => date("Y-m-d H:i:s.v"),
-            'updated_at' => date("Y-m-d H:i:s.v")
+            'created_at' => date("Y-m-d"),
+            'updated_at' => date("Y-m-d")
         ]);
 
         $roleHomeless = Role::create(['name' => 'Homeless', 'guard_name' => 'web']);
@@ -68,10 +68,10 @@ class UserTableSeeder extends Seeder
             'code' => Str::random(5),
             'status' => 1,
             'role_id' => $roleHomeless->id,
-            'last_update_password' => date("Y-m-d H:i:s.v"),
+            'last_update_password' => date("Y-m-d"),
             'remember_token' => Str::random(10),
-            'created_at' => date("Y-m-d H:i:s.v"),
-            'updated_at' => date("Y-m-d H:i:s.v")
+            'created_at' => date("Y-m-d"),
+            'updated_at' => date("Y-m-d")
         ]);
 
         $roleStore = Role::create(['name' => 'Store', 'guard_name' => 'web']);
@@ -88,10 +88,10 @@ class UserTableSeeder extends Seeder
             'code' => Str::random(5),
             'status' => 1,
             'role_id' => $roleStore->id,
-            'last_update_password' => date("Y-m-d H:i:s.v"),
+            'last_update_password' => date("Y-m-d"),
             'remember_token' => Str::random(10),
-            'created_at' => date("Y-m-d H:i:s.v"),
-            'updated_at' => date("Y-m-d H:i:s.v")
+            'created_at' => date("Y-m-d"),
+            'updated_at' => date("Y-m-d")
         ]);
     }
 }
