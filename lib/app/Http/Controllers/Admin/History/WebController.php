@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
-     public function list()
+     public function index()
     {
         return view('page.admin.history.index');
     }

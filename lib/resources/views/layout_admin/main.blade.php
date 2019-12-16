@@ -10,9 +10,16 @@
    @include('layout_admin.main_css')
   </head>
   <body>
-    @include('layout_admin.header')
-    @yield('page_content')
-    @include('layout_admin.footer')
+  <div class="wrapper">
+    @include('layout_admin.menu')
+    <div class="main-panel">
+      @include('layout_admin.header')
+      <div class="content">
+        @yield('page_content')
+      </div>
+      @include('layout_admin.footer')
+    </div>
+  </div>
     @include('layout_admin.main_js')
   </body>
 </html>
