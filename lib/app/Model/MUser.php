@@ -42,6 +42,7 @@ class MUser extends Authenticatable
         'full_name',
         'birthday',
         'email',
+        'user_type',
         'address',
         'pw',
         'score',

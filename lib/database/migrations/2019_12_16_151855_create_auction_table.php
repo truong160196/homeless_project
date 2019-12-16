@@ -13,10 +13,12 @@ class CreateAuctionTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('join_auctions_locations');
         Schema::dropIfExists('join_auctions_activities');
         Schema::dropIfExists('auction_histories');
         Schema::dropIfExists('auctions');
+        Schema::enableForeignKeyConstraints();
 
         Schema::create('auctions', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -97,9 +99,11 @@ class CreateAuctionTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('join_auctions_locations');
         Schema::dropIfExists('join_auctions_activities');
         Schema::dropIfExists('auction_histories');
         Schema::dropIfExists('auctions');
+        Schema::enableForeignKeyConstraints();
     }
 }
