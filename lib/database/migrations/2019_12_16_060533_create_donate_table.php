@@ -13,13 +13,13 @@ class CreateDonateTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('donate_categories');
-        Schema::dropIfExists('donates');
         Schema::dropIfExists('donate_activities');
         Schema::dropIfExists('join_donates_activities');
-        Schema::dropIfExists('locations');
         Schema::dropIfExists('join_donates_locations');
+        Schema::dropIfExists('locations');
         Schema::dropIfExists('donate_histories');
+        Schema::dropIfExists('donates');
+        Schema::dropIfExists('donate_categories');
 
         Schema::create('donate_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -131,12 +131,12 @@ class CreateDonateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donate_categories');
-        Schema::dropIfExists('donates');
-        Schema::dropIfExists('donate_activities');
         Schema::dropIfExists('join_donates_activities');
-        Schema::dropIfExists('locations');
         Schema::dropIfExists('join_donates_locations');
+        Schema::dropIfExists('locations');
         Schema::dropIfExists('donate_histories');
+        Schema::dropIfExists('donate_activities');
+        Schema::dropIfExists('donates');
+        Schema::dropIfExists('donate_categories');
     }
 }

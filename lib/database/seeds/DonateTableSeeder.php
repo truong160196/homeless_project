@@ -31,8 +31,8 @@ class DonateTableSeeder extends Seeder
         $donate = Model\Donate::create([
             'donate_title' => "Supply Quality Foods To Africa's Village Area",
             'donate_detail' => "We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world, let contribute to them with us",
-            'donate_start_time' => date("Y-m-d H:i:s.v"),
-            'donate_end_time' => date("Y-m-d H:i:s.v", strtotime("2020-01-01")),
+            'donate_start_time' => date("Y-m-d"),
+            'donate_end_time' => date("Y-m-d"),
             'donate_goal' => 18000,
             'donate_raised' => 1000.564,
             'donate_address' => '0xaDE77C46Bab809E7cab3b0C4930d58f0F88bDaE9',
