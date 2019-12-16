@@ -31,19 +31,17 @@
                         <div class="col-sm-12">
                             <div class="card card-stats">
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table" id="user_table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Username</th>
-                                                    <th>Full name</th>
-                                                    <th>Phone</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
+                                    <table class="table display responsive nowrap table-caterers cursor-pointer" id="user_table">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Username</th>
+                                            <th>Full name</th>
+                                            <th>Role</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
                                 </div>
                             </div>
                         </div>

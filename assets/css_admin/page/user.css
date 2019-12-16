@@ -1,0 +1,18 @@
+#user_table {
+    width: 100% !important;
+    font-size: 14px !important;
+    font-weight: 400;
+}
+
+#user_table > thead > tr > th {
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
+    text-align: left;
+    font-weight: 600;
+}
+
+.table.dataTable thead th, .table.dataTable thead td {
+    padding-right: 1.4rem;
+}

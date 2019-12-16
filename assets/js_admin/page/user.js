@@ -47,7 +47,12 @@ $(function() {
                     "data": "full_name"
                 },
                 {
-                    "data": "phone"
+                    "data": "role"
+                },
+                {
+                    "data": "action",
+                    "searchable": false,
+                    "orderable": false
                 },
             ],
             columnDefs: [],
