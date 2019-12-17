@@ -11,18 +11,7 @@
   </head>
   <body>
   <div class="page-wrapper">
-    <!-- start preloader -->
-    <div class="preloader">
-      <div class="sk-folding-cube">
-        <div class="sk-cube1 sk-cube"></div>
-        <div class="sk-cube2 sk-cube"></div>
-        <div class="sk-cube4 sk-cube"></div>
-        <div class="sk-cube3 sk-cube"></div>
-      </div>
-    </div>
-    <!-- end preloader -->
-
-    @include('layout_store.header')
+{{--    @include('layout_store.header')--}}
     @yield('page_content')
     @include('layout_store.footer')
     @include('layout_store.main_js')
