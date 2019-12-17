@@ -145,7 +145,7 @@
             <h4>Store Information</h4>
         </div>
         <div class="page-body row">
-            <div class="col-sm-12 col-lg-4">
+            <div class="col-sm-12 col-lg-5">
                 <div class="card card-info">
                     <div class="card-body">
                         <div class="avatar">
@@ -189,15 +189,15 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="button" class="btn btn-secondary btn-edit-user">Edit Profile</button>
+                        <button type="button" class="btn btn-secondary btn-edit-user" data-toggle="modal" data-target="#modal-user">Edit Profile</button>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-8">
+            <div class="col-sm-12 col-lg-7">
                 <div class="card card-info">
                     <div class="card-body">
                         <h5>DELIVERY DEFAULT MESSAGE</h5>
-                        <form>
+                        <form class="form-update-user">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <textarea class="form-control" rows="2" placeholder="Write your message"></textarea>
@@ -219,9 +219,44 @@
                                 <textarea class="form-control" rows="2" placeholder="Write your message"></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn btn-secondary">Update</button>
+                                <button type="button" class="btn btn-secondary btn-update">Update</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade modal-update-user" id="modal-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">EDIT STORE PROFILE</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body row">
+                            <div class="col-sm-12 col-lg-4" >
+                                <h4>STORE IMAGE</h4>
+                                <div class="avatar">
+                                    <img src="https://eon51.com/wp-content/uploads/2018/05/logo-tng-51.png">
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary btn-remove">Remove</button>
+                                    <button type="button" class="btn btn-secondary btn-upload">Upload Image</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-8" >
+                                <form>
+                                    <h4>BASIC INFO</h4>
+                                    <div class="form-group">
+                                        <label>Store Name</label>
+                                        <input type="button" class="form-control" placeholder="Enter Store Name" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
