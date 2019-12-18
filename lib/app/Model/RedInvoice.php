@@ -13,7 +13,6 @@ class RedInvoice extends Model
     use SoftDeletes;
     use AutoloadsRelationships;
     protected $table = 'red_invoices';
-    protected $dateFormat = "Y-m-d";
     public static $snakeAttributes = false;
 
     protected $guarded = ['id'];

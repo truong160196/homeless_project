@@ -35,6 +35,7 @@ class AjaxController extends Controller
                 }
 
             } catch (\Exception $e) {
+                dd($e);
                 return $this->JsonExport(500, __('app.error_500'));
             }
         }

@@ -26,7 +26,8 @@ class VerifyCsrfToken extends Middleware
     ];
 
     protected $except_urls = [
-        'api/admin/user/upload'
+        'api/admin/user/upload',
+        'api/admin/user/update'
     ];
 
     public function handle($request, Closure $next)

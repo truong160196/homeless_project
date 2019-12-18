@@ -13,7 +13,6 @@ class Store extends Model
     use SoftDeletes;
     use AutoloadsRelationships;
     protected $table = 'stores';
-    protected $dateFormat = "Y-m-d";
     public static $snakeAttributes = false;
 
     protected $guarded = ['id'];
