@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{asset('assets/css_user/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/lib/font-awesome/css/fontawesome-all.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/themify-icons.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/flaticon.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/animate.css')}}">

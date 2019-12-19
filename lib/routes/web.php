@@ -65,6 +65,9 @@ Route::group(['namespace' => 'User'], function () {
     Route::group(['namespace' => 'Donate', 'prefix' => 'donate'], function () {
         Route::get('/', 'WebController@list')->name('user.page.donate.list');
         Route::get('/detail/{id}', 'WebController@detail')->name('user.page.donate.detail');
+        Route::get('/donate/{id}', 'WebController@donate')->name('user.page.donate.donate');
+
+        Route::get('/top-donate', 'AjaxController@top_donate')->name('user.page.donate.top');
     });
 
     // question
@@ -80,6 +83,8 @@ Route::group(['namespace' => 'User'], function () {
     Route::group(['namespace' => 'Auction', 'prefix' => 'auction'], function () {
         Route::get('/', 'WebController@list')->name('user.page.auction.list');
         Route::get('/detail/{id}', 'WebController@detail')->name('user.page.auction.detail');
+
+        Route::get('/top-auction','AjaxController@top_auction')->name('user.page.auction.top');
     });
 
     // account
@@ -108,3 +113,4 @@ Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
         Route::get('/', 'WebController@index')->name('store.page.store.setting');
     });
 });
+
