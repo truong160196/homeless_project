@@ -83,11 +83,11 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
 // store
 Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
     // Product
-    Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
-        Route::get('/', 'AjaxController@list')->name('admin.user.list');
-        Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.user.detail');
-        Route::post('/create', 'AjaxController@create')->name('admin.user.create');
-        Route::put('/update/{id}', 'AjaxController@update')->name('admin.user.update');
-        Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.user.delete');
+    Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
+        Route::get('/', 'AjaxController@list')->name('store.home.list');
+        // Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.user.detail');
+        // Route::post('/create', 'AjaxController@create')->name('admin.user.create');
+        // Route::put('/update/{id}', 'AjaxController@update')->name('admin.user.update');
+        // Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.user.delete');
     });
 });

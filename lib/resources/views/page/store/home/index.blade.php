@@ -146,168 +146,8 @@
             </div>
             <div class="col-sm-12 col-lg-7 row shop-panel">
                 <div class="col col-xs-12">
-                    <div class="shop-grids">
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-1.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Paper shopping bag</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-2.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Unlock Smart phone</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-3.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Isometric plant 3d</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-4.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">The photographer camera</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-5.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Smart watch</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-6.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">New smart shoes</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-7.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Surface headphone</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-8.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Smart watch</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-9.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Blutooth speaker</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="shop-grids" id="shop-grids">
+                   
                     <div class="pagination-wrapper pagination-wrapper-left">
                         <ul class="pg-pagination">
                             <li>
@@ -328,12 +168,12 @@
 
                 </div>
             </div>
-        </div> <!-- end container -->
+        </div> <!-- end container -->  
     </section>
     <!-- end shop-pg-section -->
 @endsection
 
 @section('js')
-{{--    <script src="{{asset('assets/js_admin/dashboard.js')}}"></script>--}}
+<script src="{{asset('assets/js_admin/page/store.js')}}"></script>
 @endsection
 
