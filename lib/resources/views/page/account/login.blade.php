@@ -1,4 +1,4 @@
-@extends('layout_admin.main')
+@extends('layout_admin.mainLogin')
 
 @section('page_title')
 {{--{{$page_title}}--}}

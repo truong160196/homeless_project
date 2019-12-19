@@ -220,7 +220,6 @@ iframe {
 .wrap-input100 {
     width: 100%;
     position: relative;
-    border-bottom: 2px solid rgba(255,255,255,0.24);
     margin-bottom: 40px;
 }
 
@@ -395,4 +394,27 @@ iframe {
     border: 1px solid;
     border-radius: 10px 10px 0 0;
     margin: 0;
+}
+
+.text-strong {
+    font-size: 13px;
+    color: #ffffff;
+}
+
+.txt1 {
+    color: #fffd98;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.txt1:hover,
+.txt1:focus {
+    font-size: 15px;
+    color: white;
+}
+
+.parsley-required,
+.parsley-equalto,
+.parsley-minlength
+{
+    color: #fffa27;
 }

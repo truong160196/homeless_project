@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Account', 'prefix' => 'utils'], function () {
     Route::post('/login', 'AjaxController@admin_login_ajax')->name('admin.api.login');
+    Route::post('/register', 'AjaxController@admin_register_ajax')->name('admin.api.register');
+    Route::get('/account', 'AjaxController@admin_account_ajax')->name('admin.api.account');
     Route::get('/logout', 'AjaxController@admin_logout_ajax')->name('admin.api.logout');
 });
 
