@@ -16,3 +16,15 @@
 .table.dataTable thead th, .table.dataTable thead td {
     padding-right: 1.4rem;
 }
+
+#user_table > tbody > tr > td {
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
+    text-align: left;
+}
+
+#form_create_user .btn-datetime {
+    padding: 5px;
+}

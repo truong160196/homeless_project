@@ -76,4 +76,25 @@ $(function() {
             });
         }
     }
+
+    $(document).on('click', '#btn_create_user', function(e) {
+        openModalCreateUser();
+        e.preventDefault();
+    });
+
+    var openModalCreateUser = function () {
+        $('#modal_user_create').modal('show');
+
+        $('#birthday').daterangepicker({
+            timePicker: false,
+            singleDatePicker: true,
+            timePicker24Hour: false,
+            timePickerIncrement: 1,
+            autoUpdateInput: true,
+            locale: {
+                format: 'DD/MM/YYYY',
+                cancelLabel: 'Clear'
+            }
+        });
+    }
 });

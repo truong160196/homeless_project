@@ -9480,3 +9480,7 @@ img {
     padding-bottom: 100px;
 }
 /*# sourceMappingURL=style.css.map */
+
+.tx-danger {
+    color: #d32535;
+}
