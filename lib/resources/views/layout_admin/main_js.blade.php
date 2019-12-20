@@ -34,9 +34,10 @@
 <script type="text/javascript" src="{{asset('assets/js_admin/chartist.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js_admin/material-dashboard.js?v=2.1.1')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js_admin/main.js')}}"></script>
-@yield('js')
-{{--<script>$(window).on('load', function(){if($('.se-pre-con').length > 0) {$(".se-pre-con").fadeOut("slow");}});</script>--}}
+
 <script>
+    var base_url = "{{url('/')}}";
+    var base_ajax = "{{url('/api')}}";
     var run_waitMe = function(el, stop) {
         if (stop) {
             $(el).waitMe('hide');
@@ -55,5 +56,14 @@
             });
         }
     };
-
 </script>
+{{--web3 ethereum--}}
+<script type="text/javascript" src="{{asset('assets/lib/web3/web3.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/web3/ethereumjs-abi-0.6.5.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/web3/ethereumjs-wallet-0.6.0.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/web3/web3.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js_admin/blockchain.js')}}"></script>
+
+@yield('js')
+
+{{--<script>$(window).on('load', function(){if($('.se-pre-con').length > 0) {$(".se-pre-con").fadeOut("slow");}});</script>--}}

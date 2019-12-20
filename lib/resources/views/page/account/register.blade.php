@@ -1,4 +1,4 @@
-@extends('layout_admin.main')
+@extends('layout_admin.mainLogin')
 
 @section('page_title')
 {{--{{$page_title}}--}}
@@ -13,13 +13,17 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url({{asset('assets/images/bg-01.jpg')}})">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" id="form_login">
+                <form
+                    class="login100-form validate-form"
+                    id="form_register"
+                    autocomplete="off"
+                >
                 <span class="login100-form-logo">
                     <i class="zmdi zmdi-landscape"></i>
                 </span>
 
                     <span class="login100-form-title p-b-34 p-t-27">
-                    Log in
+                    Register
                 </span>
                     <div class="login-body">
                         <div class="wrap-input100 validate-input" data-validate = "Enter username">
@@ -29,11 +33,14 @@
                                     id="username"
                                     name="username"
                                     placeholder="Username"
+                                    autocomplete="off"
                                     data-parsley-validation-threshold="1"
                                     data-parsley-trigger="keyup"
                                     maxlength="255"
                                     required
                                     data-parsley-required-message="Username is required."
+                                    data-parsley-minlength="3"
+                                    data-parsley-maxlength="16"
                             >
                             <span class="focus-input100">
                             <i class="fas fa-user"></i>
@@ -47,42 +54,54 @@
                                     id="password"
                                     name="password"
                                     placeholder="Password"
+                                    autocomplete="new-password"
                                     data-parsley-validation-threshold="1"
                                     data-parsley-trigger="keyup"
                                     maxlength="255"
                                     required
                                     data-parsley-required-message="Password is required."
+                                    data-parsley-minlength="6"
+                                    data-parsley-maxlength="32"
                             >
                             <span class="focus-input100">
                             <i class="fas fa-unlock-alt"></i>
                         </span>
                         </div>
 
-                        <div class="form-check contact100-form-checkbox">
-                            <label class="form-check-label">
-                                <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                >
-                                <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                                <label class="label-checkbox100">Remember me</label>
-                            </label>
+                        <div class="wrap-input100 validate-input" data-validate="Enter password">
+                            <input
+                                class="form-control input100"
+                                type="password"
+                                id="confirm_password"
+                                name="confirm_password"
+                                placeholder="Confirm Password"
+                                autocomplete="off"
+                                data-parsley-validation-threshold="1"
+                                data-parsley-trigger="keyup"
+                                maxlength="255"
+                                required
+                                data-parsley-required-message="Confirm password is required."
+                                data-parsley-equalto="#password"
+                                data-parsley-equalto-message="Password not match"
+                                data-parsley-minlength="6"
+                            >
+                            <span class="focus-input100">
+                            <i class="fas fa-unlock-alt"></i>
+                        </span>
                         </div>
                     </div>
                 </form>
 
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" id="btn_login">
-                        Login
+                    <button class="login100-form-btn" id="btn_register">
+                        Register
                     </button>
                 </div>
 
                 <div class="text-center p-t-90">
+                    <strong class="text-strong">Already registered?</strong>
                     <a class="txt1" href="#">
-                        Forgot Password?
+                        Login
                     </a>
                 </div>
             </div>
