@@ -14,11 +14,11 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('roles');
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('wallets');
-        Schema::dropIfExists('transactions');
         Schema::dropIfExists('join_users_transactions');
+        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('wallets');
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('roles');
         Schema::enableForeignKeyConstraints();
 
         Schema::create('roles', function (Blueprint $table) {
@@ -30,7 +30,6 @@ class CreateUsersTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('access_key')->nullable();
             $table->string('username')->unique();
             // password
             $table->string('password');
@@ -38,8 +37,10 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('birthday')->nullable();
             $table->string('address')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
+            $table->string('user_type')->nullable();
             $table->integer('score')->nullable();
+            $table->string('access_key')->nullable();
             $table->unsignedTinyInteger('email_verify')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('code')->nullable();
@@ -113,11 +114,11 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('roles');
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('wallets');
-        Schema::dropIfExists('transactions');
         Schema::dropIfExists('join_users_transactions');
+        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('wallets');
+        Schema::dropIfExists('users');
+        Schema::dropIfExists('roles');
         Schema::enableForeignKeyConstraints();
     }
 }

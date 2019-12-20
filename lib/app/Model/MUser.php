@@ -42,6 +42,7 @@ class MUser extends Authenticatable
         'full_name',
         'birthday',
         'email',
+        'user_type',
         'address',
         'pw',
         'score',
@@ -62,5 +63,9 @@ class MUser extends Authenticatable
 
     public  function role() {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public  function wallets() {
+        return $this->belongsTo(Wallet::class, 'user_id', 'id');
     }
 }

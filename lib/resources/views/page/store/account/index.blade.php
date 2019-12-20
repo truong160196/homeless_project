@@ -9,328 +9,259 @@
 @endsection
 
 @section('page_content')
-    <!-- start shop-pg-section -->
-    <section class="shop-pg-section">
-        <div class="row">
-            <div class="col-sm-12 col-lg-5 payment-panel">
-                <div class="search-product row">
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="Enter name product">
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-success">Search</button>
-                    </div>
-                </div>
-                <div class="scrollable">
-                    <table class="table table-striped table-store">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Qty</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="pay-out">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Total</td>
-                                <td>325,45$</td>
-                            </tr>
-                            <tr>
-                                <td>Tax</td>
-                                <td>3,25$</td>
-                            </tr>
-                            <tr>
-                                <td>Tax</td>
-                                <td>3,25$</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-sm-12 col-lg-7 row shop-panel">
-                <div class="col col-xs-12">
-                    <div class="shop-grids">
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-1.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Paper shopping bag</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-2.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Unlock Smart phone</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-3.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Isometric plant 3d</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-4.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">The photographer camera</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-5.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Smart watch</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-6.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">New smart shoes</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-7.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Surface headphone</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-8.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Smart watch</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-9.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Blutooth speaker</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
+    <section class="header">
+        <div class="company-name">
+            <h3>KAMEREO</h3>
+        </div>
+        <div class="right-header">
+            <ul>
+                <li>
+                    <a href="#" class="">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="">
+                        <i class="fas fa-shopping-cart">
+                            <span class="icon-bar">4</span>
+                        </i>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button
+                                class="btn btn-light dropdown-toggle select-lang"
+                                type="button" id="lang"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            ENG
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="lang">
+                            <a class="dropdown-item" href="#">ENG</a>
+                            <a class="dropdown-item" href="#">VN</a>
                         </div>
                     </div>
-                    <div class="pagination-wrapper pagination-wrapper-left">
-                        <ul class="pg-pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <i class="fi flaticon-back"></i>
-                                </a>
-                            </li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <i class="fi flaticon-next"></i>
-                                </a>
-                            </li>
-                        </ul>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle select-user" type="button" id="usermenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="account">
+                                <div class="avatar">
+                                    <img src="https://yoast.com/app/uploads/2019/04/Meike_bubble-250x285.png" />
+                                </div>
+                                <div class="info-user">
+                                    <h5>Taku Tanaka</h5>
+                                    <p>Administrator</p>
+                                </div>
+                            </div>
+                        </button>
                     </div>
-
-                </div>
-            </div>
-        </div> <!-- end container -->
+                </li>
+            </ul>
+        </div>
     </section>
-    <!-- end shop-pg-section -->
+    <section class="nav-bar-menu">
+        <div class="menu-top-header">
+            <div class="store">
+                <div class="avatar">
+                    <img src="https://eon51.com/wp-content/uploads/2018/05/logo-tng-51.png">
+                </div>
+                <div class="store-info">
+                    <h4>KAMEREO</h4>
+                    <p>135 Hai Ba Trung</p>
+                </div>
+            </div>
+            <div class="changeInfo">
+                <a href="#" class="btn-changeInfo">CHANGE STORE</a>
+            </div>
+        </div>
+        <div class="favorite-item">
+            <i class="fas fa-heart"></i>
+            <h4>FAVORITE ITEMS</h4>
+        </div>
+        <ul class="sidebar-nav">
+            <h4>Dashboard</h4>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-history"></i>
+                        <p>Overview</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-scroll"></i>
+                        <p>Orders</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-luggage-cart"></i>
+                        <p>Suppliers List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-bar"></i>
+                        <p>Statistic</p>
+                    </a>
+                </li>
+            </ul>
+            <h4>Market Place</h4>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-store"></i>
+                        <p>Market</p>
+                    </a>
+                </li>
+            </ul>
+            <h4>General Setting</h4>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-building"></i>
+                        <p>Company Info</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fab fa-app-store-ios"></i>
+                        <p>Store Info</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-users"></i>
+                        <p>User Management</p>
+                    </a>
+                </li>
+            </ul>
+        </ul>
+    </section>
+    <section class="body-main">
+        <div class="page-header">
+            <h4>Store Information</h4>
+        </div>
+        <div class="page-body row">
+            <div class="col-sm-12 col-lg-5">
+                <div class="card card-info">
+                    <div class="card-body">
+                        <div class="avatar">
+                            <img src="https://eon51.com/wp-content/uploads/2018/05/logo-tng-51.png">
+                        </div>
+                        <h4>STORE INFO.</h4>
+                        <table>
+                            <tbody>
+                                <col width="40%" />
+                                <col width="60%" />
+                                <tr>
+                                    <td class="label">Name:</td>
+                                    <td class="content">K.O.I The.</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Address:</td>
+                                    <td class="content">521 Hồ Tùng Mậu, D1, HCM</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Phone #:</td>
+                                    <td class="content">(338) 886-9944</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h4>RED INVOICE INFO.</h4>
+                        <table>
+                            <tbody>
+                                <col width="40%" />
+                                <col width="60%" />
+                                <tr>
+                                    <td class="label">Company Name:</td>
+                                    <td class="content">K.O.I The International Company</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Address:</td>
+                                    <td class="content">9682 Wakehurst Avenue Arlington Heights, IL, 60004</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">MST:</td>
+                                    <td class="content">P77744944</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-secondary btn-edit-user" data-toggle="modal" data-target="#modal-user">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-7">
+                <div class="card card-info">
+                    <div class="card-body">
+                        <h5>DELIVERY DEFAULT MESSAGE</h5>
+                        <form class="form-update-user">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <textarea class="form-control" rows="2" placeholder="Write your message"></textarea>
+                            </div>
+                            <div class="form-check disabled">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <textarea class="form-control" rows="2" placeholder="Write your message"></textarea>
+                            </div>
+                            <div class="form-check disabled">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <textarea class="form-control" rows="2" placeholder="Write your message"></textarea>
+                            </div>
+                            <div class="form-check disabled">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <textarea class="form-control" rows="2" placeholder="Write your message"></textarea>
+                            </div>
+                            <div class="form-check disabled">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <textarea class="form-control" rows="2" placeholder="Write your message"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-secondary btn-update">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade modal-update-user" id="modal-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">EDIT STORE PROFILE</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body row">
+                            <div class="col-sm-12 col-lg-4" >
+                                <h4>STORE IMAGE</h4>
+                                <div class="avatar">
+                                    <img src="https://eon51.com/wp-content/uploads/2018/05/logo-tng-51.png">
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary btn-remove">Remove</button>
+                                    <button type="button" class="btn btn-secondary btn-upload">Upload Image</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-8" >
+                                <form>
+                                    <h4>BASIC INFO</h4>
+                                    <div class="form-group">
+                                        <label>Store Name</label>
+                                        <input type="button" class="form-control" placeholder="Enter Store Name" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
 
 @section('js')

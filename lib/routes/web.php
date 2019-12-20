@@ -104,13 +104,18 @@ Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
     });
 
     // Account
-    Route::group(['namespace' => 'Account'], function () {
+    Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
         Route::get('/', 'WebController@index')->name('store.page.store.account');
     });
 
     // Setting
-    Route::group(['namespace' => 'Setting'], function () {
+    Route::group(['namespace' => 'Setting', 'prefix' => 'setting'], function () {
         Route::get('/', 'WebController@index')->name('store.page.store.setting');
     });
 });
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('config:cache');
+    return 'DONE'; //Return anything
+});

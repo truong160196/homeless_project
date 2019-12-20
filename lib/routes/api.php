@@ -19,11 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Account', 'prefix' => 'utils'], function () {
     Route::post('/login', 'AjaxController@admin_login_ajax')->name('admin.api.login');
+    Route::post('/register', 'AjaxController@admin_register_ajax')->name('admin.api.register');
+    Route::get('/account', 'AjaxController@admin_account_ajax')->name('admin.api.account');
     Route::get('/logout', 'AjaxController@admin_logout_ajax')->name('admin.api.logout');
 });
 
 // admin
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     // Auction
     Route::group(['namespace' => 'Auction', 'prefix' => 'auction'], function () {
         Route::get('/', 'AjaxController@list')->name('admin.auction.list');
@@ -74,8 +76,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/', 'AjaxController@list')->name('admin.user.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.user.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.user.create');
-        Route::put('/update/{id}', 'AjaxController@update')->name('admin.user.update');
+        Route::post('/update', 'AjaxController@update')->name('admin.user.update');
         Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.user.delete');
+        Route::post('/upload', 'AjaxController@upload')->name('admin.user.upload');
     });
 });
 

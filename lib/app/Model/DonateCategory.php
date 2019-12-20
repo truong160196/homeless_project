@@ -14,7 +14,7 @@ class DonateCategory extends Model
     use AutoloadsRelationships;
 
     protected $table = 'donate_categories';
-    protected $dateFormat = 'Y-m-d H:i:s.v';
+    protected $dateFormat = "Y-m-d";
     public static $snakeAttributes = false;
 
     protected $guarded = ['id'];
