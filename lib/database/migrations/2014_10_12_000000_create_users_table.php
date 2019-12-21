@@ -51,7 +51,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('last_update_password')->nullable();
             $table->timestamp('last_local_login')->nullable();
             $table->tinyInteger('is_delete')->default(0);
-            $table->unsignedTinyInteger('status')->default(1);
+            $table->string('status')->nullable();
             // RELATIONSHIP
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')

@@ -124,7 +124,7 @@ class AjaxController extends Controller
 
                 DB::commit();
 
-                return $this->JsonExport(200, __('app.login_success'));
+                return $this->JsonExport(200, 'Login success');
 
             } catch (\Exception $e) {
                 return $this->JsonExport(500, 'Internal Server Error');

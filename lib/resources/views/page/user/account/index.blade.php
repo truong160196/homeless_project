@@ -25,13 +25,42 @@
                         <div class="widget about-widget">
                             <h3>About</h3>
                             <div class="img-holder">
-                                <img src="assets/images/blog/about-widget.jpg" alt="">
+                                <img src="{{asset('assets/images/user.png')}}" alt="">
                             </div>
-                            <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit.</p>
-                            <h4>Name: Nguyen Quoc Truong</h4>
-                            <h4>Job title: </h4>
-                            <h4>Location: </h4>
-                            <h4>Detail: </h4>
+                            <table>
+                                <tbody>
+                                <col width="40%" />
+                                <col width="60%" />
+                                <tr>
+                                    <td class="label">Username:</td>
+                                    <td class="content">{{$account->username}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Name:</td>
+                                    <td class="content">{{$account->full_name}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Birthday:</td>
+                                    <td class="content">{{$account->birthday}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Phone#:</td>
+                                    <td class="content">{{$account->phone}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Address:</td>
+                                    <td class="content">{{$account->address}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <button
+                                type="button"
+                                class="btn btn-secondary btn-edit-user"
+                                data-toggle="modal"
+                                data-target="#modal-user"
+                            >
+                                Edit Profile
+                            </button>
                         </div>
                     </div>
                     <div class="col-sm-12 col-lg-6">
