@@ -111,7 +111,7 @@
                     <div class="event-slider">
                         @foreach ($donates_left as $donate)
                             <div class="slider">
-                                <img src="{{$donate->image}}" alt="" />
+                                <img src="{{asset($donate->donate_image)}}" alt="" />
                                 <div class="content-meta">
                                     <div class="skills">
                                         <div class="skill">
@@ -142,7 +142,7 @@
                     <div class="event-slider">
                         @foreach ($donates_right as $donate)
                             <div class="slider">
-                                <img src="{{$donate->image}}" alt="" />
+                                <img src="{{asset($donate->donate_image)}}" alt="" />
                                 <div class="content-meta">
                                     <div class="skills">
                                         <div class="skill">

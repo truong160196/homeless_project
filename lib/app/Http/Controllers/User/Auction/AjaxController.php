@@ -13,7 +13,7 @@ class AjaxController extends Controller
    //
    public function top_auction(Request $request)
     {  
-         $auctions = DB::table('donate_history')
+         $auctions = DB::table('auctions')
             ->orderBy('auction_start_time', 'desc')
             ->limit(5)
             ->get();

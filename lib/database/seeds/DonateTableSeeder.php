@@ -38,6 +38,7 @@ class DonateTableSeeder extends Seeder
             'donate_address' => '0xaDE77C46Bab809E7cab3b0C4930d58f0F88bDaE9',
             'donate_private_key' => '7C23D8EC9590641ABAC826B8BC515B1C93E1D92C9479D35215475C4CF7607283',
             'donate_public_key' => '7C23D8EC9590641ABAC826B8BC515B1C93E1D92C9479D35215475C4CF7607283',
+            'donate_image' => 'assets\images\portfolio\img-1.jpg',
             'category_id' => $roleAdmin->id,
         ]);
 

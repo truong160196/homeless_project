@@ -31,7 +31,7 @@
                         <div class="recent-case-data active-case-data" >
                             <div class="row">
                                 <div class="col col-xs-12">
-                                    <img src="{{ $donate->image }}" alt="" />
+                                    <img src="{{ asset($donate->donate_image) }}" alt="" />
                                 </div>
                                 <div class="col col-xs-12">
                                     <div class="content-meta">

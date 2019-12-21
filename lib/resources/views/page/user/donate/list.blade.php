@@ -30,7 +30,7 @@
                     <div class="col col-md-4">
                         <div class="recent-cases-content-outer">
                             <div class="recent-case-data active-case-data" >
-                                <img src="{{$donates[$i]->image}}" alt="" />
+                                <img src="{{asset($donates[$i]->donate_image)}}" alt="" />
                                 <div class="content-meta">
                                     <div class="skills">
                                         <div class="skill">

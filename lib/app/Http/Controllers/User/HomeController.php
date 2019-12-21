@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
      public function home()
     {
-        $auctions = DB::table('donate_history')
+        $auctions = DB::table('auctions')
             ->orderBy('auction_start_time', 'desc')
             ->limit(5)
             ->get();

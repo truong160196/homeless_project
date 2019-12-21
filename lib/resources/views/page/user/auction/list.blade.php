@@ -33,7 +33,7 @@
                             <div class="service-single-content">
                                 <div class="benefit clearfix">
                                     <div class="date">
-                                        <p>{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_start_time)->format('d')}} 
+                                        <p>{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_start_time)->format('d')}}
                                             <span>
                                                 {{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_start_time)->format('M')}}
                                             </span>

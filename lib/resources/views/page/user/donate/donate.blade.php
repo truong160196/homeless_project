@@ -106,7 +106,7 @@
                 <div class="col-xs-12 col-md-4">
                     <div class="row">
                         <div class="col-xs-12 image-detail">
-                            <img src="/{{$donate->image}}" alt="" />
+                            <img src="{{asset($donate->donate_image)}}" alt="" />
                         </div>
 
                         <div class="col col-xs-12">
