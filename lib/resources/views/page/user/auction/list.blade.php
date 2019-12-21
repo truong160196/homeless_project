@@ -56,7 +56,7 @@
                                         <p>{{$auction->auction_detail}}</p>
                                     </div>
                                     <div class="img-holder">
-                                        <img src="{{$auction->product_image}}" alt="">
+                                        <img src="{{asset($auction->product_image)}}" alt="">
                                     </div>
                                 </div>
                                 <a href="{{route('user.page.auction.detail', ['id' => $auction->id])}}" class="theme-btn-s2">Bidding</a>

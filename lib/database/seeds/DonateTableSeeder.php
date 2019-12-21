@@ -19,13 +19,12 @@ class DonateTableSeeder extends Seeder
             [
                 'category_name' => 'Soup Kitchens',
             ],
+            [
+                'category_name' => 'Food Banks',
+            ],
         ];
 
         DB::table('donate_categories')->insert($dataCategory);
-
-        $roleAdmin = Model\DonateCategory::create([
-            'category_name' => 'Food Banks',
-        ]);
 
         // Donate
         $donate = Model\Donate::create([
@@ -39,9 +38,36 @@ class DonateTableSeeder extends Seeder
             'donate_private_key' => '7C23D8EC9590641ABAC826B8BC515B1C93E1D92C9479D35215475C4CF7607283',
             'donate_public_key' => '7C23D8EC9590641ABAC826B8BC515B1C93E1D92C9479D35215475C4CF7607283',
             'donate_image' => 'assets\images\portfolio\img-1.jpg',
-            'category_id' => $roleAdmin->id,
+            'category_id' => 1,
         ]);
 
+        $donate = Model\Donate::create([
+            'donate_title' => "Bishop O'Byrne Housing Association",
+            'donate_detail' => "Our activities are taken place around the world, let contribute to them with us",
+            'donate_start_time' => date("Y-m-d"),
+            'donate_end_time' => date("Y-m-d"),
+            'donate_goal' => 9000,
+            'donate_raised' => 2654.564,
+            'donate_address' => '0xaDE77C46Bab809E7cab3b0C4930d58f0F88bDaE9',
+            'donate_private_key' => '7C23D8EC9590641ABAC826B8BC515B1C93E1D92C9479D35215475C4CF7607283',
+            'donate_public_key' => '7C23D8EC9590641ABAC826B8BC515B1C93E1D92C9479D35215475C4CF7607283',
+            'donate_image' => 'assets\images\portfolio\img-2.jpg',
+            'category_id' => 2,
+        ]);
+
+        $donate = Model\Donate::create([
+            'donate_title' => "Chisholm Services for Children",
+            'donate_detail' => "Our activities are taken place around the world, let contribute to them with us",
+            'donate_start_time' => date("Y-m-d"),
+            'donate_end_time' => date("Y-m-d"),
+            'donate_goal' => 9000,
+            'donate_raised' => 2654.564,
+            'donate_address' => '0xaDE77C46Bab809E7cab3b0C4930d58f0F88bDaE9',
+            'donate_private_key' => '7C23D8EC9590641ABAC826B8BC515B1C93E1D92C9479D35215475C4CF7607283',
+            'donate_public_key' => '7C23D8EC9590641ABAC826B8BC515B1C93E1D92C9479D35215475C4CF7607283',
+            'donate_image' => 'assets\images\portfolio\img-3.jpg',
+            'category_id' => 3,
+        ]);
         // activity
         $activity_1 = Model\DonateActivity::create([
             'activity_name' => '1Sponsor meals for 50 children for 1 full year.',
