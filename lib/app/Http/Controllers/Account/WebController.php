@@ -11,11 +11,24 @@ class WebController extends Controller
     public function login(Request $request)
     {
         try {
-//            $user = auth()->user();
+            $user = auth()->user();
 
-//            dd($user->role->name);
             if (Auth::check()) {
-                return redirect()->route('admin.page.dashboard');
+                if ($user->role->name === 'System Admin') {
+                    return redirect()->route('admin.page.dashboard');
+                }
+
+                if ($user->role->name === 'User') {
+                    return redirect()->route('user.page.account');
+                }
+
+                if ($user->role->name === 'Homeless') {
+                    return redirect()->route('user.page.account');
+                }
+
+                if ($user->role->name === 'Store') {
+                    return redirect()->route('store.page.store.account');
+                }
             } else {
                 return view('page.account.login');
             }
@@ -38,11 +51,11 @@ class WebController extends Controller
                     return redirect()->route('user.page.account');
                 }
 
-                if ($user->role->name === 'Store') {
-                    return redirect()->route('admin.page.dashboard');
+                if ($user->role->name === 'Homeless') {
+                    return redirect()->route('user.page.account');
                 }
 
-                if ($user->role->name === 'Homeless') {
+                if ($user->role->name === 'Store') {
                     return redirect()->route('store.page.store.account');
                 }
             } else {

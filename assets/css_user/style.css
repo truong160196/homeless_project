@@ -9484,3 +9484,27 @@ img {
 .tx-danger {
     color: #d32535;
 }
+
+.parsley-required,
+.parsley-equalto,
+.parsley-minlength
+{
+    color: #d32535;
+    font-size: 14px;
+}
+.form-control {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ccc;
+    padding-left: 15px;
+ }
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #d32535;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+

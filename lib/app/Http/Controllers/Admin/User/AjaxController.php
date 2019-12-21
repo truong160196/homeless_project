@@ -51,7 +51,8 @@ class AjaxController extends Controller
             return response()
                 ->json(['data' => $data]);
         } catch (\Exception $e) {
-            return $this->JsonExport(404, 'Can find account');
+            return response()
+                ->json(['msg' => 'Can find account'], 500);
         }
     }
 
@@ -112,7 +113,6 @@ class AjaxController extends Controller
                 return $this->JsonExport(200, 'Create user successfully');
 
             } catch (\Exception $e) {
-                dd($e);
                 return $this->JsonExport(500, 'Internal Server Error');
             }
         }

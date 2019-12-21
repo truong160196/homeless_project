@@ -27,6 +27,8 @@
                             <div class="img-holder">
                                 <img src="{{asset('assets/images/user.png')}}" alt="">
                             </div>
+                            @if($account)
+                                <input type="hidden" id="id_user" value="{{$account->id}}">
                             <table>
                                 <tbody>
                                 <col width="40%" />
@@ -53,11 +55,12 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            @endif
                             <button
                                 type="button"
                                 class="btn btn-secondary btn-edit-user"
-                                data-toggle="modal"
-                                data-target="#modal-user"
+                                id="btn_open_modal_user"
+                                name="btn_open_modal_user"
                             >
                                 Edit Profile
                             </button>
@@ -66,13 +69,12 @@
                     <div class="col-sm-12 col-lg-6">
                         <div class="widget about-widget">
                             <h3>Account Balance</h3>
-                            <h1>1.35 USDT</h1>
-                            <p>Estimated Value: ~ 250 $</p>
+                            <h1 id="balanceEth">0 ETH</h1>
+                            <p id="estimateUSD">Estimated Value: ~ 0 USD</p>
                         </div>
                         <div class="widget about-widget">
                             <h3>Donate Balance</h3>
-                            <h1>0.5 USDT</h1>
-                            <p>Estimated Value: ~ 100 $</p>
+                            <h1 id="balanceDonate">0 USD</h1>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -92,7 +94,16 @@
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>Donate 1000$ for active Food Help For The Hunger People</td>
-                                        <td>0x1e24c23ab48e0d6a211e4047af805dbe040ef0d752b449fe3117d9cbc7e48e2d</td>
+                                        <td>
+                                            <a
+                                                href="https://ropsten.etherscan.io/tx/0xc460fe3b61ca011d79b5b08765cd6d895ddcc988c0b0951d5c6ef6e8c489e673"
+                                                target="_blank"
+                                                title="ropsten.etherscan.io"
+                                            >
+                                                0xc460fe3b61ca011d79b5b08765cd6d895ddcc988c0b0951d5c6ef6e8c489e673
+                                            </a>
+
+                                        </td>
                                         <td>
                                             <span class="badge badge-success">Success</span>
                                         </td>
@@ -122,10 +133,11 @@
             </div>
         </div>
     </div>
+        @include('page.user.account.modalEditUser')
     </section>
 @endsection
 
 @section('js')
-{{--    <script src="{{asset('assets/js_user/page/faq.js')}}"></script>--}}
+    <script src="{{asset('assets/js_user/page/account.js')}}"></script>
 @endsection
 

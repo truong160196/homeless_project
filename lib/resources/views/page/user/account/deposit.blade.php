@@ -11,6 +11,9 @@
 @section('page_content')
     <!-- start blog-pg-section -->
     <section class="section-padding">
+        @if($account)
+            <input type="hidden" id="id_user" value="{{$account->id}}">
+        @endif
     <div class="account">
         <div class="container">
             <div class="tabs">
@@ -24,16 +27,23 @@
                     <div class="col-sm-12 col-lg-6">
                         <div class="widget about-widget">
                             <h3>Account Balance</h3>
-                            <h1>1.35 USDT</h1>
-                            <p>Estimated Value: ~ 250 $</p>
+                            <h1 id="balanceEth">0 ETH</h1>
+                            <p id="estimateUSD">Estimated Value: ~ 0 USD</p>
                             <p>Coins will be deposited after 12 network confirmations.</p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-lg-6">
                         <div class="widget about-widget">
                             <h3>Address</h3>
-                            <input type="text" class="form-control" readonly value="0x4a1c38838a3f71dca80001ea26694f005728eaad" />
-                            <div class="button-depoist">
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    readonly
+                                    value="0x4a1c38838a3f71dca80001ea26694f005728eaad"
+                                />
+                            </div>
+                            <div class="form-group button-depoist">
                                 <button class="btn btn-deposit">Copy Address</button>
                                 <button class="btn btn-deposit">Show QR Code</button>
                             </div>
@@ -92,6 +102,6 @@
 @endsection
 
 @section('js')
-{{--    <script src="{{asset('assets/js_user/page/faq.js')}}"></script>--}}
+    <script src="{{asset('assets/js_user/page/account.js')}}"></script>
 @endsection
 

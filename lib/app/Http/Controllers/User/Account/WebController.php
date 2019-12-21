@@ -15,9 +15,7 @@ class WebController extends Controller
         $user = auth()->user();
 
         if (!$user) {
-            return view('page.user.account.index', [
-                'account' =>[]
-            ]);
+            return redirect()->route('account.page.login');
         }
 
         $account = MUser::query()
@@ -32,16 +30,55 @@ class WebController extends Controller
 
     public function deposit()
     {
-        return view('page.user.account.deposit');
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('account.page.login');
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.user.account.deposit', [
+            'account' =>$account
+        ]);
     }
 
     public function withdraw()
     {
-        return view('page.user.account.withdraw');
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('account.page.login');
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.user.account.withdraw', [
+            'account' =>$account
+        ]);
     }
 
     public function setting()
     {
-        return view('page.user.account.setting');
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('account.page.login');
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.user.account.setting', [
+            'account' =>$account
+        ]);
     }
 }

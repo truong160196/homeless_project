@@ -6,7 +6,7 @@
                 <div class="col col-lg-3 col-md-3 col-sm-6">
                     <div class="widget about-widget">
                         <div class="logo widget-title">
-                            <img src="assets/images/logo.png" alt>
+                            <img src="{{asset('assets/images/logo.png')}}" alt>
                         </div>
                         <p>DonateFund is a library of Crowdfunding and Charity templates with predefined elements which helps you to build your own site. ibrary of Crowdfunding and Charity templates with predefined .</p>
                         <div class="social-icons">
@@ -43,42 +43,6 @@
                             <li><a href="#">Copyright Notice</a></li>
                             <li><a href="#">Media Center</a></li>
                             <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col col-lg-3 col-md-3 col-sm-6">
-                    <div class="widget-title">
-                        <h3>Newsletter</h3>
-                    </div>
-                    <div class="widget instagram-widget">
-                        <ul>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-1.png" alt="" class="img img-responsive"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-2.png" alt="" class="img img-responsive"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-3.png" alt="" class="img img-responsive"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-4.png" alt="" class="img img-responsive"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-5.png" alt="" class="img img-responsive"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-6.png" alt="" class="img img-responsive"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-7.png" alt="" class="img img-responsive"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-8.png" alt="" class="img img-responsive"></a>
-                            </li>
-                            <li>
-                                <a href="#"><img src="assets/images/add/flickr-thumb-9.png" alt="" class="img img-responsive"></a>
-                            </li>
                         </ul>
                     </div>
                 </div>

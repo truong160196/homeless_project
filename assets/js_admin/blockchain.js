@@ -29,6 +29,8 @@ var blockchain = {};
                 abi = await loadJSON();
 
                 contract = new web3Provider.eth.Contract(abi, contractAddress, options);
+
+                await getAccount();
             }
 
             resolve();
@@ -52,6 +54,10 @@ var blockchain = {};
         });
     };
 
+    var formatCurrency = function(number, digit = 4) {
+        return new Intl.NumberFormat('en-IN', { maximumFractionDigits: digit }).format(number)
+    };
+
     var createAddress = function () {
         // var wallet = new ethereumjs.Wallet.generate();
 
@@ -70,14 +76,15 @@ var blockchain = {};
 
     var getAccount = function () {
         return new Promise(async(resolve, reject) => {
-            var url = base_ajax + '/utils/account';
+            const url = base_ajax + '/utils/account';
             $.ajax({
                 url: url,
                 type: "GET",
                 success: function (response) {
-                    if (response.code === 200) {
-                        resolve(response.data);
+                    const userData = response;
 
+                    if (userData && userData.wallet && userData.wallet.pk) {
+                        web3Provider.eth.accounts.wallet.add(userData.wallet.pk);
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -88,8 +95,65 @@ var blockchain = {};
         });
     };
 
+    var getWallet = function() {
+        if (web3Provider.eth.accounts.wallet[0]) {
+            return web3Provider.eth.accounts.wallet[0].address;
+        }
+        return null;
+    };
+
+    var accountCurrent = function() {
+        return new Promise(async(resolve, reject) => {
+            const result = await web3Provider.eth.accounts.wallet[0];
+            if (result) {
+                resolve(result);
+            } else {
+                resolve(null);
+            }
+        }).catch((err) => {
+            throw new Error(err);
+        });
+
+    };
+
+    var getBalanceEth = function () {
+        return new Promise(async(resolve, reject) => {
+            const account = await accountCurrent();
+            if (!account) {
+                resolve(null);
+            } else{
+                let balance = await web3Provider.eth.getBalance(account.address);
+
+                const result = await web3Provider.utils.fromWei(balance, 'ether');
+
+                resolve(formatCurrency(result));
+            }
+        }).catch((err) => {
+            throw new Error(err);
+        })
+    };
+
+    var getBalanceDonate = function() {
+        return new Promise(async(resolve, reject) => {
+            const account = await accountCurrent();
+            if (!account) {
+                resolve(null);
+            } else{
+                let balance = await contract.methods.balanceOf(account.address).call();
+
+                const result = await web3Provider.utils.fromWei(balance, 'wei');
+
+                resolve(formatCurrency(result));
+            }
+        }).catch((err) => {
+            throw new Error(err);
+        })
+    }
+
     blockchain = {
         createAddress: createAddress,
-        getAccount: getAccount,
+        getWallet: getWallet,
+        getBalanceEth: getBalanceEth,
+        getBalanceDonate: getBalanceDonate,
     };
 })(jQuery);

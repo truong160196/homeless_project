@@ -1,5 +1,13 @@
 <script type="text/javascript" src="{{asset('assets/js_user/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js_user/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/jquery.cookie/js/jquery.cookie.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/js_admin/slim.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('assets/lib/moment/min/moment.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/parsleyjs/js/parsley.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/waitme/js/waitMe.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/sweet2/sweet2.js')}}"></script>
 
 {{--JS library--}}
 <script type="text/javascript" src="{{asset('assets/js_user/jquery-plugin-collection.js')}}"></script>

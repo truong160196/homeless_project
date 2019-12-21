@@ -1,8 +1,6 @@
 <?php
 
-/**
- * Created by Aris Model.
- */
+
 
 namespace App\Model;
 
@@ -15,7 +13,7 @@ class Wallet extends Authenticatable
 	use SoftDeletes;
     use AutoloadsRelationships;
 
-    protected $table = 'users';
+    protected $table = 'wallets';
 	public static $snakeAttributes = false;
 
 	protected $casts = [

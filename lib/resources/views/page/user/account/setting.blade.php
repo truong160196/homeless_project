@@ -11,6 +11,9 @@
 @section('page_content')
     <!-- start blog-pg-section -->
     <section class="section-padding">
+        @if($account)
+            <input type="hidden" id="id_user" value="{{$account->id}}">
+        @endif
     <div class="account">
         <div class="container">
             <div class="tabs">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\Model\MUser;
+use App\Model\Wallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -30,17 +31,16 @@ class AjaxController extends Controller
                 $credentials = [
                     'username' => $request->username,
                     'password' => $request->password,
-                    'status' => 1
                 ];
 
                 if (Auth::attempt($credentials, true)) {
-                    return $this->JsonExport(200, __('app.login_success'));
+                    return $this->JsonExport(200,'Login successfully');
                 } else {
-                    return $this->JsonExport(403, __('app.wrong_password'));
+                    return $this->JsonExport(403, 'Wrong password');
                 }
 
             } catch (\Exception $e) {
-                return $this->JsonExport(500, __('app.error_500'));
+                return $this->JsonExport(500, 'Internal Server Error');
             }
         }
     }
@@ -143,7 +143,6 @@ class AjaxController extends Controller
             }
 
             $account = MUser::query()
-                ->with('wallets')
                 ->where('username', '=', $user->username)
                 ->first();
 
@@ -151,10 +150,16 @@ class AjaxController extends Controller
                 return response()->json(['msg' => 'Can not found user!!'], 404, []);
             }
 
-            return response()->json(['user' => $account], 200, []);
+            $wallet = Wallet::query()
+                ->where('user_id', '=', $account->id)
+                ->first();
+
+            return response()->json([
+                'user' => $account,
+                'wallet' => $wallet
+            ], 200, []);
 
         } catch (\Exception $e) {
-            dd($e);
             return $this->JsonExport(500, 'Internal Server Error');
         }
     }

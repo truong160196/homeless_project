@@ -78,6 +78,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
 
         Schema::create('transactions', function (Blueprint $table) {
@@ -93,6 +94,7 @@ class CreateUsersTable extends Migration
             $table->string('note')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
 
         Schema::create('join_users_transactions', function (Blueprint $table) {
@@ -102,6 +104,7 @@ class CreateUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
 
     }
