@@ -39,6 +39,7 @@ class CreateDonateTable extends Migration
             $table->longText('donate_detail')->nullable();
             $table->timestamp('donate_start_time')->nullable();
             $table->timestamp('donate_end_time')->nullable();
+            $table->string('donate_image')->nullable();
             $table->double('donate_goal')->nullable();
             $table->double('donate_raised')->nullable();
             $table->string('donate_address')->nullable();

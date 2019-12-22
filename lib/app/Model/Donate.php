@@ -29,6 +29,7 @@ class Donate extends Model
         'donate_detail',
         'donate_start_time',
         'donate_end_time',
+        'donate_image',
         'donate_goal',
         'donate_raised',
         'donate_address',

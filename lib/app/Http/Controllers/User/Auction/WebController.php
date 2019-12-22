@@ -11,7 +11,7 @@ class WebController extends Controller
 {
      public function list()
     {
-        $auctions = DB::table('donate_history')
+        $auctions = DB::table('auctions')
             ->orderBy('auction_start_time', 'asc')
             ->where('auction_start_time', '>', Carbon::now())
             ->paginate(4);

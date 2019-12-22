@@ -10,20 +10,20 @@ class HomeController extends Controller
 {
      public function home()
     {
-        $auctions = DB::table('donate_history')
+        $auctions = DB::table('auctions')
             ->orderBy('auction_start_time', 'desc')
             ->limit(5)
             ->get();
         
         $donates_left = DB::table('donates')
             ->orderBy('donate_end_time', 'desc')
-            ->limit(2)
+            ->limit(1)
             ->get();
 
         $donates_right = DB::table('donates')
             ->orderBy('donate_end_time', 'desc')
-            ->skip(2)
-            ->limit(2)
+            ->skip(1)
+            ->limit(3)
             ->get();
 
         return view('page.user.home.index', ['donates_left' => $donates_left, 'donates_right' => $donates_right, 'auctions' => $auctions]);

@@ -81,7 +81,7 @@
                                 <div class="content">
                                     <div class="post">
                                         <div class="img-holder">
-                                            <img class="auctions-img" src="{{$auction->product_image}}" alt="">
+                                            <img class="auctions-img" src="{{asset($auction->product_image)}}" alt="">
                                         </div>
                                         <div class="details">
                                             <h4><a href="#">{{$auction->auction_title}}</a></h4>
@@ -107,11 +107,11 @@
                     </div>
                 </div>
 
-                <div class="col col-md-4 mar-bot-20">
-                    <div class="event-slider">
+                <div class="col col-md-4 mar-bot-20 recent-cases-content">
+                    <div class="recent-cases-content-outer">
                         @foreach ($donates_left as $donate)
-                            <div class="slider">
-                                <img src="{{$donate->image}}" alt="" />
+                            <div class="recent-case-data active-case-data" id="case-content-{{$donate->id}}">
+                                <img src="{{asset($donate->donate_image)}}" alt="" />
                                 <div class="content-meta">
                                     <div class="skills">
                                         <div class="skill">
@@ -142,7 +142,7 @@
                     <div class="event-slider">
                         @foreach ($donates_right as $donate)
                             <div class="slider">
-                                <img src="{{$donate->image}}" alt="" />
+                                <img src="{{asset($donate->donate_image)}}" alt="" />
                                 <div class="content-meta">
                                     <div class="skills">
                                         <div class="skill">
