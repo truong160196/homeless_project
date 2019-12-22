@@ -1,5 +1,5 @@
 .shop-panel {
-
+    margin-top: 100px;
 }
 
 .search-product {
@@ -167,6 +167,8 @@ body {
 
 .body-main .page-header {
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 .body-main .page-header::after {
@@ -174,7 +176,7 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    margin-bottom: -15px;
+    margin-bottom: -5px;
     width: 50px;
     height: 2px;
     background: #39ac73;
@@ -196,6 +198,10 @@ body {
 
 .body-main .page-body .card-info {
     margin-top: 15px;
+}
+
+.body-main .page-body .card-info .card-body {
+    padding: 15px 20px;
 }
 
 .body-main .page-body .card-info .card-body .avatar {

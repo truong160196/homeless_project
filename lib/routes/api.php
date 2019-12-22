@@ -104,6 +104,12 @@ Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
 
 // store
 Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
+    Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
+        Route::get('/', 'AjaxController@list')->name('store.home.list');
+        Route::get('/detail/{id}', 'AjaxController@detail')->name('store.home.detail');
+        Route::post('/create', 'AjaxController@create')->name('store.home.create');
+        Route::post('/update', 'AjaxController@update')->name('store.home.update');
+    });
     // Product
     Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
         Route::get('/detail/{id}', 'AjaxController@detail')->name('store.user.detail');

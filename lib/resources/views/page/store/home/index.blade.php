@@ -10,7 +10,7 @@
 
 @section('page_content')
     <!-- start shop-pg-section -->
-    <section class="shop-pg-section">
+    <section class="shop-panel shop-pg-section">
         <div class="row">
             <div class="col-sm-12 col-lg-5 payment-panel">
                 <div class="search-product row">
@@ -58,26 +58,8 @@
             </div>
             <div class="col-sm-12 col-lg-7 row shop-panel">
                 <div class="col col-xs-12">
-                    <div class="shop-grids" id="shop-grids">
-                    </div>                  
-                    <div class="pagination-wrapper pagination-wrapper-left">
-                        <ul class="pg-pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <i class="fi flaticon-back"></i>
-                                </a>
-                            </li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <i class="fi flaticon-next"></i>
-                                </a>
-                            </li>
-                        </ul>
+                    <div class="shop-grids" id="shop_grids">
                     </div>
-
                 </div>
             </div>
         </div> <!-- end container -->  

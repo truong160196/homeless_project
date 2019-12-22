@@ -16,6 +16,8 @@ class AjaxController extends Controller
    {
       $products = DB::table('products')->get();
       // print_r($products);
-      return $products;
+       return view('page.store.home.listProduct', [
+           'products' => $products
+       ]);
    }
 }

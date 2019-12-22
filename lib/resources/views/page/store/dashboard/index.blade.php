@@ -69,25 +69,21 @@
                     <div class="col-sm-12 card-info">
                         <div class="card card-stats">
                             <div class="card-body">
-                                <h4>STORE INFO.</h4>
-                                <table>
-                                    <tbody>
-                                    <col width="40%" />
-                                    <col width="60%" />
-                                    <tr>
-                                        <td class="label">Name:</td>
-                                        <td class="content">K.O.I The.</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">Address:</td>
-                                        <td class="content">521 Hồ Tùng Mậu, D1, HCM</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label">Phone #:</td>
-                                        <td class="content">(338) 886-9944</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <h4>Order History</h4>
+                                <div class="table-history">
+                                    <table id="table_order" class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Currency</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Detail</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
