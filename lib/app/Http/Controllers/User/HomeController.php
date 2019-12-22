@@ -26,6 +26,10 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
 
-        return view('page.user.home.index', ['donates_left' => $donates_left, 'donates_right' => $donates_right, 'auctions' => $auctions]);
+        return view('page.user.home.index', [
+                'donates_left' => $donates_left, 
+                'donates_right' => $donates_right, 
+                'auctions' => $auctions
+            ]);
     }
 }

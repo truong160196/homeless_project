@@ -73,7 +73,7 @@
 
                 <div class="col-xs-12 col-md-4">
                     <div class="image-detail">
-                        <img src="/{{$donate->image}}" alt="" />
+                        <img src="/{{$donate->donate_image}}" alt="" />
                     </div>
                 </div>
             </div>

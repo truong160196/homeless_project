@@ -21,7 +21,7 @@ class WebController extends Controller
 
     public function detail($id)
     {
-        $auction = DB::table('donate_history')
+        $auction = DB::table('auctions')
             ->where('id', $id)
             ->first();
         $type = 'new';
