@@ -6,7 +6,7 @@
 @endsection
 
 @section('css')
-    <link href="{{asset('assets/css_admin/page/auction.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css_admin/page/history.css')}}" rel="stylesheet">
 @endsection
 
 @section('page_content')
@@ -31,82 +31,18 @@
                         <div class="col-sm-12">
                             <div class="card card-stats">
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table" id="history_table">
-                                            <thead class="text-primary">
-                                            <tr>
-                                                <th>
-                                                    ID
-                                                </th>
-                                                <th>
-                                                    Name
-                                                </th>
-                                                <th>
-                                                    Country
-                                                </th>
-                                                <th>
-                                                    City
-                                                </th>
-                                                <th>
-                                                    Salary
-                                                </th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    1
-                                                </td>
-                                                <td>
-                                                    Dakota Rice
-                                                </td>
-                                                <td>
-                                                    Niger
-                                                </td>
-                                                <td>
-                                                    Oud-Turnhout
-                                                </td>
-                                                <td class="text-primary">
-                                                    $36,738
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    2
-                                                </td>
-                                                <td>
-                                                    Minerva Hooper
-                                                </td>
-                                                <td>
-                                                    Curaçao
-                                                </td>
-                                                <td>
-                                                    Sinaai-Waas
-                                                </td>
-                                                <td class="text-primary">
-                                                    $23,789
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    3
-                                                </td>
-                                                <td>
-                                                    Sage Rodriguez
-                                                </td>
-                                                <td>
-                                                    Netherlands
-                                                </td>
-                                                <td>
-                                                    Baileux
-                                                </td>
-                                                <td class="text-primary">
-                                                    $56,142
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <table id="table_history" class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Currency</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Detail</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -118,5 +54,5 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('assets/js_admin/page/auction.js')}}"></script>
+    <script src="{{asset('assets/js_admin/page/history.js')}}"></script>
 @endsection

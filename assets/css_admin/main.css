@@ -127,3 +127,7 @@
     float: right;
     margin-bottom: 15px;
 }
+
+table tr th,table tr td {
+    text-align: left;
+}

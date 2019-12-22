@@ -47,7 +47,7 @@
                     <p>History</p>
                 </a>
             </li>
-            <li class="nav-item active-pro ">
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.page.setting')}}">
                     <i class="material-icons">unarchive</i>
                     <p>Setting</p>
