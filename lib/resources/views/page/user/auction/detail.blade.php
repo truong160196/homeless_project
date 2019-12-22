@@ -5,22 +5,100 @@
 @endsection
 
 @section('css')
-{{--    <link href="{{asset('assets/css_user/page/auction.css')}}" rel="stylesheet">--}}
+    <link href="{{asset('assets/css_user/page/auction.css')}}" rel="stylesheet">
 @endsection
 
 @section('page_content')
     <!-- start page-title -->
-    <section class="page-title">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <section class="page-title" id="auction_id" data-id="{{$auction->id}}">
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12">
-                    <h2>Supply Quality Foods To Africa's Village Area</h2>
+                    <h2>{{$auction->auction_title}}</h2>
                 </div>
             </div> <!-- end row -->
         </div> <!-- end container -->
     </section>
     <!-- end page-title -->
 
+    <!-- start portfolio-section -->
+    @if ($type != "new")
+        <section class="recent-blog-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="recent-cases-content-outer">
+                            <div class="recent-case-data active-case-data" >
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="widget recent-post-widget top-auction">
+                                            <h3>
+                                                Top auction
+                                            </h3>
+                                            <div class="posts">
+                                                @foreach ($auctions_history as $auction_history)
+                                                    <div class="post">
+                                                        <div class="details">
+                                                            <h4>
+                                                                <i class="fas fa-user"></i>
+                                                                {{$auction_history->name}}
+                                                            </h4>
+                                                            <span class="date">
+                                                                <i class="fas fa-hand-holding-usd"></i>
+                                                                {{number_format($auction_history->value)}} $
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="content-meta group-auction">
+                                            <div class="meta">
+                                                <div class="goal">
+                                                    <p> Current price : <span class="color-yeollo">{{number_format($current_price)}} $</span></p>
+                                                </div>
+
+                                                <div class="goal">
+                                                    <p> Starting price : <span class="color-yeollo">{{number_format($auction->auction_raised)}} $</span></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="meta">
+                                                <div class="goal-100">
+                                                    <p> From : <span>{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_start_time)->format('m/d/y - h\h i\'')}}</span></p>
+                                                </div>
+
+                                                <div class="goal-100">
+                                                    <p> To : <span>{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_end_time)->format('m/d/y - h\h i\'')}}</span></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="group-count-down">
+                                                <div id="timer" data-time="{{$auction->auction_end_time}}"></div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Price</label>
+                                                <input id="auction-price" type="number" class="form-control" value="{{$current_price + 100}}" data-current="{{$current_price}}">
+                                                <p class="auction-valid"></p>
+                                            </div>
+                                            <button data-id="{{$auction->id}}" $type="button" id="auction-submit" class="theme-btn-s4">Bidding</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end container -->
+        </section>
+    @endif
+    <!-- end portfolio-section -->
 
     <!-- start project-sigle-section -->
     <section class="project-sigle-section recent-blog-section section-padding">
@@ -28,18 +106,16 @@
             <div class="row">
                 <div class="col col-md-8">
                     <div class="img-holder">
-                        <img src="{{asset('assets/images/project-single/img-1.jpg')}}" alt>
+                        <img src="{{$auction->product_image}}" alt=''>
                     </div>
                 </div>
                 <div class="col col-md-4">
                     <div class="project-info">
-                        <h3>Auction Description</h3>
+                        <h3>{{$auction->product_title}}</h3>
                         <ul>
-                            <li><span>Topics:</span> Children around the world are not enrolled in school</li>
-                            <li><span>Host:</span> dand dand com: Lmd.</li>
-                            <li><span>Start Date:</span> January 17, 2019</li>
-                            <li><span>End Date:</span> February 27, 2020</li>
-                            <li><span>Raised:</span> 8,000 $</li>
+                            <li><span>Start Date:</span> {{$auction->auction_start_time}}</li>
+                            <li><span>End Date:</span> {{$auction->auction_end_time}}</li>
+                            <li><span>Raised:</span> {{$auction->auction_raised}} $</li>
                         </ul>
                     </div>
                 </div>
@@ -48,61 +124,21 @@
     </section>
     <!-- end project-sigle-section -->
 
-    <!-- start portfolio-section -->
-    <section class="recent-blog-section">
-        <div class="container">
-            <div class="row">
-                <div class="col col-xs-12">
-                    <div class="recent-cases-content-outer">
-                        <div class="recent-case-data active-case-data" >
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img src="{{asset('assets/images/portfolio/img-1.jpg')}}" alt="" />
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="content-meta">
-                                        <h3><a href="#">Supply Quality Foods To Africa's Village Area</a> </h3>
-                                        <div class="meta">
-                                            <div class="goal">
-                                                <p> Current price : <span class="color-yeollo">17000$</span></p>
-                                            </div>
-                                        </div>
-                                        <p class="talk">We are charity, non-profit, fundraising, NGO organizations. Our activities are taken place around the world</p>
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <input type="number" class="form-control" value="1000">
-                                        </div>
-                                        <a href="#" class="theme-btn-s4">Bidding</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end container -->
-    </section>
-    <!-- end portfolio-section -->
-
     <!-- start project-sigle-section -->
     <section class="project-sigle-section recent-blog-section">
         <div class="container">
             <div class="col col-xs-12">
                 <div class="project-single-content">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="content-area">
-                                <h2>Event Title Place Here</h2>
-                                <p>Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean lacinia bibendum nulla sed consectetur.Vestibulum id ligula </p>
-                                <p>We are non-profit charity & NGO organization Provide help to homeless people! There are many variations of passage of Lorem Ipsum available Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla. </p>
-
+                                <h2>{{$auction->auction_title}}</h2>
+                                <p>{{$auction->auction_detail}}</p>
+                                <hr />
+                                <h2>{{$auction->product_title}}</h2>
+                                <p>{{$auction->product_detail}}</p>
                             </div>
                         </div>
-                        <div class="col-md-6 mr-top-70">
-                            <div class="content-area-img">
-                                <img src="{{asset('assets/images/project-single/img-7.jpg')}}" alt="">
-                            </div></div>
                     </div>
 
                 </div>
@@ -151,6 +187,6 @@
 @endsection
 
 @section('js')
-{{--    <script src="{{asset('assets/js_user/page/auction.js')}}"></script>--}}
+    <script src="{{asset('assets/js_user/page/auction.js')}}"></script>
 @endsection
 

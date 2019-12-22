@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="{{asset('assets/css_user/owl.transitions.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/odometer-theme-default.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/jquery.fancybox.css')}}">
+<link rel="stylesheet" href="{{asset('assets/lib/waitme/css/waitMe.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/lib/sweet2/sweet2.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/style.css')}}">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

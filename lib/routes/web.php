@@ -84,7 +84,8 @@ Route::group(['namespace' => 'User'], function () {
         Route::get('/', 'WebController@list')->name('user.page.auction.list');
         Route::get('/detail/{id}', 'WebController@detail')->name('user.page.auction.detail');
 
-        Route::get('/top-auction','AjaxController@top_auction')->name('user.page.auction.top');
+        Route::get('/top-auction/{id}','AjaxController@top_auction')->name('user.page.auction.top');
+        Route::post('/binding','AjaxController@binding')->name('user.page.auction.binding');
     });
 
     // account

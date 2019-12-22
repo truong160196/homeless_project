@@ -1,5 +1,7 @@
 <script type="text/javascript" src="{{asset('assets/js_user/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js_user/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/waitme/js/waitMe.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/sweet2/sweet2.js')}}"></script>
 
 {{--JS library--}}
 <script type="text/javascript" src="{{asset('assets/js_user/jquery-plugin-collection.js')}}"></script>

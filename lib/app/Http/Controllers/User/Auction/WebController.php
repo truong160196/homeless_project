@@ -21,6 +21,42 @@ class WebController extends Controller
 
     public function detail($id)
     {
-        return view('page.user.auction.detail');
+        $auction = DB::table('donate_history')
+            ->where('id', $id)
+            ->first();
+        $type = 'new';
+        $auctions_history = [];
+        $current_price = $auction->auction_raised;
+
+        if (!empty($auction)) {
+            $take = 1;
+
+            if ($auction->auction_start_time <= Carbon::now() && $auction->auction_end_time >= Carbon::now()) {
+                $type = 'auction';
+                $take = 5;
+
+            } else if ($auction->auction_end_time < Carbon::now()) {
+                $type = 'old';
+            }
+
+            $auctions_history = DB::table('auction_history')
+                ->where('auction_id', $auction->id)
+                ->orderBy('value', 'desc')
+                ->join('users', 'users.id', '=', 'auction_history.user_id')
+                ->take($take)
+                ->select('users.full_name as name', 'auction_history.value as value')
+                ->get();
+
+            if (count($auctions_history) > 0) {
+                $current_price = $auctions_history[0]->value;
+            }
+        }
+
+        return view('page.user.auction.detail', [
+            'auction' => $auction, 
+            'type' => $type,
+            'auctions_history' => $auctions_history,
+            'current_price' => $current_price,
+        ]);
     }
 }
