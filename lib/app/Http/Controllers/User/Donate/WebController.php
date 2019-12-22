@@ -4,16 +4,35 @@ namespace App\Http\Controllers\User\Donate;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WebController extends Controller
 {
-     public function list()
+     public function list(Request $request)
     {
-        return view('page.user.donate.list');
+        $donates = DB::table('donates')
+            ->orderBy('donate_end_time', 'desc')
+            ->where('donate_status', 'donate')
+            ->paginate(6);
+
+        return view('page.user.donate.list', ['donates' => $donates]);
     }
 
     public function detail($id)
     {
-        return view('page.user.donate.detail');
+        $donate = DB::table('donates')
+        ->where('id', $id)
+        ->first();
+
+        return view('page.user.donate.detail', ['donate' => $donate]);
+    }
+
+    public function donate($id)
+    {
+        $donate = DB::table('donates')
+        ->where('id', $id)
+        ->first();
+
+        return view('page.user.donate.donate', ['donate' => $donate]);
     }
 }

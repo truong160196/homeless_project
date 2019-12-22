@@ -122,3 +122,8 @@
 .margin-top-10 {
     margin-top: 10px
 }
+
+.button-actions {
+    float: right;
+    margin-bottom: 15px;
+}

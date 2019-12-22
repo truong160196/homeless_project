@@ -65,7 +65,7 @@ class MUser extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    public  function wallets() {
+    public function wallets() {
         return $this->belongsTo(Wallet::class, 'user_id', 'id');
     }
 }

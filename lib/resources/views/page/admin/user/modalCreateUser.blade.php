@@ -14,24 +14,55 @@
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">
                                     Username
-                                    <span class="tx-danger">*</span></label>
+                                    <span class="tx-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="username"
+                                    name="username"
+                                    autocomplete="off"
+                                    data-parsley-validation-threshold="1"
+                                    data-parsley-trigger="keyup"
+                                    maxlength="255"
+                                    required
+                                    data-parsley-required-message="Username is required."
+                                    data-parsley-minlength="3"
+                                    data-parsley-maxlength="16"
+                                >
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">
                                     Password
-                                    <span class="tx-danger">*</span></label>
+                                    <span class="tx-danger">*</span>
                                 </label>
-                                <input type="text" class="form-control">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="password"
+                                    name="password"
+                                    autocomplete="new-password"
+                                    data-parsley-validation-threshold="1"
+                                    data-parsley-trigger="keyup"
+                                    maxlength="255"
+                                    required
+                                    data-parsley-required-message="Password is required."
+                                    data-parsley-minlength="6"
+                                    data-parsley-maxlength="32"
+                                >
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Email address</label>
-                                <input type="email" class="form-control">
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    name="email"
+                                    id="email"
+                                />
                             </div>
                         </div>
                     </div>
@@ -39,39 +70,60 @@
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Full Name</label>
-                                <input type="text" class="form-control">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="full_name"
+                                    name="full_name"
+                                >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">birthday</label>
-                                <input type="text" id="birthday" class="form-control">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="birthday"
+                                    name="birthday"
+                                >
                             </div>
                         </div>
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-12">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Adress</label>
-                                <input type="text" class="form-control">
+                                <label class="bmd-label-floating">Address</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="address_user"
+                                    name="address_user"
+                                >
                             </div>
                         </div>
                     </div>
                     <div class="row margin-top-10">
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
-                                <select class="form-control">
+                                <select
+                                    class="form-control"
+                                    id="role_id"
+                                    name="role_id"
+                                >
                                     <option value="">Select role</option>
-                                    <option>User</option>
-                                    <option>System Admin</option>
-                                    <option>Homeless</option>
-                                    <option>Store</option>
+                                    @foreach($roles as $role)
+                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
-                                <select class="form-control">
+                                <select class="form-control"
+                                        id="status"
+                                        name="status"
+                                >
                                     <option value="">Select Status</option>
                                     <option>Active</option>
                                     <option>Lock</option>
@@ -83,7 +135,11 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
-                                <select class="form-control">
+                                <select
+                                    class="form-control"
+                                    id="token"
+                                    name="token"
+                                >
                                     <option value="">Select Type Wallet</option>
                                     <option value="usd">USD</option>
                                     <option value="eth">ETH</option>
@@ -91,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Create User</button>
+                    <button type="button" id="btn_create" class="btn btn-primary pull-right">Create User</button>
                     <div class="clearfix"></div>
                 </form>
             </div>

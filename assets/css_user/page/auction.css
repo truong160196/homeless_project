@@ -1,0 +1,40 @@
+.service-single-section .service-single-content ul > li + li {
+    margin-top: 0px;
+}
+.service-single-section .service-single-content ul li {
+    padding-left: 0px;
+}
+.service-single-section .service-single-content {
+    padding: 30px 30px;
+    background-color: #f7f7f7;
+    margin-bottom: 60px;
+}
+.blog-pg-section .blog-content .date {
+    right: -40px;
+    top: -40px;
+}
+.service-single-content {
+    position: relative;
+}
+
+.section-page {
+    text-align: center;
+}
+
+.section-page .page-link {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    color: #242632;
+}
+
+.section-page li:first-child .page-link, .section-page li:last-child .page-link {
+    font-size: 2em;
+    line-height: 25px;
+}
+
+.section-page .active .page-link {
+    background-color: #f28d35;
+    border-color: #f28d35;
+}

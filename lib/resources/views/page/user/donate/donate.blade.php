@@ -1,0 +1,154 @@
+@extends('layout_user.main')
+
+@section('page_title')
+    Home
+@endsection
+
+@section('css')
+    <link href="{{asset('assets/css_user/page/donate.css')}}" rel="stylesheet">
+@endsection
+
+@section('page_content')
+    <!-- start page-title -->
+    <section class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <h2>{{ $donate->donate_title }}</h2>
+                </div>
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+    </section>
+    <!-- end page-title -->
+
+
+    <!-- start portfolio-section -->
+    <section class="recent-blog-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-12 col-md-8">
+                    <form class="form-horizontal form-donate">
+                        <fieldset>
+                            <legend>Payment</legend>
+                        
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Card Holder's Name</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" pattern="\w+ \w+.*" title="Fill your first and last name" required>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Card Number</label>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required>
+                                        </div>
+
+                                        <div class="col-xs-3">
+                                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Card Expiry Date</label>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <select class="form-control">
+                                                <option>January</option>
+                                                <option>...</option>
+                                                <option>December</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-xs-4">
+                                            <select class="form-control">
+                                                <option>2019</option>
+                                                <option>2020</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Card CVV</label>
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-3 col-xs-6">
+                                            <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row">
+                                <div class="col-xs-12">
+                                    <button type="submit" class="btn btn-lg btn-warning pull-right">Submit</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <div class="row">
+                        <div class="col-xs-12 image-detail">
+                            <img src="{{asset($donate->donate_image)}}" alt="" />
+                        </div>
+
+                        <div class="col col-xs-12">
+                            <div class="content-meta">
+                                <div class="skills">
+                                    <div class="skill">
+                                        <div class="progress">
+                                            <div class="progress-bar" data-percent="{{ number_format($donate->donate_raised / $donate->donate_goal * 100, 2) }}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3><a href="#">{{ $donate->donate_title }}</a> </h3>
+                                <div class="meta">
+                                    <div class="goal">
+                                        <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_raised)}}$</span></p>
+                                    </div>
+                                    <div class="raised">
+                                        <p> Raised <span class="color-green">{{number_format($donate->donate_goal)}}$</span></p>
+                                    </div>
+                                </div>
+                                <h3>Help us by share:</h3>
+                                <div class="social-icons">
+                                    <ul>
+                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                        <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="ti-pinterest"></i></a></li>
+                                        <li><a href="#"><i class="ti-vimeo-alt"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end container -->
+    </section>
+    <!-- end portfolio-section -->
+@endsection
+
+@section('js')
+{{--    <script src="{{asset('assets/js_user/page/donate.js')}}"></script>--}}
+@endsection
+
