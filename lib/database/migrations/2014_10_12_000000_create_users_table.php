@@ -87,6 +87,7 @@ class CreateUsersTable extends Migration
             $table->string('block')->nullable();
             $table->string('type')->nullable();
             $table->string('amount')->nullable();
+            $table->string('token')->nullable();
             $table->string('price')->nullable();
             $table->string('fee')->nullable();
             $table->string('tax')->nullable();

@@ -10060,3 +10060,12 @@ select.form-control:focus::-ms-value {
     padding-bottom: calc(0.25rem + 1px);
     font-size: 0.76563rem;
     line-height: 1.5; }
+
+/*loading*/
+.loading {
+    background-image: url("../../assets/images/loading.gif");
+    background-repeat: no-repeat, repeat;
+    background-size: 35px 35px;
+    width: 35px;
+    height: 35px;
+}

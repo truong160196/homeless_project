@@ -92,10 +92,13 @@ Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
     Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
         Route::get('/detail/{id}', 'AjaxController@detail')->name('user.account.detail');
         Route::post('/withdraw', 'AjaxController@withdraw')->name('user.account.withdraw');
+        Route::post('/get-free-token', 'AjaxController@getFreeToken')->name('user.account.getFreeToken');
     });
 
     Route::group(['namespace' => 'Transaction', 'prefix' => 'transaction'], function () {
+        Route::get('/history', 'AjaxController@history')->name('user.transaction.history');
         Route::get('/withdraw', 'AjaxController@withdraw')->name('user.transaction.withdraw');
+        Route::get('/deposit', 'AjaxController@deposit')->name('user.transaction.deposit');
     });
 });
 

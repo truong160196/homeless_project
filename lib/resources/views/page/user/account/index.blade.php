@@ -100,50 +100,17 @@
                         <div class="widget about-widget">
                             <h3>History</h3>
                             <div class="table-history">
-                                <table class="table table-striped">
+                                <table id="table_history" class="table table-striped">
                                     <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Action</th>
-                                        <th scope="col">Detail</th>
-                                        <th scope="col">Status</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Currency</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Detail</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Donate 1000$ for active Food Help For The Hunger People</td>
-                                        <td>
-                                            <a
-                                                href="https://ropsten.etherscan.io/tx/0xc460fe3b61ca011d79b5b08765cd6d895ddcc988c0b0951d5c6ef6e8c489e673"
-                                                target="_blank"
-                                                title="ropsten.etherscan.io"
-                                            >
-                                                0xc460fe3b61ca011d79b5b08765cd6d895ddcc988c0b0951d5c6ef6e8c489e673
-                                            </a>
-
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-success">Success</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Donate 1000$ for active Food Help For The Hunger People</td>
-                                        <td>0x1e24c23ab48e0d6a211e4047af805dbe040ef0d752b449fe3117d9cbc7e48e2d</td>
-                                        <td>
-                                            <span class="badge badge-danger">Fail</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Donate 1000$ for active Food Help For The Hunger People</td>
-                                        <td>0x1e24c23ab48e0d6a211e4047af805dbe040ef0d752b449fe3117d9cbc7e48e2d</td>
-                                        <td>
-                                            <span class="badge badge-success">Success</span>
-                                        </td>
-                                    </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>

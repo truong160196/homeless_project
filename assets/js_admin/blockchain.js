@@ -1,5 +1,5 @@
 
-var urlBase = 'https://ropsten.infura.io/v3/cde205b23d7d4a998f4ee02f652355b0';
+var urlBase = 'wss://ropsten.infura.io/ws/v3/cde205b23d7d4a998f4ee02f652355b0';
 var contractAddress = '0xb527FdE93d1dcC4F192E3eE42B219C0D81789F67';
 var accountHolder = '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D';
 var privateKeyHolder = '9ECC93FB52B849DE0F2010CC08BF1284DF4F5A8A899F6074D894FC44D017977A';
@@ -18,7 +18,7 @@ var blockchain = {};
     var connect = function () {
         return new Promise(async(resolve, reject) => {
             if (!web3Provider) {
-                const web3Url = new Web3.providers.HttpProvider(urlBase);
+                const web3Url = new Web3.providers.WebsocketProvider(urlBase);
 
                 web3Provider = new Web3(web3Url);
 
@@ -166,6 +166,16 @@ var blockchain = {};
         })
     }
 
+    var getTransactionReceipt =  function(txHash) {
+        return new Promise(async(resolve, reject) => {
+            const transactionReceipt = await web3Provider.eth.getTransactionReceipt(txHash)
+
+            resolve({status: true, message: transactionReceipt});
+        }).catch((err) => {
+            throw new Error(err);
+        });
+    };
+
     var withdrawEth = function(toAddress, amount) {
         return new Promise(async(resolve, reject) => {
             const validAddress = web3Provider.utils.isAddress(toAddress);
@@ -191,7 +201,7 @@ var blockchain = {};
 
                     web3Provider.eth.getTransactionCount(address, (err, txCount) => {
                         const txData = {
-                            to: address,
+                            to: toAddress,
                             value: valueSend,
                             gasPrice: web3Provider.utils.toHex(gasPrice),
                             nonce:    web3Provider.utils.toHex(txCount),
@@ -200,7 +210,7 @@ var blockchain = {};
                         web3Provider.eth.estimateGas(txData, function (error, gas) {
                             const privateKeyBuffer = new ethereumjs.Buffer.Buffer(privateKey, 'hex');
                             txData.gas = gas;
-                            console.log(txData)
+
                             const tx = new ethereumjs.Tx(txData, { chain: 'ropsten', hardfork: 'petersburg' });
 
                             tx.sign(privateKeyBuffer)
@@ -229,11 +239,96 @@ var blockchain = {};
         });
     };
 
+    var sendTransactionDonate = function (toAddress, amount) {
+        return new Promise(async(resolve, reject) => {
+            const validAddress = web3Provider.utils.isAddress(toAddress);
+
+            if (validAddress === true) {
+                const account = await accountCurrent();
+
+                if (account) {
+                    const address = account.address;
+                    const privateKey = account.privateKey.replace('0x','');
+
+                    const balanceDonate = await getBalanceDonate();
+
+                    if (amount > balanceDonate) {
+                        console.error('have enough balance!!!');
+                        resolve({ status: false, message: 'You don not have enough balance to cover this transaction' })
+                        return;
+                    }
+
+                    const gasPrice = await getGasPrice();
+
+
+                    web3Provider.eth.getTransactionCount(address, (err, txCount) => {
+                        const txData = {
+                            to: contractAddress,
+                            gasPrice: web3Provider.utils.toHex(gasPrice),
+                            nonce:    web3Provider.utils.toHex(txCount),
+                        };
+
+                        contract.methods.transfer(
+                            toAddress,
+                            amount,
+                        ).estimateGas({from: address})
+                            .then((gasAmount) => {
+                            const dataInput =  contract.methods.transfer(
+                                toAddress,
+                                amount,
+                            ).encodeABI();
+
+                            txData.gasLimit = web3Provider.utils.toHex(gasAmount);
+                            txData.data = dataInput;
+
+                            const privateKeyBuffer = new ethereumjs.Buffer.Buffer(privateKey, 'hex');
+
+                            const tx = new ethereumjs.Tx(txData, { chain: 'ropsten', hardfork: 'petersburg' });
+
+                            tx.sign(privateKeyBuffer)
+
+                            const serializedTx = tx.serialize()
+                            const raw = '0x' + serializedTx.toString('hex')
+
+                            web3Provider.eth.sendSignedTransaction(raw, (err, txHash) => {
+                                if (err) {
+                                    console.error(err);
+                                    resolve({status: false, message: err});
+                                }
+                                resolve({status: true, message: txHash});
+                            });
+                        })
+                    });
+                } else {
+                    resolve({ status: false, message: 'Can not get account' });
+                }
+            } else {
+                resolve({ status: false, message: 'Invalid address' });
+            }
+
+        }).catch((err) => {
+            throw new Error(err);
+        });
+    };
+
+    var subscriptionLog = function (callback) {
+         const subscription = web3Provider.eth.subscribe('newBlockHeaders', (error, blockHeader) => {
+            if (error) return console.error(error);
+
+            callback(blockHeader);
+        });
+    };
+
+
     blockchain = {
+        formatCurrency: formatCurrency,
         createAddress: createAddress,
         getWallet: getWallet,
         getBalanceEth: getBalanceEth,
         getBalanceDonate: getBalanceDonate,
         withdrawEth: withdrawEth,
+        sendTransactionDonate: sendTransactionDonate,
+        getTransactionReceipt: getTransactionReceipt,
+        subscriptionLog: subscriptionLog,
     };
 })(jQuery);

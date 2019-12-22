@@ -103,8 +103,8 @@
                                     <table id="table_withdraw" class="table table-striped">
                                         <thead>
                                         <tr>
-                                            <th scope="col">#</th>
                                             <th scope="col">Action</th>
+                                            <th scope="col">Currency</th>
                                             <th scope="col">Amount</th>
                                             <th scope="col">Date Withdraw</th>
                                             <th scope="col">Detail</th>
