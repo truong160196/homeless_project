@@ -393,66 +393,85 @@ $(function() {
         var form = $(this);
         form.parsley().validate();
         if (form.parsley().isValid()) {
-            withdrawEth();
+            withdrawUSD();
         }
     });
 
 
-    var withdrawEth = async function () {
+    var withdrawUSD = async function () {
         run_waitMe('.page-wrapper');
-        var url = base_ajax + '/user/account/withdraw';
-        var dataForm = $("#form_edit_user").serialize();
+        try {
+            var url = base_ajax + '/user/account/withdraw';
+            var dataForm = $("#form_withdraw").serialize();
 
-        const id = $('#id_user').val();
-        const address = $('#address_wallet').val();
-        const amount = $('#amount').val();
+            const id = $('#id_user').val();
+            const address = $('#address_wallet').val();
+            const token = $('#token').val();
+            const amount = $('#amount').val();
 
-        const result = await blockchain.withdrawEth(address, amount);
-        if (result.status === true && result.message) {
+            let result = {
+                status: false,
+            };
 
-            dataForm += '&id=' + id;
-            dataForm += '&hash=' + result.message;
-            dataForm += '&fee=' + 0.0075;
-            dataForm += '&token=ETH' ;
-            dataForm += '&amount=' + amount;
+            if (token && token === "USD") {
+                result = await blockchain.sendTransactionDonate(address, amount);
+            }
 
-            $.ajax({
-                url: url,
-                type: "POST",
-                data: dataForm,
-                success: function(response) {
-                    if (response.code === 200) {
-                        Swal.fire({
-                            type: 'success',
-                            title: response.msg
-                        });
+            if (token && token === "ETH") {
+                result = await blockchain.withdrawEth(address, amount);
+            }
 
-                        reloadTableWithdraw();
-                    } else {
+            if (result.status === true && result.message) {
+
+                dataForm += '&id=' + id;
+                dataForm += '&hash=' + result.message;
+                dataForm += '&fee=' + 1;
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: dataForm,
+                    success: function(response) {
+                        if (response.code === 200) {
+                            Swal.fire({
+                                type: 'success',
+                                title: response.msg
+                            });
+
+                            reloadTableWithdraw();
+                        } else {
+                            Swal.fire({
+                                type: 'warning',
+                                title: 'Oops',
+                                text: response.msg
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
                         Swal.fire({
                             type: 'warning',
                             title: 'Oops',
-                            text: response.msg
+                            text: 'There was an error during processing'
                         });
                     }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    Swal.fire({
-                        type: 'warning',
-                        title: 'Oops',
-                        text: 'There was an error during processing'
-                    });
-                }
-            });
-        } else {
+                });
+            } else {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops',
+                    text: result.message || 'There was an error during processing'
+                });
+            }
+            run_waitMe('.page-wrapper', true);
+        } catch (e) {
             Swal.fire({
                 type: 'warning',
                 title: 'Oops',
                 text: result.message || 'There was an error during processing'
             });
+            run_waitMe('.page-wrapper', true);
         }
-        run_waitMe('.page-wrapper', true);
-    }
+    };
 
     // deposit
 

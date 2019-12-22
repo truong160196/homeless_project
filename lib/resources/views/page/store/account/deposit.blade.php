@@ -1,7 +1,7 @@
-@extends('layout_user.main')
+@extends('layout_store.main')
 
 @section('page_title')
-    Home
+    Deposit
 @endsection
 
 @section('css')
@@ -17,9 +17,9 @@
     <div class="account">
         <div class="container">
             <div class="tabs">
-                <a href="{{route('store.page.store.account')}}" class="btn btn-secondary btn-tab" data-index="0">Dashboard</a>
-                <a href="{{route('store.page.store.account.deposit')}}" class="btn btn-secondary btn-tab active" data-index="1">Deposit</a>
-                <a href="{{route('store.page.store.account.withdraw')}}" class="btn btn-secondary btn-tab " data-index="2">Withdraw</a>
+                <a href="{{route('store.page.account')}}" class="btn btn-secondary btn-tab" data-index="0">Dashboard</a>
+                <a href="{{route('store.page.account.deposit')}}" class="btn btn-secondary btn-tab active" data-index="1">Deposit</a>
+                <a href="{{route('store.page.account.withdraw')}}" class="btn btn-secondary btn-tab " data-index="2">Withdraw</a>
             </div>
             <div class="tab-content">
                 <div class="blog-sidebar dashboard row">
@@ -27,6 +27,20 @@
                         <div class="widget about-widget">
                             <div class="widget-title">
                                 <h3>Account Balance</h3>
+                                <button
+                                    type="button"
+                                    class="btn btn-success btn-sync"
+                                    onclick="loadBalanceDonate()"
+                                >
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <h1 id="balanceDonate">0 USD</h1>
+                            <p></p>
+                        </div>
+                        <div class="widget about-widget">
+                            <div class="widget-title">
+                                <h3>Ethereum Balance</h3>
                                 <button
                                     type="button"
                                     class="btn btn-success btn-sync"
@@ -38,20 +52,6 @@
                             <h1 id="balanceEth">0 ETH</h1>
                             <p id="estimateUSD">Estimated Value: ~ 0 USD</p>
                             <p>Token will be deposited after 12 network confirmations.</p>
-                        </div>
-                        <div class="widget about-widget">
-                            <div class="widget-title">
-                                <h3>Donate Balance</h3>
-                                <button
-                                    type="button"
-                                    class="btn btn-success btn-sync"
-                                    onclick="loadBalanceDonate()"
-                                >
-                                    <i class="fas fa-sync-alt"></i>
-                                </button>
-                            </div>
-                            <h1 id="balanceDonate">0 USD</h1>
-                            <p></p>
                         </div>
                     </div>
                     <div class="col-sm-12 col-lg-6">
@@ -66,11 +66,11 @@
                                 />
                             </div>
                             <div class="form-group button-depoist">
-                                <button class="btn btn-deposit">Copy Address</button>
-                                <button class="btn btn-deposit">Show QR Code</button>
+                                <button class="btn btn-info btn-deposit">Copy Address</button>
+                                <button class="btn btn-warning btn-deposit">Show QR Code</button>
                             </div>
-                            <strong>Send only BTC to this deposit address.</strong>
-                            <p>Sending coin or BTC other than ETH to this address may result in the loss of your deposit.</p>
+                            <strong>Send only USD and ETH to this deposit address.</strong>
+                            <p>Sending currency other than ETH, USD to this address may result in the loss of your deposit.</p>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -100,6 +100,6 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('assets/js_user/page/account.js')}}"></script>
+    <script src="{{asset('assets/js_user/page/store.js')}}"></script>
 @endsection
 

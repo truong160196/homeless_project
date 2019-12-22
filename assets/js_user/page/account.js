@@ -401,7 +401,7 @@ $(function() {
     var withdrawEth = async function () {
         run_waitMe('.page-wrapper');
         var url = base_ajax + '/user/account/withdraw';
-        var dataForm = $("#form_edit_user").serialize();
+        var dataForm = $("#form_withdraw").serialize();
 
         const id = $('#id_user').val();
         const address = $('#address_wallet').val();
@@ -414,7 +414,6 @@ $(function() {
             dataForm += '&hash=' + result.message;
             dataForm += '&fee=' + 0.0075;
             dataForm += '&token=ETH' ;
-            dataForm += '&amount=' + amount;
 
             $.ajax({
                 url: url,

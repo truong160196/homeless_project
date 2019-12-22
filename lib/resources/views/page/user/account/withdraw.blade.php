@@ -59,6 +59,7 @@
                                             type="text"
                                             class="form-control"
                                             id="address_wallet"
+                                            name="address_wallet"
                                             placeholder="Enter receive address"
                                             data-parsley-validation-threshold="1"
                                             data-parsley-trigger="keyup"
@@ -75,6 +76,7 @@
                                             class="form-control"
                                             placeholder="Enter value receive"
                                             id="amount"
+                                            name="amount"
                                             min="0"
                                             max="1000"
                                             step="0.01"
@@ -88,11 +90,11 @@
                                         />
                                     </div>
                                     <div class="form-group button-depoist">
-                                        <button type="button" id="btn_withdraw" class="btn btn-deposit">Send Token</button>
+                                        <button type="button" id="btn_withdraw" class="btn btn-info btn-deposit">Send Token</button>
                                     </div>
                                 </form>
                                 <strong>Send only ETH to this deposit address.</strong>
-                                <p>Sending coin or ETH other than ETH to this address may result in the loss of your deposit.</p>
+                                <p>Sending token or ETH other than ETH to this address may result in the loss of your deposit.</p>
                             </div>
                         </div>
                         <div class="col-sm-12">

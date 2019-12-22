@@ -241,70 +241,76 @@ var blockchain = {};
 
     var sendTransactionDonate = function (toAddress, amount) {
         return new Promise(async(resolve, reject) => {
-            const validAddress = web3Provider.utils.isAddress(toAddress);
+            try {
+                const validAddress = web3Provider.utils.isAddress(toAddress);
 
-            if (validAddress === true) {
-                const account = await accountCurrent();
+                if (validAddress === true) {
+                    const account = await accountCurrent();
 
-                if (account) {
-                    const address = account.address;
-                    const privateKey = account.privateKey.replace('0x','');
+                    if (account) {
+                        const address = account.address;
+                        const privateKey = account.privateKey.replace('0x','');
 
-                    const balanceDonate = await getBalanceDonate();
+                        const balanceDonate = await getBalanceDonate();
 
-                    if (amount > balanceDonate) {
-                        console.error('have enough balance!!!');
-                        resolve({ status: false, message: 'You don not have enough balance to cover this transaction' })
-                        return;
-                    }
+                        if (amount > balanceDonate) {
+                            console.error('have enough balance!!!');
+                            resolve({ status: false, message: 'You don not have enough balance to cover this transaction' })
+                            return;
+                        }
 
-                    const gasPrice = await getGasPrice();
+                        const gasPrice = await getGasPrice();
 
+                        const valueSend = await web3Provider.utils.toWei(amount, 'wei');
 
-                    web3Provider.eth.getTransactionCount(address, (err, txCount) => {
-                        const txData = {
-                            to: contractAddress,
-                            gasPrice: web3Provider.utils.toHex(gasPrice),
-                            nonce:    web3Provider.utils.toHex(txCount),
-                        };
+                        web3Provider.eth.getTransactionCount(address, (err, txCount) => {
+                            const txData = {
+                                to: contractAddress,
+                                gasPrice: web3Provider.utils.toHex(gasPrice),
+                                nonce:    web3Provider.utils.toHex(txCount),
+                            };
 
-                        contract.methods.transfer(
-                            toAddress,
-                            amount,
-                        ).estimateGas({from: address})
-                            .then((gasAmount) => {
-                            const dataInput =  contract.methods.transfer(
+                            contract.methods.transfer(
                                 toAddress,
-                                amount,
-                            ).encodeABI();
+                                valueSend,
+                            ).estimateGas({from: address})
+                                .then((gasAmount) => {
+                                    const dataInput =  contract.methods.transfer(
+                                        toAddress,
+                                        valueSend,
+                                    ).encodeABI();
 
-                            txData.gasLimit = web3Provider.utils.toHex(gasAmount);
-                            txData.data = dataInput;
+                                    txData.gasLimit = web3Provider.utils.toHex(gasAmount);
+                                    txData.data = dataInput;
 
-                            const privateKeyBuffer = new ethereumjs.Buffer.Buffer(privateKey, 'hex');
+                                    const privateKeyBuffer = new ethereumjs.Buffer.Buffer(privateKey, 'hex');
 
-                            const tx = new ethereumjs.Tx(txData, { chain: 'ropsten', hardfork: 'petersburg' });
+                                    const tx = new ethereumjs.Tx(txData, { chain: 'ropsten', hardfork: 'petersburg' });
 
-                            tx.sign(privateKeyBuffer)
+                                    tx.sign(privateKeyBuffer)
 
-                            const serializedTx = tx.serialize()
-                            const raw = '0x' + serializedTx.toString('hex')
+                                    const serializedTx = tx.serialize()
+                                    const raw = '0x' + serializedTx.toString('hex')
 
-                            web3Provider.eth.sendSignedTransaction(raw, (err, txHash) => {
-                                if (err) {
-                                    console.error(err);
-                                    resolve({status: false, message: err});
-                                }
-                                resolve({status: true, message: txHash});
-                            });
-                        })
-                    });
+                                    web3Provider.eth.sendSignedTransaction(raw, (err, txHash) => {
+                                        if (err) {
+                                            console.error(err);
+                                            resolve({status: false, message: err});
+                                        }
+                                        resolve({status: true, message: txHash});
+                                    });
+                                })
+                        });
+                    } else {
+                        resolve({ status: false, message: 'Can not get account' });
+                    }
                 } else {
-                    resolve({ status: false, message: 'Can not get account' });
+                    resolve({ status: false, message: 'Invalid address' });
                 }
-            } else {
-                resolve({ status: false, message: 'Invalid address' });
+            } catch (e) {
+                resolve({ status: false, message: e.message });
             }
+
 
         }).catch((err) => {
             throw new Error(err);

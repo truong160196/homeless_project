@@ -100,24 +100,24 @@ Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
 
     // home
     Route::group(['namespace' => 'Home'], function () {
-        Route::get('/', 'WebController@index')->name('store.page.store.home');
+        Route::get('/', 'WebController@index')->name('store.page.home');
     });
 
     // Account
     Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function () {
-        Route::get('/', 'WebController@index')->name('store.page.store.dashboard');
+        Route::get('/', 'WebController@index')->name('store.page.dashboard');
     });
 
     // Account
     Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
-        Route::get('/', 'WebController@index')->name('store.page.store.account');
-        Route::get('/withdraw', 'WebController@withdraw')->name('store.page.store.account.withdraw');
-        Route::get('/deposit', 'WebController@deposit')->name('store.page.store.account.deposit');
+        Route::get('/', 'WebController@index')->name('store.page.account');
+        Route::get('/withdraw', 'WebController@withdraw')->name('store.page.account.withdraw');
+        Route::get('/deposit', 'WebController@deposit')->name('store.page.account.deposit');
     });
 
     // Setting
     Route::group(['namespace' => 'Setting', 'prefix' => 'setting'], function () {
-        Route::get('/', 'WebController@index')->name('store.page.store.setting');
+        Route::get('/', 'WebController@index')->name('store.page.setting');
     });
 });
 

@@ -4,13 +4,20 @@
     </div>
     <div class="right-header">
         <ul>
-            <li>
-                <a href="#" class="">
+            <li title="store">
+                <a href="{{route('store.page.home')}}" class="">
                     <i class="fas fa-store"></i>
+                    <span>Store</span>
                 </a>
             </li>
-            <li>
-                <button class="btn btn-light select-user" type="button" id="btn-user">
+            <li title="dashboard">
+                <a href="{{route('store.page.dashboard')}}" class="">
+                    <i class="fas fa-columns"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li title="Account">
+                <a href="{{route('store.page.account')}}" class="btn btn-light select-user" type="button" id="btn-user">
                     <div class="account">
                         <div class="avatar">
                             <img src="{{asset('assets/images/user.png')}}" />
@@ -20,7 +27,7 @@
                             <p>Store Owner</p>
                         </div>
                     </div>
-                </button>
+                </a>
             </li>
         </ul>
     </div>

@@ -1,7 +1,7 @@
 @extends('layout_store.main')
 
 @section('page_title')
-    Home
+    Dashboard
 @endsection
 
 @section('css')
@@ -14,9 +14,9 @@
     <div class="account">
         <div class="container">
             <div class="tabs">
-                <a href="{{route('store.page.store.account')}}" class="btn btn-secondary btn-tab active" data-index="0">Dashboard</a>
-                <a href="{{route('store.page.store.account.deposit')}}" class="btn btn-secondary btn-tab " data-index="1">Deposit</a>
-                <a href="{{route('store.page.store.account.withdraw')}}" class="btn btn-secondary btn-tab " data-index="2">Withdraw</a>
+                <a href="{{route('store.page.account')}}" class="btn btn-secondary btn-tab active" data-index="0">Dashboard</a>
+                <a href="{{route('store.page.account.deposit')}}" class="btn btn-secondary btn-tab " data-index="1">Deposit</a>
+                <a href="{{route('store.page.account.withdraw')}}" class="btn btn-secondary btn-tab " data-index="2">Withdraw</a>
             </div>
             <div class="tab-content">
                 <div class="blog-sidebar dashboard row">
@@ -72,27 +72,26 @@
                                 <button
                                     type="button"
                                     class="btn btn-success btn-sync"
-                                    onclick="loadBalanceEth()"
-                                >
-                                    <i class="fas fa-sync-alt"></i>
-                                </button>
-                            </div>
-
-                            <h1 id="balanceEth">0 ETH</h1>
-                            <p id="estimateUSD">Estimated Value: ~ 0 USD</p>
-                        </div>
-                        <div class="widget about-widget">
-                            <div class="widget-title">
-                                <h3>Donate Balance</h3>
-                                <button
-                                    type="button"
-                                    class="btn btn-success btn-sync"
                                     onclick="loadBalanceDonate()"
                                 >
                                     <i class="fas fa-sync-alt"></i>
                                 </button>
                             </div>
                             <h1 id="balanceDonate">0 USD</h1>
+                        </div>
+                        <div class="widget about-widget">
+                            <div class="widget-title">
+                                <h3>Ethereum Balance</h3>
+                                <button
+                                    type="button"
+                                    class="btn btn-success btn-sync"
+                                    onclick="loadBalanceEth()"
+                                >
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                            <h1 id="balanceEth">0 ETH</h1>
+                            <p id="estimateUSD">Estimated Value: ~ 0 USD</p>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -118,7 +117,7 @@
             </div>
         </div>
     </div>
-        @include('page.user.account.modalEditUser')
+        @include('page.store.account.modalEditUser')
     </section>
 @endsection
 

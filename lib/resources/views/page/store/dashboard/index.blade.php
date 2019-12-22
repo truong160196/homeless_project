@@ -1,7 +1,7 @@
 @extends('layout_store.main')
 
 @section('page_title')
-    Home
+    Dashboard
 @endsection
 
 @section('css')

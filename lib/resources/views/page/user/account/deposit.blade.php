@@ -66,11 +66,11 @@
                                 />
                             </div>
                             <div class="form-group button-depoist">
-                                <button class="btn btn-deposit">Copy Address</button>
-                                <button class="btn btn-deposit">Show QR Code</button>
+                                <button class="btn btn-info btn-deposit">Copy Address</button>
+                                <button class="btn btn-warning btn-deposit">Show QR Code</button>
                             </div>
-                            <strong>Send only BTC to this deposit address.</strong>
-                            <p>Sending coin or BTC other than ETH to this address may result in the loss of your deposit.</p>
+                            <strong>Send only USD and ETH to this deposit address.</strong>
+                            <p>Sending currency other than ETH, USD to this address may result in the loss of your deposit.</p>
                         </div>
                         <div class="widget about-widget">
                             <h3>Smart contract address</h3>
@@ -85,7 +85,7 @@
                             <div class="form-group button-depoist">
                                 <button
                                     type="button"
-                                    class="btn btn-deposit"
+                                    class="btn btn-danger btn-deposit"
                                     onclick="getDonateFree()"
                                 >
                                     Get $100 free

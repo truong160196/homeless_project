@@ -1,4 +1,4 @@
-@extends('layout_user.main')
+@extends('layout_store.main')
 
 @section('page_title')
     Withdraw
@@ -17,9 +17,9 @@
         <div class="account">
             <div class="container">
                 <div class="tabs">
-                    <a href="{{route('store.page.store.account')}}" class="btn btn-secondary btn-tab =" data-index="0">Dashboard</a>
-                    <a href="{{route('store.page.store.account.deposit')}}" class="btn btn-secondary btn-tab " data-index="1">Deposit</a>
-                    <a href="{{route('store.page.store.account.withdraw')}}" class="btn btn-secondary btn-tab active" data-index="2">Withdraw</a>
+                    <a href="{{route('store.page.account')}}" class="btn btn-secondary btn-tab =" data-index="0">Dashboard</a>
+                    <a href="{{route('store.page.account.deposit')}}" class="btn btn-secondary btn-tab " data-index="1">Deposit</a>
+                    <a href="{{route('store.page.account.withdraw')}}" class="btn btn-secondary btn-tab active" data-index="2">Withdraw</a>
                 </div>
                 <div class="tab-content">
                     <div class="dashboard row">
@@ -39,14 +39,28 @@
                                     <input
                                         type="text"
                                         class="form-control"
+                                        name="wallet"
                                         id="wallet"
                                         readonly
                                         value=""
                                     />
                                 </div>
+                                <h1 id="balanceDonate">0 USD</h1>
+                                <p>Token will be withdraw after admin approved</p>
+                            </div>
+                            <div class="widget about-widget">
+                                <div class="widget-title">
+                                    <h3>Ethereum Balance</h3>
+                                    <button
+                                        type="button"
+                                        class="btn btn-success btn-sync"
+                                        onclick="loadBalanceEth()"
+                                    >
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                </div>
                                 <h1 id="balanceEth">0 ETH</h1>
                                 <p id="estimateUSD">Estimated Value: ~ 0 USD</p>
-                                <p>Token will be withdraw after admin approved</p>
                             </div>
                         </div>
                         <div class="col-sm-12 col-lg-6">
@@ -54,11 +68,19 @@
                                 <h3>Address</h3>
                                 <form id="form_withdraw">
                                     <div class="form-group">
+                                        <label>Currency</label>
+                                        <select class="form-control" id="token" name="token">
+                                            <option value="USD">USD</option>
+                                            <option value="ETH">ETH</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label>Address</label>
                                         <input
                                             type="text"
                                             class="form-control"
                                             id="address_wallet"
+                                            name="address_wallet"
                                             placeholder="Enter receive address"
                                             data-parsley-validation-threshold="1"
                                             data-parsley-trigger="keyup"
@@ -75,24 +97,24 @@
                                             class="form-control"
                                             placeholder="Enter value receive"
                                             id="amount"
+                                            name="amount"
                                             min="0"
-                                            max="1000"
                                             step="0.01"
                                             data-parsley-validation-threshold="1"
                                             data-parsley-trigger="keyup"
                                             maxlength="255"
                                             required
                                             data-parsley-required-message="Value is required."
+                                            value="10"
                                             data-parsley-type="number"
-                                            value="0.05"
                                         />
                                     </div>
                                     <div class="form-group button-depoist">
-                                        <button type="button" id="btn_withdraw" class="btn btn-deposit">Send Token</button>
+                                        <button type="button" id="btn_withdraw" class="btn btn-info btn-deposit">Send Token</button>
                                     </div>
                                 </form>
-                                <strong>Send only ETH to this deposit address.</strong>
-                                <p>Sending coin or ETH other than ETH to this address may result in the loss of your deposit.</p>
+                                <strong>Send only USD and ETH to this deposit address.</strong>
+                                <p>Sending currency other than ETH, USD to this address may result in the loss of your deposit.</p>
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -122,6 +144,6 @@
 @endsection
 
 @section('js')
-        <script src="{{asset('assets/js_user/page/account.js')}}"></script>
+        <script src="{{asset('assets/js_user/page/store.js')}}"></script>
 @endsection
 
