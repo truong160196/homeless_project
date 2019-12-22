@@ -32,96 +32,8 @@
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
+                        <tbody id="table-striped-left">
+
                         </tbody>
                     </table>
                 </div>
@@ -147,7 +59,7 @@
             <div class="col-sm-12 col-lg-7 row shop-panel">
                 <div class="col col-xs-12">
                     <div class="shop-grids" id="shop-grids">
-                   
+                    </div>                  
                     <div class="pagination-wrapper pagination-wrapper-left">
                         <ul class="pg-pagination">
                             <li>
