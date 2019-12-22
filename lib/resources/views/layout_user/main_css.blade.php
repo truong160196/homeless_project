@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="{{asset('assets/lib/bootstrap-daterangepicker/daterangepicker.css')}}">
 <link rel="stylesheet" href="{{asset('assets/lib/waitme/css/waitMe.min.css')}}"/>
 
+<link rel="stylesheet" href="{{asset('assets/lib/datatables/css/jquery.dataTables.css')}}">
+<link rel="stylesheet" href="{{asset('assets/lib/datatables-responsive/css/responsive.bootstrap4.css')}}">
+
 <link rel="stylesheet" href="{{asset('assets/css_user/style.css')}}">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

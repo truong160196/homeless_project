@@ -93,6 +93,7 @@ class CreateUsersTable extends Migration
             $table->string('detail')->nullable();
             $table->string('note')->nullable();
             $table->string('status')->nullable();
+            $table->timestamp('time_transaction')->nullable();
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

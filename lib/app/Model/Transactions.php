@@ -20,10 +20,10 @@ class Transactions extends Model
     protected $guarded = ['id'];
 
     protected $hidden = [
-        'created_at',
         'updated_at',
+        'created_at',
         'pivot'
-    ];
+     ];
 
     protected $fillable = [
         'hash',
@@ -36,5 +36,6 @@ class Transactions extends Model
         'detail',
         'note',
         'status',
+        'time_transaction',
     ];
 }

@@ -19,7 +19,7 @@
     display: none;
 }
 
-.blog-sidebar .widget {
+.widget {
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -68,6 +68,8 @@
 table {
     width: 100%;
     margin-top: 17px;
+    overflow: hidden;
+    overflow-x: auto;
 }
 
 table tr td{
@@ -113,4 +115,15 @@ table .content {
     -webkit-box-shadow: 1px 1px 1px 0px rgba(204,204,204,1);
     -moz-box-shadow: 1px 1px 1px 0px rgba(204,204,204,1);
     box-shadow: 1px 1px 1px 0px rgba(204,204,204,1);
+}
+
+.dashboard .widget .widget-title {
+    position: relative;
+}
+
+.dashboard .widget .widget-title .btn-sync {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    top: 0;
 }

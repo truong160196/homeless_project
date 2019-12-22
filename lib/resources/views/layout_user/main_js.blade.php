@@ -1,5 +1,9 @@
 <script type="text/javascript" src="{{asset('assets/js_user/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js_user/bootstrap.min.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('assets/lib/datatables/js/jquery.dataTables.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/datatables-responsive/js/dataTables.responsive.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/datatables-responsive/js/responsive.bootstrap4.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/jquery.cookie/js/jquery.cookie.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js_admin/slim.js')}}"></script>
 
@@ -39,6 +43,6 @@
 <script type="text/javascript" src="{{asset('assets/lib/web3/web3.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/web3/ethereumjs-abi-0.6.5.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/web3/ethereumjs-wallet-0.6.0.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/lib/web3/web3.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('assets/lib/web3/ethereumjs-tx-1.3.3.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js_admin/blockchain.js')}}"></script>
 @yield('js')

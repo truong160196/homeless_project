@@ -1,21 +1,24 @@
-var table_user = "#user_table";
-var datatable_user;
+var datatable_withdraw;
 var run_waitMe = window.run_waitMe;
+var table_withdraw = '#table_withdraw';
+var loadBalanceEth;
+var loadBalanceDonate;
+var loadAddress;
 
 $(function() {
     'use strict';
-    var id_user = '';
 
     $(document).ready(function() {
         setTimeout((function () {
             loadBalanceEth();
             loadBalanceDonate();
             loadAddress();
-        }), 900);
+        }), 1800);
     });
 
-    var loadBalanceEth = async function () {
+    loadBalanceEth = async function () {
         const balanceEth = await blockchain.getBalanceEth();
+
         if (balanceEth) {
             $('#balanceEth').text(balanceEth + ' ETH');
 
@@ -27,7 +30,7 @@ $(function() {
         }
     };
 
-    var loadBalanceDonate = async function () {
+    loadBalanceDonate = async function () {
         const balanceDonate = await blockchain.getBalanceDonate();
         if (balanceDonate) {
             $('#balanceDonate').text(balanceDonate + ' USD');
@@ -36,7 +39,7 @@ $(function() {
         }
     };
 
-    var loadAddress = async function () {
+    loadAddress = async function () {
         const wallet = blockchain.getWallet();
 
         if (wallet) {
@@ -115,7 +118,7 @@ $(function() {
             }
         });
         run_waitMe('.page-wrapper', true);
-    }
+    };
     
     var eidtUserSubmitFrom = function () {
         run_waitMe('.page-wrapper');
@@ -158,6 +161,94 @@ $(function() {
 
 
     // Withdraw
+    $(table_withdraw).ready(function () {
+        if($(table_withdraw).length){
+            loadTableWithdraw();
+        }
+    });
+
+    var loadTableWithdraw = function() {
+        run_waitMe('.page-wrapper');
+        if ($.fn.DataTable.isDataTable(table_withdraw)) {
+            $(table_withdraw).DataTable().destroy();
+            $('.table-unit tbody').empty();
+        }
+        var urlRequest =  '/api/user/transaction/withdraw';
+
+
+        datatable_withdraw = $(table_withdraw).DataTable({
+            autoWidth: false,
+            "processing": true,
+            "serverSide": true,
+            "ajax": urlRequest,
+            "bInfo": false,
+            "pagingType": "full_numbers",
+            "language": {
+                searchPlaceholder: 'Search...',
+                sSearch: ''
+            },
+            "sLengthSelect": "select2",
+            "responsive": true,
+            "order": [
+                [0, 'asc']
+            ],
+            "columns": [
+                {
+                    "data": "id"
+                },
+                {
+                    "data": "type"
+                },
+                {
+                    "data": "amount"
+                },
+                {
+                    "data": "time_transaction",
+                    "type": "datetime",
+                },
+                {
+                    "data": "hash",
+                    "render": function ( data, type, row, meta ) {
+                        if (data) {
+                            var dataHash = data.slice(0, 10) + '...' + data.slice(data.length - 10, data.length);
+                            return '<a href="https://ropsten.etherscan.io/tx/'+data+'" target="_blank">' + dataHash +'</a>';
+                        } else {
+                            return '';
+                        }
+                    }
+                },
+                {
+                    "data": "status",
+                    "render": function ( data, type, row, meta ) {
+                        if (data === 'complete') {
+                            return '<span class="badge badge-success">'+ data + '</span>'
+                        }
+                        if (data === 'fail') {
+                            return '<span class="badge badge-danger">'+ data + '</span>'
+                        }
+                        return '';
+                    }
+                },
+            ],
+            columnDefs: [],
+            "initComplete": function(settings, json) {
+                run_waitMe('.page-wrapper', true);
+            },
+            "fnCreatedRow": function(nRow, aData, iDataIndex) {
+                $(nRow).attr('data-id', aData.id);
+            }
+        }).on('processing.dt', function(e, settings, processing) {
+            if (processing) {
+                run_waitMe('.page-wrapper');
+            } else {
+                run_waitMe('.page-wrapper', true);
+            }
+        });
+    };
+
+    var reloadTableWithdraw = function() {
+        $(table_withdraw).DataTable().ajax.reload();
+    };
     $(document).on('click', '#btn_withdraw', function(e) {
         e.preventDefault();
         $('#form_withdraw').submit();
@@ -173,43 +264,59 @@ $(function() {
         }
     });
 
-    var withdrawEth = function () {
+
+    var withdrawEth = async function () {
         run_waitMe('.page-wrapper');
         var url = base_ajax + '/user/account/withdraw';
         var dataForm = $("#form_edit_user").serialize();
 
         const id = $('#id_user').val();
+        const address = $('#address_wallet').val();
+        const amount = $('#amount').val();
 
-        dataForm += '&id=' + id;
-        dataForm += '&hash=' + '0x9d18065fd38605eec54dca7b45c8924edaa9f48a9ab5e5cfad269c98a7861dc4';
-        dataForm += '&fee=' + 0.0075;
+        const result = await blockchain.withdrawEth(address, amount);
+        if (result.status === true && result.message) {
 
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: dataForm,
-            success: function(response) {
-                if (response.code === 200) {
-                    Swal.fire({
-                        type: 'success',
-                        title: response.msg
-                    });
-                } else {
+            dataForm += '&id=' + id;
+            dataForm += '&hash=' + result.message;
+            dataForm += '&fee=' + 0.0075;
+            dataForm += '&amount=' + amount;
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: dataForm,
+                success: function(response) {
+                    if (response.code === 200) {
+                        Swal.fire({
+                            type: 'success',
+                            title: response.msg
+                        });
+
+                        reloadTableWithdraw();
+                    } else {
+                        Swal.fire({
+                            type: 'warning',
+                            title: 'Oops',
+                            text: response.msg
+                        });
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
                     Swal.fire({
                         type: 'warning',
                         title: 'Oops',
-                        text: response.msg
+                        text: 'There was an error during processing'
                     });
                 }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'Oops',
-                    text: 'There was an error during processing'
-                });
-            }
-        });
+            });
+        } else {
+            Swal.fire({
+                type: 'warning',
+                title: 'Oops',
+                text: result.message || 'There was an error during processing'
+            });
+        }
         run_waitMe('.page-wrapper', true);
     }
 

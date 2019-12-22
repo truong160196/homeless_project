@@ -58,6 +58,21 @@ var blockchain = {};
         return new Intl.NumberFormat('en-IN', { maximumFractionDigits: digit }).format(number)
     };
 
+    var getGasPrice = function () {
+        return new Promise((resolve, reject) => {
+            web3Provider.eth.getGasPrice((error, result) => {
+                if(!error) {
+                    resolve(result.toString(10));
+                }
+                else {
+                    reject(error);
+                }
+            });
+        }).catch((err) => {
+            throw new Error(err);
+        });
+    };
+
     var createAddress = function () {
         // var wallet = new ethereumjs.Wallet.generate();
 
@@ -119,6 +134,7 @@ var blockchain = {};
     var getBalanceEth = function () {
         return new Promise(async(resolve, reject) => {
             const account = await accountCurrent();
+
             if (!account) {
                 resolve(null);
             } else{
@@ -150,10 +166,74 @@ var blockchain = {};
         })
     }
 
+    var withdrawEth = function(toAddress, amount) {
+        return new Promise(async(resolve, reject) => {
+            const validAddress = web3Provider.utils.isAddress(toAddress);
+
+            if (validAddress === true) {
+                const account = await accountCurrent();
+
+                if (account) {
+                    const address = account.address;
+                    const privateKey = account.privateKey.replace('0x','');
+
+                    const balanceEth = await getBalanceEth();
+
+                    if (amount > balanceEth) {
+                        console.error('have enough balance!!!');
+                        resolve({ status: false, message: 'You don not have enough balance to cover this transaction' })
+                        return;
+                    }
+
+                    const gasPrice = await getGasPrice();
+
+                    const valueSend = web3Provider.utils.toWei(amount, "ether");
+
+                    web3Provider.eth.getTransactionCount(address, (err, txCount) => {
+                        const txData = {
+                            to: address,
+                            value: valueSend,
+                            gasPrice: web3Provider.utils.toHex(gasPrice),
+                            nonce:    web3Provider.utils.toHex(txCount),
+                        };
+
+                        web3Provider.eth.estimateGas(txData, function (error, gas) {
+                            const privateKeyBuffer = new ethereumjs.Buffer.Buffer(privateKey, 'hex');
+                            txData.gas = gas;
+                            console.log(txData)
+                            const tx = new ethereumjs.Tx(txData, { chain: 'ropsten', hardfork: 'petersburg' });
+
+                            tx.sign(privateKeyBuffer)
+
+                            const serializedTx = tx.serialize()
+                            const raw = '0x' + serializedTx.toString('hex')
+
+                            web3Provider.eth.sendSignedTransaction(raw, (err, txHash) => {
+                                if (err) {
+                                    console.error(err);
+                                    resolve({status: false, message: err});
+                                }
+                                resolve({status: true, message: txHash});
+                            });
+                        })
+                    });
+                } else {
+                    resolve({ status: false, message: 'Can not get account' });
+                }
+            } else {
+                resolve({ status: false, message: 'Invalid address' });
+            }
+
+        }).catch((err) => {
+            throw new Error(err);
+        });
+    };
+
     blockchain = {
         createAddress: createAddress,
         getWallet: getWallet,
         getBalanceEth: getBalanceEth,
         getBalanceDonate: getBalanceDonate,
+        withdrawEth: withdrawEth,
     };
 })(jQuery);

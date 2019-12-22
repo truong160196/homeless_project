@@ -23,10 +23,19 @@
                     <a href="{{route('user.page.setting')}}" class="btn btn-secondary btn-tab " data-index="3">Setting</a>
                 </div>
                 <div class="tab-content">
-                    <div class="blog-sidebar dashboard row">
+                    <div class="dashboard row">
                         <div class="col-sm-12 col-lg-6">
                             <div class="widget about-widget">
-                                <h3>Account Balance</h3>
+                                <div class="widget-title">
+                                    <h3>Account Balance</h3>
+                                    <button
+                                        type="button"
+                                        class="btn btn-success btn-sync"
+                                        onclick="loadBalanceEth()"
+                                    >
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                </div>
                                 <div class="form-group">
                                     <input
                                         type="text"
@@ -57,20 +66,26 @@
                                             maxlength="255"
                                             required
                                             data-parsley-required-message="Address is required."
+                                            value="0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D"
                                         />
                                     </div>
                                     <div class="form-group">
                                         <label>Amount</label>
                                         <input
-                                            type="number"
+                                            type="text"
                                             class="form-control"
                                             placeholder="Enter value receive"
                                             id="amount"
+                                            min="0"
+                                            max="1000"
+                                            step="0.01"
                                             data-parsley-validation-threshold="1"
                                             data-parsley-trigger="keyup"
                                             maxlength="255"
                                             required
                                             data-parsley-required-message="Value is required."
+                                            data-parsley-type="number"
+                                            value="0.05"
                                         />
                                     </div>
                                     <div class="form-group button-depoist">
@@ -85,41 +100,17 @@
                             <div class="widget about-widget">
                                 <h3>Withdraw History</h3>
                                 <div class="table-history">
-                                    <table class="table table-striped">
+                                    <table id="table_withdraw" class="table table-striped">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Action</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Date Withdraw</th>
                                             <th scope="col">Detail</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Donate 1000$ for active Food Help For The Hunger People</td>
-                                            <td>0x1e24c23ab48e0d6a211e4047af805dbe040ef0d752b449fe3117d9cbc7e48e2d</td>
-                                            <td>
-                                                <span class="badge badge-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Donate 1000$ for active Food Help For The Hunger People</td>
-                                            <td>0x1e24c23ab48e0d6a211e4047af805dbe040ef0d752b449fe3117d9cbc7e48e2d</td>
-                                            <td>
-                                                <span class="badge badge-danger">Fail</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Donate 1000$ for active Food Help For The Hunger People</td>
-                                            <td>0x1e24c23ab48e0d6a211e4047af805dbe040ef0d752b449fe3117d9cbc7e48e2d</td>
-                                            <td>
-                                                <span class="badge badge-success">Success</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
                                     </table>
                                 </div>
                             </div>

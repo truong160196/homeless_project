@@ -93,6 +93,10 @@ Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
         Route::get('/detail/{id}', 'AjaxController@detail')->name('user.account.detail');
         Route::post('/withdraw', 'AjaxController@withdraw')->name('user.account.withdraw');
     });
+
+    Route::group(['namespace' => 'Transaction', 'prefix' => 'transaction'], function () {
+        Route::get('/withdraw', 'AjaxController@withdraw')->name('user.transaction.withdraw');
+    });
 });
 
 // store

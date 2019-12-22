@@ -65,7 +65,8 @@ class AjaxController extends Controller
                 'type' => 'withdraw',
                 'amount' => $request->amount,
                 'fee' => $request->fee,
-                'status' => 'eth withdraw',
+                'status' => 'complete',
+                'time_transaction' => date("Y-m-d")
             ];
 
             $id = DB::table('transactions')->insertGetId($trnsactions);

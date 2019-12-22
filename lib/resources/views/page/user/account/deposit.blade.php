@@ -26,7 +26,16 @@
                 <div class="blog-sidebar dashboard row">
                     <div class="col-sm-12 col-lg-6">
                         <div class="widget about-widget">
-                            <h3>Account Balance</h3>
+                            <div class="widget-title">
+                                <h3>Account Balance</h3>
+                                <button
+                                    type="button"
+                                    class="btn btn-success btn-sync"
+                                    onclick="loadBalanceEth()"
+                                >
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
                             <h1 id="balanceEth">0 ETH</h1>
                             <p id="estimateUSD">Estimated Value: ~ 0 USD</p>
                             <p>Coins will be deposited after 12 network confirmations.</p>
