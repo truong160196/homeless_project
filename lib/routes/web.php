@@ -104,8 +104,15 @@ Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
     });
 
     // Account
+    Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function () {
+        Route::get('/', 'WebController@index')->name('store.page.store.dashboard');
+    });
+
+    // Account
     Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
         Route::get('/', 'WebController@index')->name('store.page.store.account');
+        Route::get('/withdraw', 'WebController@withdraw')->name('store.page.store.account.withdraw');
+        Route::get('/deposit', 'WebController@deposit')->name('store.page.store.account.deposit');
     });
 
     // Setting

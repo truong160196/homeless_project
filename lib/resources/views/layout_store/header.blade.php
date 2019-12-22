@@ -1,20 +1,27 @@
-<!-- Start header -->
-<header id="header" class="site-header header-style-1">
-    <div class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col col-sm-4">
-                    <div class="social">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Store</a></li>
-                            <li><a href="#">Setting</a></li>
-                        </ul>
+<section class="header">
+    <div class="company-name">
+        <h3>STORE</h3>
+    </div>
+    <div class="right-header">
+        <ul>
+            <li>
+                <a href="#" class="">
+                    <i class="fas fa-store"></i>
+                </a>
+            </li>
+            <li>
+                <button class="btn btn-light select-user" type="button" id="btn-user">
+                    <div class="account">
+                        <div class="avatar">
+                            <img src="{{asset('assets/images/user.png')}}" />
+                        </div>
+                        <div class="info-user">
+                            <h5>truong160196</h5>
+                            <p>Store Owner</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div> <!-- end container -->
-    </div> <!-- end topbar -->
-</header>back-to-top
-<!-- end of header -->
+                </button>
+            </li>
+        </ul>
+    </div>
+</section>

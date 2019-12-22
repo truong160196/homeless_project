@@ -17,9 +17,9 @@
         <div class="account">
             <div class="container">
                 <div class="tabs">
-                    <a href="{{route('user.page.account')}}" class="btn btn-secondary btn-tab" data-index="0">Dashboard</a>
-                    <a href="{{route('user.page.deposit')}}" class="btn btn-secondary btn-tab" data-index="1">Deposit</a>
-                    <a href="{{route('user.page.withdraw')}}" class="btn btn-secondary btn-tab active" data-index="2">Withdraw</a>
+                    <a href="{{route('store.page.store.account')}}" class="btn btn-secondary btn-tab =" data-index="0">Dashboard</a>
+                    <a href="{{route('store.page.store.account.deposit')}}" class="btn btn-secondary btn-tab " data-index="1">Deposit</a>
+                    <a href="{{route('store.page.store.account.withdraw')}}" class="btn btn-secondary btn-tab active" data-index="2">Withdraw</a>
                 </div>
                 <div class="tab-content">
                     <div class="dashboard row">

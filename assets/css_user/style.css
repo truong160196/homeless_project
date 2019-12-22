@@ -10069,3 +10069,15 @@ select.form-control:focus::-ms-value {
     width: 35px;
     height: 35px;
 }
+
+.badge-warning {
+    background: #c27400;
+}
+
+.badge-success {
+    background: #00ac2a;
+}
+
+.danger {
+    background: #ac0500;
+}

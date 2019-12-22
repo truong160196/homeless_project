@@ -17,9 +17,9 @@
     <div class="account">
         <div class="container">
             <div class="tabs">
-                <a href="{{route('user.page.account')}}" class="btn btn-secondary btn-tab" data-index="0">Dashboard</a>
-                <a href="{{route('user.page.deposit')}}" class="btn btn-secondary btn-tab active" data-index="1">Deposit</a>
-                <a href="{{route('user.page.withdraw')}}" class="btn btn-secondary btn-tab " data-index="2">Withdraw</a>
+                <a href="{{route('store.page.store.account')}}" class="btn btn-secondary btn-tab" data-index="0">Dashboard</a>
+                <a href="{{route('store.page.store.account.deposit')}}" class="btn btn-secondary btn-tab active" data-index="1">Deposit</a>
+                <a href="{{route('store.page.store.account.withdraw')}}" class="btn btn-secondary btn-tab " data-index="2">Withdraw</a>
             </div>
             <div class="tab-content">
                 <div class="blog-sidebar dashboard row">
@@ -71,28 +71,6 @@
                             </div>
                             <strong>Send only BTC to this deposit address.</strong>
                             <p>Sending coin or BTC other than ETH to this address may result in the loss of your deposit.</p>
-                        </div>
-                        <div class="widget about-widget">
-                            <h3>Smart contract address</h3>
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    readonly
-                                    value="0xb527FdE93d1dcC4F192E3eE42B219C0D81789F67"
-                                />
-                            </div>
-                            <div class="form-group button-depoist">
-                                <button
-                                    type="button"
-                                    class="btn btn-deposit"
-                                    onclick="getDonateFree()"
-                                >
-                                    Get $100 free
-                                </button>
-                            </div>
-                            <strong>Note</strong>
-                            <p>This is a demo for donate deposit service. You can get free $100 here</p>
                         </div>
                     </div>
                     <div class="col-sm-12">
