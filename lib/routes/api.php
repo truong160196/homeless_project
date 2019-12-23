@@ -31,7 +31,7 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::get('/', 'AjaxController@list')->name('admin.auction.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.auction.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.auction.create');
-        Route::post('/update/{id}', 'AjaxController@update')->name('admin.auction.update');
+        Route::post('/update', 'AjaxController@update')->name('admin.auction.update');
         Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.auction.delete');
     });
 
@@ -40,7 +40,7 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::get('/', 'AjaxController@list')->name('admin.donate.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.donate.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.donate.create');
-        Route::post('/update/{id}', 'AjaxController@update')->name('admin.donate.update');
+        Route::post('/update', 'AjaxController@update')->name('admin.donate.update');
         Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.donate.delete');
     });
 
@@ -49,7 +49,7 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::get('/', 'AjaxController@list')->name('admin.history.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.history.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.history.create');
-        Route::post('/update/{id}', 'AjaxController@update')->name('admin.history.update');
+        Route::post('/update', 'AjaxController@update')->name('admin.history.update');
         Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.history.delete');
     });
 
@@ -58,7 +58,7 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::get('/', 'AjaxController@list')->name('admin.order.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.order.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.order.create');
-        Route::post('/update/{id}', 'AjaxController@update')->name('admin.order.update');
+        Route::post('/update', 'AjaxController@update')->name('admin.order.update');
         Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.order.delete');
     });
 
@@ -67,8 +67,35 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::get('/', 'AjaxController@list')->name('admin.setting.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.setting.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.setting.create');
-        Route::post('/update/{id}', 'AjaxController@update')->name('admin.setting.update');
+        Route::post('/update', 'AjaxController@update')->name('admin.setting.update');
         Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.setting.delete');
+    });
+
+    // Category
+    Route::group(['namespace' => 'Setting', 'prefix' => 'category'], function () {
+        Route::get('/', 'AjaxController@list')->name('admin.category.list');
+        Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.category.detail');
+        Route::post('/create', 'AjaxController@create')->name('admin.category.create');
+        Route::post('/update', 'AjaxController@update')->name('admin.category.update');
+        Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.category.delete');
+    });
+
+    // Activity
+    Route::group(['namespace' => 'Setting', 'prefix' => 'activity'], function () {
+        Route::get('/', 'AjaxController@list')->name('admin.activity.list');
+        Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.activity.detail');
+        Route::post('/create', 'AjaxController@create')->name('admin.activity.create');
+        Route::post('/update', 'AjaxController@update')->name('admin.activity.update');
+        Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.activity.delete');
+    });
+
+    // Location
+    Route::group(['namespace' => 'Setting', 'prefix' => 'location'], function () {
+        Route::get('/', 'AjaxController@list')->name('admin.location.list');
+        Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.location.detail');
+        Route::post('/create', 'AjaxController@create')->name('admin.location.create');
+        Route::post('/update', 'AjaxController@update')->name('admin.location.update');
+        Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.location.delete');
     });
 
     // User
@@ -113,6 +140,6 @@ Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
     // Product
     Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
         Route::get('/detail/{id}', 'AjaxController@detail')->name('store.user.detail');
-        Route::post('/update/{id}', 'AjaxController@update')->name('store.user.update');
+        Route::post('/update', 'AjaxController@update')->name('store.user.update');
     });
 });
