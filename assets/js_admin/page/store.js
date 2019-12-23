@@ -91,9 +91,9 @@ var listProduct = [];
         tax = total * 0.1;
         total_payment = total + tax;
 
-        document.getElementById("total").innerText = blockchain.formatCurrency(total, 2);
-        document.getElementById("tax").innerText = blockchain.formatCurrency(tax, 2);
-        document.getElementById("total_payment").innerText = blockchain.formatCurrency(total_payment, 2);
+        document.getElementById("total").innerText = '$' + blockchain.formatCurrency(total, 2);
+        document.getElementById("tax").innerText = '$' +  blockchain.formatCurrency(tax, 2);
+        document.getElementById("total_payment").innerText = '$' + blockchain.formatCurrency(total_payment, 2);
     };
     
     addProductToCart = function (id, price, name, sku) {
@@ -140,38 +140,55 @@ var listProduct = [];
     });
 
     var submitPayment = function () {
-        run_waitMe('.shop-pg-section');
+        // run_waitMe('.shop-pg-section');
+        var qrcodeElement = document.getElementById('over_qrcode');
+        var hiden_qrcodeElement = document.getElementById('hiden_qrcode');
+
+        if (qrcodeElement) {
+            qrcodeElement.style.display = 'block';
+            hiden_qrcodeElement.style.display = 'block';
+
+            qrcode.clear();
+
+            const dataQr = {
+                address: '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D',
+                total: 200
+            };
+
+            qrcode.makeCode(JSON.stringify(dataQr));
+        }
+
 
         var url = base_ajax + '/store/order/create';
         var dataForm = new FormData();
 
-        $.ajax({
-            url: url,
-            type: "POST",
-            data: dataForm,
-            success: function(response) {
-                if (response.code === 200) {
-                    Swal.fire({
-                        type: 'success',
-                        title: response.msg
-                    });
-                } else {
-                    Swal.fire({
-                        type: 'warning',
-                        title: 'Oops',
-                        text: response.msg
-                    });
-                }
-                run_waitMe('.shop-pg-section', true);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                Swal.fire({
-                    type: 'warning',
-                    title: 'Oops',
-                    text: 'There was an error during processing'
-                });
-                run_waitMe('.shop-pg-section', true);
-            }
-        });
+        // $.ajax({
+        //     url: url,
+        //     type: "POST",
+        //     data: dataForm,
+        //     success: function(response) {
+        //         if (response.code === 200) {
+        //             Swal.fire({
+        //                 type: 'success',
+        //                 title: response.msg
+        //             });
+        //         } else {
+        //             Swal.fire({
+        //                 type: 'warning',
+        //                 title: 'Oops',
+        //                 text: response.msg
+        //             });
+        //         }
+        //         run_waitMe('.shop-pg-section', true);
+        //     },
+        //     error: function(jqXHR, textStatus, errorThrown) {
+        //         Swal.fire({
+        //             type: 'warning',
+        //             title: 'Oops',
+        //             text: 'There was an error during processing'
+        //         });
+        //         run_waitMe('.shop-pg-section', true);
+        //     }
+        // });
     }
 })(jQuery);

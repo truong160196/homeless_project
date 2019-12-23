@@ -21,6 +21,9 @@
       </div>
     </div>
     <!-- end preloader -->
+      <div class="qrcode">
+          <div id="qrcode"></div>
+      </div>
 
     @include('layout_user.header')
     @yield('page_content')
