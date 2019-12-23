@@ -72,12 +72,12 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
     });
 
     // Category
-    Route::group(['namespace' => 'Setting', 'prefix' => 'category'], function () {
+    Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
         Route::get('/', 'AjaxController@list')->name('admin.category.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.category.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.category.create');
         Route::post('/update', 'AjaxController@update')->name('admin.category.update');
-        Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.category.delete');
+        Route::delete('/delete/{id}', 'AjaxController@delete')->name('admin.category.delete');
     });
 
     // Activity
