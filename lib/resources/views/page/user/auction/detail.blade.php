@@ -34,7 +34,12 @@
                                     <div class="col-md-6">
                                         <div class="widget recent-post-widget top-auction">
                                             <h3>
+                                            @if ($type != "old")
                                                 Top auction
+                                            @else
+                                                Winner
+                                            @endif
+                                                
                                             </h3>
                                             <div class="posts">
                                                 @foreach ($auctions_history as $auction_history)
@@ -76,17 +81,18 @@
                                                     <p> To : <span>{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_end_time)->format('m/d/y - h\h i\'')}}</span></p>
                                                 </div>
                                             </div>
+                                            @if ($type != "old")
+                                                <div class="group-count-down">
+                                                    <div id="timer" data-time="{{$auction->auction_end_time}}"></div>
+                                                </div>
 
-                                            <div class="group-count-down">
-                                                <div id="timer" data-time="{{$auction->auction_end_time}}"></div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Price</label>
-                                                <input id="auction-price" type="number" class="form-control" value="{{$current_price + 100}}" data-current="{{$current_price}}">
-                                                <p class="auction-valid"></p>
-                                            </div>
-                                            <button data-id="{{$auction->id}}" $type="button" id="auction-submit" class="theme-btn-s4">Bidding</button>
+                                                <div class="form-group">
+                                                    <label>Price</label>
+                                                    <input id="auction-price" type="number" class="form-control" value="{{$current_price + 100}}" data-current="{{$current_price}}">
+                                                    <p class="auction-valid"></p>
+                                                </div>
+                                                <button data-id="{{$auction->id}}" $type="button" id="auction-submit" class="theme-btn-s4">Bidding</button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
