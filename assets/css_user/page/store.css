@@ -1,10 +1,28 @@
+.shop-pg-section {
+    margin-top: 120px;
+}
+
 .shop-panel {
-    margin-top: 100px;
+    background: #ffffff;
+    padding: 20px;
+    margin-left: 15px;
+    -webkit-box-shadow: inset 1px 1px 1px 0px rgba(145,145,145,1);
+    -moz-box-shadow: inset 1px 1px 1px 0px rgba(145,145,145,1);
+    box-shadow: inset 1px 1px 1px 0px rgba(145,145,145,1);
 }
 
 .search-product {
-    margin-bottom: 15px;
+    width: 100%;
+    display: inline-flex;
 }
+.search-product input {
+    width: 80%;
+}
+
+.search-product button {
+    width: 20%;
+}
+
 
 .shop-grids {
     height: 500px;
@@ -12,14 +30,172 @@
 }
 
 .scrollable {
-    height: 300px;
+    height: 350px;
     overflow-y:auto;
     width: 100%;
 }
 
+.scrollable ul {
+
+}
+
+.scrollable ul li {
+    list-style: none;
+    display: inline-flex;
+    width: 100%;
+    padding: 5px 15px;
+    border-bottom: 1px solid #d0d2d2;
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(145,145,145,0.34);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(145,145,145,0.34);
+    box-shadow: 1px 1px 1px 0px rgba(145,145,145,0.34);
+}
+
+
+.scrollable ul li:hover {
+    border-color: #c27400;
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(145,145,145,0.34);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(145,145,145,0.34);
+    box-shadow: 2px 2px 2px 0px rgba(145,145,145,0.34);
+}
+
+.scrollable ul li .title {
+    padding: 10px 0;
+    width: 40%;
+    display: inline-block;
+}
+.scrollable ul li .title h4 {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+.scrollable ul li .title p {
+    font-size: 13px;
+    color: #6c757d;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.scrollable ul li .price {
+    width: 15%;
+    padding: 10px 0;
+}
+.scrollable ul li .price p{
+    font-size: 16px;
+    color: #6c757d;
+    padding: 0;
+    margin: 0;
+}
+
+.scrollable ul li .qty {
+    width: 15%;
+    padding: 10px 0;
+}
+.scrollable ul li .qty input{
+    box-shadow: none;
+    height: 35px;
+}
+
+.scrollable ul li .total {
+    width: 15%;
+    margin-left: 5px;
+    text-align: right;
+    padding: 10px 0;
+}
+
+.scrollable ul li .total p {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6c757d;
+    padding: 0;
+    margin: 0;
+}
+
+
+.scrollable ul li .action {
+    width: 15%;
+    padding: 10px 0;
+}
+.scrollable ul li .action .btn-remove{
+    box-shadow: none;
+    height: 30px;
+    width: 30px;
+    float: right;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+
 .pay-out {
-    height: 200px;
+    padding: 15px;
+}
+
+.pay-out table {
+    width: 100%;
+}
+.pay-out table td:first-child {
+    text-align: left;
+    color: #1b1e21;
+    font-weight: 600;
+}
+.pay-out table td:last-child {
+    text-align: right;
+}
+
+.payment {
+    width: 100%;
+}
+
+.payment button {
+    width: 100%;
+}
+
+
+.grid {
+    border: 1px solid rgba(145,145,145,0.34);
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(145,145,145,0.34);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(145,145,145,0.34);
+    box-shadow: 1px 1px 1px 0px rgba(145,145,145,0.34);
+    padding: 5px;
+}
+
+.grid:hover {
+    border-color: #c27400;
+    -webkit-box-shadow: 2px 2px 1px 0px rgba(145,145,145,0.34);
+    -moz-box-shadow: 2px 2px 1px 0px rgba(145,145,145,0.34);
+    box-shadow: 2px 2px 1px 0px rgba(145,145,145,0.34);
+}
+
+.grid .img-cart {
+    height: 50px;
     overflow: hidden;
+}
+.grid .img-cart img {
+    height: auto;
+    width: auto;
+}
+.grid .details h4{
+    font-size: 13px;
+    height: 40px;
+    overflow: hidden;
+}
+.grid .details p {
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.shop-pg-section .details {
+    padding: 10px 0;
+}
+
+.grid .details .price {
+    color: white;
+    width: 100%;
 }
 
 body {

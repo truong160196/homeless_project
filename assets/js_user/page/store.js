@@ -467,7 +467,7 @@ $(function() {
             Swal.fire({
                 type: 'warning',
                 title: 'Oops',
-                text: result.message || 'There was an error during processing'
+                text: 'There was an error during processing'
             });
             run_waitMe('.page-wrapper', true);
         }
