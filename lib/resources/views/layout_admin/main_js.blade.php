@@ -15,7 +15,7 @@
 <script type="text/javascript" src="{{asset('assets/lib/fileuploader/js/jquery.modal.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/waitme/js/waitMe.min.js')}}"></script>
 
-{{--<script type="text/javascript" src="{{asset('assets/lib/summernote/dist/summernote-bs4.min.js')}}"></script>--}}
+<script type="text/javascript" src="{{asset('assets/lib/summernote/dist/summernote-bs4.min.js')}}"></script>
 {{--<script type="text/javascript" src="{{asset('assets/lib/datatables/js/dataTables.checkboxes.min.js')}}"></script>--}}
 {{--<script type="text/javascript" src="{{asset('assets/lib/lightbox2/js/lightbox.js')}}"></script>--}}
 {{--<script type="text/javascript" src="{{asset('assets/lib/lobibox/js/lobibox.js')}}"></script>--}}
