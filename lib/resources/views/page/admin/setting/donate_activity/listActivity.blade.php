@@ -1,4 +1,3 @@
-
 <table class="table">
         <thead>
         <tr>
@@ -7,19 +6,18 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($categories as $category)
+        @foreach($activities as $activity)
             <tr>
-                <td>{{$category->category_name}}</td>
+                <td>{{$activity->activity_name}}</td>
                 <td class="td-actions text-right">
                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                        <i class="material-icons btn-edit-cate" data-id="{{$category->id}}" data-name="{{$category->category_name}}" data-detail="{{$category->category_detail}}">edit</i>
+                        <i class="material-icons">edit</i>
                     </button>
                     <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                        <i class="material-icons btn-remove-cate" data-id="{{$category->id}}">close</i>
+                        <i class="material-icons btn-delete-activity" data-id="{{$activity->id}}">close</i>
                     </button>
                 </td>
             </tr>
             @endforeach
-
         </tbody>
     </table>

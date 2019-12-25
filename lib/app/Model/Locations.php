@@ -27,5 +27,6 @@ class Locations extends Model
 
     protected $fillable = [
         'location_name',
+        'is_delete',
     ];
 }

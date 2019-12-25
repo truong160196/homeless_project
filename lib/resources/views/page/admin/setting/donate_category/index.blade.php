@@ -12,3 +12,4 @@
 </div>
 
 @include('page.admin.setting.donate_category.modalCreateCategory')
+@include('page.admin.setting.donate_category.modalEditCategory')

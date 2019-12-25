@@ -7,9 +7,6 @@ $(function() {
 
     $(document).ready(function() {
         loadListCategory();
-        function deleteCategory(id) {
-            alert(id);
-         };
     });
 
     var loadListCategory = () => {
@@ -68,7 +65,6 @@ $(function() {
         e.preventDefault();
         $('#form_create_category').submit();
     });
-
 
     $("#form_create_category").on('submit', function(e) {
         e.preventDefault();
@@ -140,5 +136,91 @@ $(function() {
                 });
             }
        });
+    };
+    $(document).on('click','.btn-edit-cate', function(e) {
+        var id = e.currentTarget.dataset.id;
+        var url = base_ajax + '/admin/category/detail/'+id;
+        openModalEditCategory(id, url);
+    });
+
+    var openModalEditCategory = function (id, url) {
+        // clearFormCreate();
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: {id: id},
+            success: function(response) {
+                if (response.data) {
+                    var category = response.data;
+                    $("#id_edit").val(category.id);
+                    $("#category_name_edit").val(category.category_name);
+                    $("#category_detail_edit").val(category.category_detail ? category.category_detail : "");
+                    $("#category_name_edit").parent().addClass("is-filled");
+                    $("#category_detail_edit").parent().addClass("is-filled");
+                    $('#modal_category_edit').modal('show');
+                }
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops',
+                    text: 'There was an error during processing'
+                });            
+            }
+        });
+    };
+    
+    $(document).on('click',"#btn_update_category", function(e) {
+        e.preventDefault();
+        $('#form_edit_category').submit();
+    });
+
+    $("#form_edit_category").on('submit', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        form.parsley().validate();
+        if (form.parsley().isValid()) {
+            updateCategorySubmitFrom();
+        }
+    });
+
+    var updateCategorySubmitFrom = function () {
+        run_waitMe('.limiter');
+        var id = $("#id_edit").val();
+        var url = base_ajax + '/admin/category/update/' + id;
+        var dataForm = $("#form_edit_category").serialize();
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: dataForm,
+            success: function(response) {
+                if (response.code === 200) {
+                    $('#modal_category_edit').modal('hide');
+                    clearFormCreate();
+                    
+                    Swal.fire({
+                        type: 'success',
+                        title: response.msg
+                    });
+                    loadListCategory();                    
+                } else {
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops',
+                        text: response.msg
+                    });
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops',
+                    text: 'There was an error during processing'
+                });
+            }
+        });
+        run_waitMe('.limiter', true);
     };
 });
