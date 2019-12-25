@@ -2,17 +2,23 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h6>Create New Category</h6>
+                <h6>Edit Category</h6>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form id="form_edit_category">
+                <input
+                        type="hidden"
+                        class="form-control"
+                        id="id_edit"
+                        name="id_edit"
+                    />
                     <div class="row">
                         <div class="col-md-5">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">
+                                <label class="bmd-label-floating ">
                                     Category Name
                                     <span class="tx-danger">*</span>
 
@@ -21,11 +27,11 @@
                                 <input
                                     type="text"
                                     class="form-control"
-                                    id="category_name"
-                                    name="category_name"
+                                    id="category_name_edit"
+                                    name="category_name_edit"
                                     required
                                     data-parsley-required-message="Category name is required."
-                                >
+                                />
                             </div>
                         </div>
 
@@ -37,18 +43,18 @@
                                 <input
                                     type="text"
                                     class="form-control"
-                                    id="category_detail"
-                                    name="category_detail"
-                                >
+                                    id="category_detail_edit"
+                                    name="category_detail_edit"
+                                />
                             </div>
                         </div>
                      
                     </div>
                    
-                    <button type="button" id="btn_submit_category" class="btn btn-primary pull-right">Edit Category</button>
+                    <button type="button" id="btn_update_category" class="btn btn-primary pull-right">Edit Category</button>
                     <div class="clearfix"></div>
                 </form>
             </div>
         </div>
     </div>
-</div>
+    </div>
