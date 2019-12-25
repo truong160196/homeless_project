@@ -36,7 +36,18 @@
                             >
                         </div>
                     </div>
-                    <div class="col-sm-12 margin-top-10 row">
+                    <div class="col-md-12 margin-top-10">
+                        <label>
+                            Description
+                        </label>
+                        <textarea
+                            class="form-control"
+                            rows="3"
+                            id="donate_detail"
+                            name="donate_detail"
+                        >{{$donate->donate_detail}}</textarea>
+                    </div>
+                    <div class="col-sm-12 margin-top-10 row" style="margin-top: 20px">
                         <div class="col-sm-12 col-lg-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Start Date</label>
@@ -113,7 +124,7 @@
                         </label>
                         <div class="description-scroll">
                             <div id="summernote">
-                                {!! $donate->donate_detail !!}
+                                {!! $donate->donate_content !!}
                             </div>
                         </div>
                         <button

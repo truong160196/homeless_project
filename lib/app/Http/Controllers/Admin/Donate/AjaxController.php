@@ -97,6 +97,7 @@ class AjaxController extends Controller
                 $donates = [
                     'donate_title' => $request->donate_title,
                     'donate_detail' => $request->donate_detail,
+                    'donate_content' => $request->donate_content,
                     'donate_start_time' => $start_date,
                     'donate_end_time' => $end_date,
                     'donate_image' => $path,
@@ -157,6 +158,10 @@ class AjaxController extends Controller
 
                 if ($request->donate_detail) {
                     $donate->donate_detail = $request->donate_detail;
+                }
+
+                if ($request->donate_content) {
+                    $donate->donate_content = $request->donate_content;
                 }
 
                 if ($request->start_date) {

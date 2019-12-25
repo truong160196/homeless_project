@@ -27,6 +27,7 @@ class Donate extends Model
     protected $fillable = [
         'donate_title',
         'donate_detail',
+        'donate_content',
         'donate_start_time',
         'donate_end_time',
         'donate_image',

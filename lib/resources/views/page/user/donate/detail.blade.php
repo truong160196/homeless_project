@@ -52,6 +52,7 @@
                                             </div>
                                         </div>
                                         <p class="talk">{{$donate->donate_detail}}</p>
+                                        {!! $donate->donate_content !!}
                                         <h3>Help us by share:</h3>
                                         <div class="social-icons">
                                             <ul>
