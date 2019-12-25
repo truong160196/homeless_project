@@ -10,7 +10,7 @@
         @foreach($categories as $category)
             <tr>
                 <td>{{$category->category_name}}</td>
-                <td class="td-actions text-right">
+                <td>
                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
                         <i class="material-icons btn-edit-cate" data-id="{{$category->id}}" data-name="{{$category->category_name}}" data-detail="{{$category->category_detail}}">edit</i>
                     </button>

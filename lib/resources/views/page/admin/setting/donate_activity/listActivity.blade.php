@@ -9,7 +9,7 @@
         @foreach($activities as $activity)
             <tr>
                 <td>{{$activity->activity_name}}</td>
-                <td class="td-actions text-right">
+                <td>
                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
                         <i class="material-icons">edit</i>
                     </button>

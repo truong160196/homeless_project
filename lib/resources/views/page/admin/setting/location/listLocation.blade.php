@@ -9,7 +9,7 @@
         @foreach($locations as $location)
             <tr>
                 <td>{{$location->location_name}}</td>
-                <td class="td-actions text-right">
+                <td>
                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
                         <i class="material-icons">edit</i>
                     </button>
