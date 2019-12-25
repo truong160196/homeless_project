@@ -17,7 +17,7 @@ $(function() {
             timePickerIncrement: 1,
             autoUpdateInput: true,
             locale: {
-                format: 'DD/MM/YYYY',
+                format: 'YYYY/MM/DD',
                 cancelLabel: 'Clear'
             }
         });
@@ -28,7 +28,7 @@ $(function() {
             timePickerIncrement: 1,
             autoUpdateInput: true,
             locale: {
-                format: 'DD/MM/YYYY',
+                format: 'YYYY/MM/DD',
                 cancelLabel: 'Clear'
             }
         });
@@ -112,19 +112,6 @@ $(function() {
         }
     }
 
-    var clearFormCreate = function () {
-        $('#username').val('');
-        $('#password').val('');
-        $('#full_name').val('');
-        $('#phone').val('');
-        $('#birthday').val('');
-        $('#email').val('');
-        $('#user_type').val('');
-        $('#address_user').val('');
-        $('#status').val('');
-        $('#role_id').val('');
-    };
-
     $(document).on('click', '#edit', function(e) {
         e.preventDefault();
         const buttonEdit = document.getElementById('edit');
@@ -139,7 +126,7 @@ $(function() {
             height: 200,
             tabsize: 2,
             followingToolbar: true,
-            focus: true,
+            focus: false,
         });
     });
 
@@ -178,14 +165,79 @@ $(function() {
         var form = $(this);
         form.parsley().validate();
         if (form.parsley().isValid()) {
-            createUserSubmitFrom();
+            createDonateSubmitFrom();
         }
     });
 
-    var createUserSubmitFrom = function () {
+    var createDonateSubmitFrom = function () {
         run_waitMe('.main-panel');
         var url = base_ajax + '/admin/donate/create';
         const formElem = document.getElementById('form_create_donate');
+        var dataForm = new FormData(formElem);
+
+        var aHTML = $('#summernote').summernote('code');
+
+        var accountWallet = blockchain.createAddress();
+
+        dataForm.append('address', accountWallet.address);
+        dataForm.append('privateKey', accountWallet.privateKey);
+        dataForm.append('publicKey', accountWallet.publicKey);
+        dataForm.append('donate_detail', aHTML);
+        // dataForm.append('file', files);
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: dataForm,
+            cache       : false,
+            contentType : false,
+            processData : false,
+            success: function(response) {
+                if (response.code === 200) {
+                    Swal.fire({
+                        type: 'success',
+                        title: response.msg
+                    });
+                    window.location.href = base_url + '/admin/donate';
+                } else {
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops',
+                        text: response.msg
+                    });
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops',
+                    text: 'There was an error during processing'
+                });
+            }
+        });
+        run_waitMe('.main-panel', true);
+    }
+
+    //update
+    $(document).on('click', '#btn_update_donate', function(e) {
+        e.preventDefault();
+        $('#form_update_donate').submit();
+    });
+
+
+    $("#form_update_donate").on('submit', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        form.parsley().validate();
+        if (form.parsley().isValid()) {
+            updateDonateSubmitFrom();
+        }
+    });
+
+    var updateDonateSubmitFrom = function () {
+        run_waitMe('.main-panel');
+        var url = base_ajax + '/admin/donate/update';
+        const formElem = document.getElementById('form_update_donate');
         var dataForm = new FormData(formElem);
 
         var aHTML = $('#summernote').summernote('code');

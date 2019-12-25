@@ -54,8 +54,11 @@ class AjaxController extends Controller
 
                 ->addColumn('actions', function ($v) {
                     $action = '';
-                    $action .= '<span data-toggle="tooltip" data-placement="top" title="View detail caterer" class="btn-action table-action-view cursor-pointer tx-info" data-id="' . $v->id . '"><i class="far fa-edit"></i></span>';
-                    $action .= '<span data-toggle="tooltip" data-placement="top" title="Remove caterer" class="btn-action table-action-delete cursor-pointer tx-danger mg-l-5 " data-id="' . $v->id . '"><i class="fa fa-trash"></i></span>';
+                    $action .= '<a href="'
+                        . route('admin.page.donate.update', ['id' => $v->id])
+                        .'" data-toggle="tooltip" data-placement="top" title="View detail Fund" class="btn-action table-action-view cursor-pointer tx-info" data-id="'
+                        . $v->id . '"><i class="far fa-edit"></i></a>';
+//                    $action .= '<a data-toggle="tooltip" data-placement="top" title="Remove Fund" class="btn-action table-action-delete cursor-pointer tx-danger mg-l-5 " data-id="' . $v->id . '"><i class="fa fa-trash"></i></a>';
 
                     return $action;
                 })
@@ -78,7 +81,7 @@ class AjaxController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return $this->JsonExport(403, __('app.error_403'));
+            return $this->JsonExport(403, 'Please check validate form');
         } else {
             try {
                 DB::beginTransaction();
@@ -88,8 +91,8 @@ class AjaxController extends Controller
                     return $this->JsonExport(404, 'Can not create fund');
                 }
 
-                $start_date = Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
-                $end_date = Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
+                $start_date = Carbon::createFromFormat('Y/m/d', $request->start_date)->format('Y-m-d');
+                $end_date = Carbon::createFromFormat('Y/m/d', $request->end_date)->format('Y-m-d');
 
                 $donates = [
                     'donate_title' => $request->donate_title,
@@ -104,9 +107,92 @@ class AjaxController extends Controller
                     'category_id' => 1
                 ];
 
-                $id = DB::table('donates')->insertGetId($donates);
+                $id = Donate::create($donates);
 
                 if (!$id) {
+                    DB::rollback();
+                    return $this->JsonExport(404, 'Can not create fund');
+                }
+
+                DB::commit();
+                return $this->JsonExport(200, 'Create Fund successfully');
+
+            } catch (\Exception $e) {
+                dd($e);
+                return $this->JsonExport(500, 'Internal Server Error');
+            }
+        }
+    }
+
+    public function update(Request $request)
+    {
+        $rules = array(
+            'donate_id' => 'required',
+            'donate_title' => 'required',
+            'address' => 'required',
+            'privateKey' => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return $this->JsonExport(403,'Please check validate form');
+        } else {
+            try {
+                DB::beginTransaction();
+                $donate = Donate::find($request->donate_id);
+
+                if (!$donate) {
+                    return $this->JsonExport(404, 'Can not update fund');
+                }
+
+                $path = $this->upload($request);
+                if ($path) {
+                    $donate->donate_image = $path;
+                }
+
+                if ($request->donate_title) {
+                    $donate->donate_title = $request->donate_title;
+                }
+
+                if ($request->donate_detail) {
+                    $donate->donate_detail = $request->donate_detail;
+                }
+
+                if ($request->start_date) {
+                    $start_date = Carbon::createFromFormat('Y/m/d', $request->start_date)->format('Y-m-d');
+                    $donate->donate_start_time = $start_date;
+                }
+
+                if ($request->end_date) {
+                    $end_date = Carbon::createFromFormat('Y/m/d', $request->end_date)->format('Y-m-d');
+
+                    $donate->donate_end_time = $end_date;
+                }
+
+                if ($request->donate_goal) {
+                    $donate->donate_goal = $request->donate_goal;
+                }
+
+                if ($request->donate_address) {
+                    $donate->donate_address = $request->donate_address;
+                }
+
+                if ($request->donate_private_key) {
+                    $donate->donate_private_key = $request->donate_private_key;
+                }
+
+                if ($request->donate_public_key) {
+                    $donate->donate_public_key = $request->donate_public_key;
+                }
+
+                if ($request->category_id) {
+                    $donate->category_id = $request->category_id;
+                }
+
+                $result = $donate->save();
+
+                if (!$result) {
                     DB::rollback();
                     return $this->JsonExport(404, 'Can not create fund');
                 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Auction;
 
 use App\Http\Controllers\Controller;
+use App\Model\Auction;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -10,5 +11,20 @@ class WebController extends Controller
      public function index()
     {
         return view('page.admin.auction.index');
+    }
+
+    public function create()
+    {
+        return view('page.admin.auction.createAuction');
+    }
+
+    public function update($id)
+    {
+        $donate = Auction::query()
+            ->where('id', '=', $id)
+            ->first();
+
+        return view('page.admin.auction.updateAuction',
+            ['donate' => $donate]);
     }
 }
