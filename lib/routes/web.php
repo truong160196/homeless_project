@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth.admin'], 'namespace' => 'Admin', 'prefix' =
     // donate
     Route::group(['namespace' => 'Donate', 'prefix' => 'donate'], function () {
         Route::get('/', 'WebController@index')->name('admin.page.donate');
+        Route::get('/create', 'WebController@create')->name('admin.page.donate.create');
     });
 
     // history

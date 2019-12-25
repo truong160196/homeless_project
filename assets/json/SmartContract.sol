@@ -10,8 +10,6 @@ contract Token {
     /// @return total amount of tokens
     function totalSupply() constant returns (uint256 supply) {}
 
-    function highScore() constant returns (uint highScore) {}
-
     /// @param _owner The address from which the balance will be retrieved
     /// @return The balance
     function balanceOf(address _owner) constant returns (uint256 balance) {}
@@ -44,6 +42,8 @@ contract Token {
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
     event UpdateAccount(address indexed _address, string user_name, address _homeless_address);
     event PaymentStore(address indexed _address, address _to_address, uint256 total);
+    event UpdateCharity(address indexed _address, uint256 goal, uint256 raised);
+    event PaymentAuction(address indexed _address, uint256 item, uint256 goal, uint256 raised);
 }
 
 
@@ -116,21 +116,17 @@ contract StandardToken is Token {
     }
 
     function updateAccount(address _address, address _homeless_address, string _user_name, uint256 spending_limit) returns (bool success) {
-        if (msg.sender == owner) {
-            Account memory account = Account(_user_name, _address, spending_limit);
+        Account memory account = Account(_user_name, _address, spending_limit);
 
-            (uint idCheck, bool status) = getAddressHomeless(_homeless_address, _address);
+        (uint idCheck, bool status) = getAddressHomeless(_homeless_address, _address);
 
-            if (status == true && idCheck >= 0) {
-                accounts[_homeless_address].push(account);
+        if (status == true && idCheck >= 0) {
+            accounts[_homeless_address].push(account);
 
-                UpdateAccount(_address, _user_name, _homeless_address);
-                return true;
-            } else {
-               return false;
-            }
+            UpdateAccount(_address, _user_name, _homeless_address);
+            return true;
         } else {
-            return false;
+           return false;
         }
     }
 
@@ -166,22 +162,19 @@ contract StandardToken is Token {
         require(balances[msg.sender] >= valueTranfer, "Not enough money sent.");
         if (balances[msg.sender] >= valueTranfer && valueTranfer > 0) {
            charitys[_address_homeless].raised += valueTranfer;
-           transferFrom(msg.sender, _address_homeless, valueTranfer);
+           transfer(_address_homeless, valueTranfer);
+            return true;
         } else {
             return false;
         }
     }
 
     function updateCharity(address _homeless_address, uint256 goal, uint256 raised) returns (bool success) {
-        if (msg.sender == owner) {
-            Charity memory charity = Charity(goal, raised);
+        Charity memory charity = Charity(goal, raised);
 
-            charitys[_homeless_address] = charity;
+        charitys[_homeless_address] = charity;
 
-            return true;
-        } else {
-            return false;
-        }
+        UpdateCharity(_homeless_address, goal, raised);
     }
 
     function getCharity(address _homeless_address) public view returns (Charity) {
@@ -193,22 +186,18 @@ contract StandardToken is Token {
         require(balances[msg.sender] >= valueTranfer, "Not enough money sent.");
         if (balances[msg.sender] >= valueTranfer && valueTranfer > 0) {
             auctions[_address_homeless].raised += valueTranfer;
-            transferFrom(msg.sender, _address_homeless, valueTranfer);
+            transfer(_address_homeless, valueTranfer);
         } else {
             return false;
         }
     }
 
-    function updateAuction(address _homeless_address,string item, uint256 goal, uint256 raised) returns (bool success) {
-        if (msg.sender == owner) {
-            Auction memory auction = Auction(item, goal, raised);
+    function updateAuction(address _homeless_address, string item, uint256 goal, uint256 raised) returns (bool success) {
+        Auction memory auction = Auction(item, goal, raised);
 
-            auctions[_homeless_address] = auction;
+        auctions[_homeless_address] = auction;
 
-            return true;
-        } else {
-            return false;
-        }
+        updateAuction(_homeless_address, item, goal, raised);
     }
 
     function getAuction(address _homeless_address) public view returns (Auction) {

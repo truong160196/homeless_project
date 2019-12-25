@@ -16,7 +16,7 @@
                         name="id_edit"
                     />
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-12">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating ">
                                     Category Name
@@ -37,7 +37,7 @@
 
                     </div>
                     <div class="row margin-top-10">
-                        <div class="col-md-5">
+                        <div class="col-md-12">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Detail Category</label>
                                 <input
@@ -48,10 +48,14 @@
                                 />
                             </div>
                         </div>
-                     
                     </div>
-                   
-                    <button type="button" id="btn_update_category" class="btn btn-primary pull-right">Edit Category</button>
+                    <div class="row margin-top-10">
+                        <div class="col-md-12">
+                            <div class="form-group bmd-form-group">
+                                <button type="button" id="btn_update_category" class="btn btn-primary pull-right">Edit Category</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                 </form>
             </div>

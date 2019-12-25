@@ -11,4 +11,9 @@ class WebController extends Controller
     {
         return view('page.admin.donate.index');
     }
+
+    public function create()
+    {
+        return view('page.admin.donate.createDonate');
+    }
 }
