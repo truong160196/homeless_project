@@ -41,15 +41,16 @@
                     </a>
                 </div>
                 <div class="card card-stats">
-                    <div class="card-body">
-                        <table class="table display responsive nowrap table-caterers cursor-pointer" id="user_table">
+                    <div class="card-body table-responsive">
+                        <table class="table" id="donate_table">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Username</th>
-                                <th>Full name</th>
-                                <th>Role</th>
-                                <th>Action</th>
+                                <th>Title</th>
+                                <th>Goal</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Category</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                         </table>

@@ -72,7 +72,7 @@ $(function() {
 
         if ($('.dataTables_length select').length > 0) {
             $('.dataTables_length select').select2({
-                minimumResultsForSearch: ''
+                minimumResultsForSearch: -1
             });
         }
     }

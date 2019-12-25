@@ -34,7 +34,7 @@
                             >
                         </div>
                     </div>
-                    <div class="col-sm-12 row">
+                    <div class="col-sm-12 margin-top-10 row">
                         <div class="col-sm-12 col-lg-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Start Date</label>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12  margin-top-10">
                         <div class="form-group bmd-form-group">
                             <label class="bmd-label-floating">
                                 Goal
@@ -72,7 +72,7 @@
                             />
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 margin-top-10">
                         <div class="form-group">
                             <label>
                                 Image
@@ -94,7 +94,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 margin-top-10">
                         <label>
                             Description
                         </label>
