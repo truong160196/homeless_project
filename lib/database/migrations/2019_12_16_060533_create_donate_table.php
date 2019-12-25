@@ -36,6 +36,7 @@ class CreateDonateTable extends Migration
         Schema::create('donates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('donate_title')->nullable();
+            $table->longText('donate_content')->nullable();
             $table->longText('donate_detail')->nullable();
             $table->timestamp('donate_start_time')->nullable();
             $table->timestamp('donate_end_time')->nullable();

@@ -27,6 +27,7 @@ class Auction extends Model
     protected $fillable = [
         'auction_title',
         'auction_detail',
+        'auction_content',
         'auction_start_time',
         'auction_end_time',
         'auction_raised',

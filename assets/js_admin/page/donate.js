@@ -182,7 +182,7 @@ $(function() {
         dataForm.append('address', accountWallet.address);
         dataForm.append('privateKey', accountWallet.privateKey);
         dataForm.append('publicKey', accountWallet.publicKey);
-        dataForm.append('donate_detail', aHTML);
+        dataForm.append('donate_content', aHTML);
         // dataForm.append('file', files);
 
         $.ajax({
@@ -247,7 +247,7 @@ $(function() {
         dataForm.append('address', accountWallet.address);
         dataForm.append('privateKey', accountWallet.privateKey);
         dataForm.append('publicKey', accountWallet.publicKey);
-        dataForm.append('donate_detail', aHTML);
+        dataForm.append('donate_content', aHTML);
         // dataForm.append('file', files);
 
         $.ajax({
