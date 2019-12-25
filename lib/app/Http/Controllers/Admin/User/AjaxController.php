@@ -34,7 +34,7 @@ class AjaxController extends Controller
 
                     return $action;
                 })
-                ->rawColumns(['roles'])
+                ->rawColumns(['roles', 'action'])
                 ->make(true);
         } catch (\Exception $e) {
             throw new \App\Exceptions\ExceptionDatatable();

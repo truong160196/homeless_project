@@ -218,3 +218,6 @@ file upload
 .wrapper {
     height: 100% !important;
 }
+.dataTables_length .select2-container {
+    width: 100px !important;
+}

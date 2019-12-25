@@ -1,4 +1,4 @@
-var table_user = "#user_table";
+var table_user = "#donate_table";
 var datatable_user;
 var run_waitMe = window.run_waitMe;
 
@@ -40,7 +40,7 @@ $(function() {
             $(table_user).DataTable().destroy();
             $('.table-unit tbody').empty();
         }
-        var urlRequest =  '/api/admin/user';
+        var urlRequest =  '/api/admin/donate';
 
 
         datatable_user = $(table_user).DataTable({
@@ -57,28 +57,40 @@ $(function() {
             "sLengthSelect": "select2",
             "responsive": true,
             "order": [
-                [0, 'desc']
+                [2, 'desc']
             ],
             "columns": [
                 {
-                    "data": "id"
+                    "data": "donate_title",
+                    "width": "30%"
                 },
                 {
-                    "data": "username"
+                    "data": "donate_goal",
+                    "width": "10%"
                 },
                 {
-                    "data": "full_name"
+                    "data": "donate_start_time",
+                    "width": "20%"
                 },
                 {
-                    "data": "role"
+                    "data": "donate_end_time",
+                    "width": "20%"
                 },
                 {
-                    "data": "action",
+                    "data": "category",
+                    "width": "20%"
+                },
+                {
+                    "data": "actions",
                     "searchable": false,
                     "orderable": false
                 },
             ],
-            columnDefs: [],
+            columnDefs: [
+                { "width": "15%", "targets": [2, 3, 4] },
+                { "width": "35%", "class": "text-left",  "targets": [0] },
+                { "width": "10%", "targets": [1, 5] }
+            ],
             "initComplete": function(settings, json) {
                 run_waitMe('.main-panel', true);
             },
@@ -95,7 +107,7 @@ $(function() {
 
         if ($('.dataTables_length select').length > 0) {
             $('.dataTables_length select').select2({
-                minimumResultsForSearch: ''
+                minimumResultsForSearch: -1
             });
         }
     }
@@ -199,9 +211,7 @@ $(function() {
                         type: 'success',
                         title: response.msg
                     });
-
-                    // clearFormCreate();
-                    // loadTableUnit();
+                    window.location.href = base_url + '/admin/donate';
                 } else {
                     Swal.fire({
                         type: 'warning',
