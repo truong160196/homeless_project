@@ -19,7 +19,7 @@ $(function() {
                 $(document).on('click','.btn-delete-location', function(e) {
                     var id = e.currentTarget.dataset.id;
                     var url = base_ajax+'/admin/location/delete/'+id;
-                    deleteActivity(url,id);
+                    deleteLocation(url,id);
                 })
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -114,7 +114,7 @@ $(function() {
         run_waitMe('.limiter', true);
     };
 
-    function deleteActivity(url,id) {
+    function deleteLocation(url,id) {
        $.ajax({
             type:"delete",
             url: url,

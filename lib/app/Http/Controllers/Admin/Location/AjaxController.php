@@ -15,7 +15,7 @@ class AjaxController extends Controller
 {
    public function list()
    {
-       $locations = DB::table('locations')->get();
+       $locations = DB::table('locations')->where('is_delete', 0)->get();
        return view('page.admin.setting.location.listLocation', [
            'locations' => $locations
        ]);
@@ -24,7 +24,6 @@ class AjaxController extends Controller
    public function delete(Request $request) {
        try {
            DB::beginTransaction();
-
            DB::table('locations')
            ->where("locations.id", '=',  $request->id)
            ->update(['locations.is_delete'=> '1','locations.deleted_at'=>Carbon::today()->toDateString()]);

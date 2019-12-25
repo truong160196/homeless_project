@@ -37,19 +37,29 @@ class AjaxController extends Controller
        }
    }
    public function update(Request $request) {
-       try {
-           DB::beginTransaction();
-           DB::table('donate_activities')
-           ->where("donate_activities.id", '=',  $request->id)
-           ->update(['donate_activities.category_name'=> $request->name,'donate_categories.donate_activities'=> $request->detail,'donate_categories.updated_at'=>Carbon::today()->toDateString()]);
-           
-           DB::commit();
-           return $this->JsonExport(200, 'Update Category successfully');
+    $rules = array(
+        'activity_name_edit' => 'required',
+        'id_edit' => 'required'
+    );
 
-       } catch (\Exception $e) {
-           return $this->JsonExport(500, 'Internal Server Error');
-       }
-   }
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+        return $this->JsonExport(403, __('app.error_403')); 
+    } else {
+        try {
+            DB::beginTransaction();
+            DB::table('donate_activities')
+            ->where("donate_activities.id", '=',  $request->id)
+            ->update(['donate_activities.activity_name'=> $request->activity_name_edit,'donate_activities.activity_detail'=> $request->activity_detail_edit,'donate_activities.updated_at'=>Carbon::today()->toDateString()]);
+            
+            DB::commit();
+            return $this->JsonExport(200, 'Update Activity successfully');
+
+        } catch (\Exception $e) {
+            return $this->JsonExport(500, 'Internal Server Error');
+        }
+    }
+}
    public function create(Request $request)
    {
        $rules = array(
@@ -79,6 +89,19 @@ class AjaxController extends Controller
            }catch (\Exception $e) {
                return $this->JsonExport(500, 'Internal Server Error');
            }
+       }
+   }
+   public function detail($id)
+   {
+       try {
+           $activity= DB::table('donate_activities')->where('id','=', $id)->first();
+           if ($activity) {
+               return response()->json(['data' => $activity], 200);
+           }
+
+       } catch (\Exception $e) {
+           return response()
+               ->json(['msg' => 'Can not find activity'], 500);
        }
    }
 }

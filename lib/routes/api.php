@@ -85,7 +85,7 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::get('/', 'AjaxController@list')->name('admin.activity.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.activity.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.activity.create');
-        Route::post('/update', 'AjaxController@update')->name('admin.activity.update');
+        Route::post('/update/{id}', 'AjaxController@update')->name('admin.activity.update');
         Route::delete('/delete/{id}', 'AjaxController@delete')->name('admin.activity.delete');
     });
 
@@ -95,7 +95,7 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.location.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.location.create');
         Route::post('/update', 'AjaxController@update')->name('admin.location.update');
-        Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.location.delete');
+        Route::delete('/delete/{id}', 'AjaxController@delete')->name('admin.location.delete');
     });
 
     // User

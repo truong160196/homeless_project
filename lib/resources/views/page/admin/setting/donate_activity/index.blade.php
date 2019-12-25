@@ -12,3 +12,4 @@
 </div>
 
 @include('page.admin.setting.donate_activity.modalCreateActivity')
+@include('page.admin.setting.donate_activity.modalEditActivity')
