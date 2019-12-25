@@ -31,13 +31,26 @@ class AjaxController extends Controller
             ->update(['donate_categories.is_delete'=> '1','donate_categories.deleted_at'=>Carbon::today()->toDateString()]);
             
             DB::commit();
+            return $this->JsonExport(200, 'Delete Category successfully');
+
+        } catch (\Exception $e) {
+            return $this->JsonExport(500, 'Internal Server Error');
+        }
+    }
+    public function update(Request $request) {
+        try {
+            DB::beginTransaction();
+            DB::table('donate_categories')
+            ->where("donate_categories.id", '=',  $request->id)
+            ->update(['donate_categories.category_name'=> $request->name,'donate_categories.category_detail'=> $request->detail,'donate_categories.updated_at'=>Carbon::today()->toDateString()]);
+            
+            DB::commit();
             return $this->JsonExport(200, 'Update Category successfully');
 
         } catch (\Exception $e) {
             return $this->JsonExport(500, 'Internal Server Error');
         }
     }
-
     public function create(Request $request)
     {
         $rules = array(

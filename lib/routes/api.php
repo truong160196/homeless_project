@@ -76,21 +76,21 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::get('/', 'AjaxController@list')->name('admin.category.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.category.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.category.create');
-        Route::post('/update', 'AjaxController@update')->name('admin.category.update');
+        Route::post('/update/{id}', 'AjaxController@update')->name('admin.category.update');
         Route::delete('/delete/{id}', 'AjaxController@delete')->name('admin.category.delete');
     });
 
     // Activity
-    Route::group(['namespace' => 'Setting', 'prefix' => 'activity'], function () {
+    Route::group(['namespace' => 'Activity', 'prefix' => 'activity'], function () {
         Route::get('/', 'AjaxController@list')->name('admin.activity.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.activity.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.activity.create');
         Route::post('/update', 'AjaxController@update')->name('admin.activity.update');
-        Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.activity.delete');
+        Route::delete('/delete/{id}', 'AjaxController@delete')->name('admin.activity.delete');
     });
 
     // Location
-    Route::group(['namespace' => 'Setting', 'prefix' => 'location'], function () {
+    Route::group(['namespace' => 'Location', 'prefix' => 'location'], function () {
         Route::get('/', 'AjaxController@list')->name('admin.location.list');
         Route::get('/detail/{id}', 'AjaxController@detail')->name('admin.location.detail');
         Route::post('/create', 'AjaxController@create')->name('admin.location.create');

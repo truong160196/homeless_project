@@ -84,7 +84,7 @@ class CreateDonateTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('location_name')->nullable();
-
+            $table->tinyInteger('is_delete')->default(0);
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
