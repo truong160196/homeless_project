@@ -12,3 +12,4 @@
 </div>
 
 @include('page.admin.setting.location.modalCreateLocation')
+@include('page.admin.setting.location.modalEditLocation')

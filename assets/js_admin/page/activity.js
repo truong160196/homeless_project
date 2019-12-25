@@ -153,7 +153,7 @@ $(function() {
             success: function(response) {
                 if (response.data) {
                     var activity = response.data;
-                    $("#id_edit").val(activity.id);
+                    $("#id_edit_activity").val(activity.id);
                     $("#activity_name_edit").val(activity.activity_name);
                     $("#activity_detail_edit").val(activity.activity_detail ? activity.activity_detail : "");
                     $("#activity_name_edit").parent().addClass("is-filled");
@@ -188,8 +188,8 @@ $(function() {
 
     var updateActivitySubmitFrom = function () {
         run_waitMe('.limiter');
-        var id = $("#id_edit").val();
-        var url = base_ajax + '/admin/activity/update/' + id;
+        var id = $("#id_edit_activity").val();
+        var url = base_ajax + '/admin/activity/update';
         var dataForm = $("#form_edit_activity").serialize();
 
         $.ajax({

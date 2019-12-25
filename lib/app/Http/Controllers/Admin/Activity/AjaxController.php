@@ -39,7 +39,7 @@ class AjaxController extends Controller
    public function update(Request $request) {
     $rules = array(
         'activity_name_edit' => 'required',
-        'id_edit' => 'required'
+        'id_edit_activity' => 'required'
     );
 
     $validator = Validator::make($request->all(), $rules);
@@ -49,7 +49,7 @@ class AjaxController extends Controller
         try {
             DB::beginTransaction();
             DB::table('donate_activities')
-            ->where("donate_activities.id", '=',  $request->id)
+            ->where("donate_activities.id", '=',  $request->id_edit_activity)
             ->update(['donate_activities.activity_name'=> $request->activity_name_edit,'donate_activities.activity_detail'=> $request->activity_detail_edit,'donate_activities.updated_at'=>Carbon::today()->toDateString()]);
             
             DB::commit();

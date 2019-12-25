@@ -50,7 +50,7 @@ class AjaxController extends Controller
             try {
                 DB::beginTransaction();
                 DB::table('donate_categories')
-                ->where("donate_categories.id", '=',  $request->id)
+                ->where("donate_categories.id", '=',  $request->id_edit)
                 ->update(['donate_categories.category_name'=> $request->category_name_edit,'donate_categories.category_detail'=> $request->category_detail_edit,'donate_categories.updated_at'=>Carbon::today()->toDateString()]);
                 
                 DB::commit();

@@ -11,7 +11,7 @@
                 <td>{{$location->location_name}}</td>
                 <td>
                     <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                        <i class="material-icons">edit</i>
+                        <i class="material-icons btn-edit-location" data-id="{{$location->id}}" data-name="{{$location->location_name}}" >edit</i>
                     </button>
                     <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
                         <i class="material-icons btn-delete-location " data-id="{{$location->id}}">close</i>

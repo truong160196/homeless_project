@@ -36,19 +36,29 @@ class AjaxController extends Controller
        }
    }
    public function update(Request $request) {
-       try {
-           DB::beginTransaction();
-           DB::table('donate_categories')
-           ->where("donate_categories.id", '=',  $request->id)
-           ->update(['donate_categories.category_name'=> $request->name,'donate_categories.category_detail'=> $request->detail,'donate_categories.updated_at'=>Carbon::today()->toDateString()]);
-           
-           DB::commit();
-           return $this->JsonExport(200, 'Update Category successfully');
+    $rules = array(
+        'location_name_edit' => 'required',
+        'id_edit_location' => 'required'
+    );
 
-       } catch (\Exception $e) {
-           return $this->JsonExport(500, 'Internal Server Error');
-       }
-   }
+    $validator = Validator::make($request->all(), $rules);
+    if ($validator->fails()) {
+        return $this->JsonExport(403, __('app.error_403')); 
+    } else {
+        try {
+            DB::beginTransaction();
+            DB::table('locations')
+            ->where("locations.id", '=',  $request->id_edit_location)
+            ->update(['locations.location_name'=> $request->location_name_edit,'locations.updated_at'=>Carbon::today()->toDateString()]);
+            
+            DB::commit();
+            return $this->JsonExport(200, 'Update Location successfully');
+
+        } catch (\Exception $e) {
+            return $this->JsonExport(500, 'Internal Server Error');
+        }
+    }
+    }
    public function create(Request $request)
    {
        $rules = array(
@@ -77,6 +87,19 @@ class AjaxController extends Controller
            }catch (\Exception $e) {
                return $this->JsonExport(500, 'Internal Server Error');
            }
+       }
+   }
+   public function detail($id)
+   {
+       try {
+           $location = DB::table('locations')->where('id','=', $id)->first();
+           if ($location) {
+               return response()->json(['data' => $location], 200);
+           }
+
+       } catch (\Exception $e) {
+           return response()
+               ->json(['msg' => 'Can not find category'], 500);
        }
    }
 }

@@ -188,7 +188,7 @@ $(function() {
     var updateCategorySubmitFrom = function () {
         run_waitMe('.limiter');
         var id = $("#id_edit").val();
-        var url = base_ajax + '/admin/category/update/' + id;
+        var url = base_ajax + '/admin/category/update';
         var dataForm = $("#form_edit_category").serialize();
 
         $.ajax({
