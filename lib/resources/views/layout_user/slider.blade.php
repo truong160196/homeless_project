@@ -13,7 +13,7 @@
                         </div>
                         <div class="clearfix"></div>
                         <div data-swiper-parallax="500" class="slide-btns">
-                            <a href="#" class="theme-btn-s2">Donate Now</a>
+                            <a href="{{route('user.page.donate.list')}}" class="theme-btn-s2">Donate Now</a>
                             <a href="https://www.youtube.com/embed/7e90gBu4pas?autoplay=1" class="hero-video-btn video-btn"  data-type="iframe" tabindex="0"><i class="fi flaticon-play-button"></i>Watch About</a>
                         </div>
                     </div>

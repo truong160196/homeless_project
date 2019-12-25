@@ -13,6 +13,8 @@
 <script type="text/javascript" src="{{asset('assets/lib/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/lib/sweet2/sweet2.js')}}"></script>
 
+<script type="text/javascript" src="{{asset('assets/js_user/qrcode.min.js')}}"></script>
+
 {{--JS library--}}
 <script type="text/javascript" src="{{asset('assets/js_user/jquery-plugin-collection.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js_user/main.js')}}"></script>
@@ -38,6 +40,14 @@
             });
         }
     };
+
+    var qrcode = new QRCode("qrcode", {
+        width: 250,
+        height: 250,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
 </script>
 {{--web3 ethereum--}}
 <script type="text/javascript" src="{{asset('assets/lib/web3/web3.min.js')}}"></script>

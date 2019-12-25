@@ -25,7 +25,6 @@
                             <div class="details">
                                 <h3>Healp The Child</h3>
                                 <p>We connects nonprofits, donors, and companies in nearly every country around.</p>
-                                <a href="#" class="read-more">Join us Now</a>
                             </div>
                         </div>
                         <div class="grid">
@@ -35,8 +34,6 @@
                             <div class="details">
                                 <h3>Become a Volunteer</h3>
                                 <p>We connects nonprofits, donors, and companies in nearly every country around.</p>
-
-                                <a href="#" class="read-more">Join us Now</a>
                             </div>
                         </div>
                         <div class="grid">
@@ -46,7 +43,6 @@
                             <div class="details">
                                 <h3>Get Involved</h3>
                                 <p>We connects nonprofits, donors, and companies in nearly every country around.</p>
-                                <a href="#" class="read-more">Join us Now</a>
                             </div>
                         </div>
 
@@ -57,7 +53,6 @@
                             <div class="details">
                                 <h3>Emergency Case</h3>
                                 <p>We connects nonprofits, donors, and companies in nearly every country around.</p>
-                                <a href="#" class="read-more">Join us Now</a>
                             </div>
                         </div>
                     </div>

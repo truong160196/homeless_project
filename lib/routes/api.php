@@ -137,9 +137,15 @@ Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
         Route::post('/create', 'AjaxController@create')->name('store.home.create');
         Route::post('/update', 'AjaxController@update')->name('store.home.update');
     });
-    // Product
+    // User
     Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
         Route::get('/detail/{id}', 'AjaxController@detail')->name('store.user.detail');
         Route::post('/update', 'AjaxController@update')->name('store.user.update');
+    });
+
+    //
+    Route::group(['namespace' => 'Product', 'prefix' => 'product'], function () {
+        Route::get('/list', 'AjaxController@list')->name('store.product.list');
+        Route::get('/search', 'AjaxController@search')->name('store.product.search');
     });
 });

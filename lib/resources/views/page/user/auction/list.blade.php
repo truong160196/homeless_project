@@ -83,11 +83,9 @@
                         <div class="widget category-widget">
                             <h3><i class="ti-settings icon"></i>Categories</h3>
                             <ul>
-                                <li><a href="#">For Education  <span>2</span></a></li>
-                                <li><a href="#">For hungry clhid  <span>3</span></a></li>
-                                <li><a href="#">For Homessel<span>7</span></a></li>
-                                <li><a href="#">For Children  <span>5</span></a></li>
-                                <li><a href="#">For Donate Now <span>10</span></a></li>
+                                @foreach($categories as $category)
+                                    <li>{{$category->category_name}}  <span>{{$category->id}}</span></li>
+                                @endforeach
                             </ul>
                         </div>
 

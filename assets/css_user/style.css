@@ -10081,3 +10081,50 @@ select.form-control:focus::-ms-value {
 .danger {
     background: #ac0500;
 }
+
+.qrcode {
+    position: fixed;
+    z-index: 999999;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background: #fff;
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+    border-radius: 15px;
+    display: none;
+}
+
+.qrCode-over {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    opacity: .7;
+    display: none;
+}
+
+.qrcode .btn-close {
+    position: absolute;
+    background: none;
+    font-size: 30px;
+    width: 35px;
+    height: 35px;
+    right: 5px;
+    top: -15px;
+    border-radius: 50%;
+    border: none;
+}
+
+.qrcode #qrcode {
+    position: absolute;
+    padding: 5px;
+    margin: 25px;
+    height: 250px;
+    width: 250px;
+}

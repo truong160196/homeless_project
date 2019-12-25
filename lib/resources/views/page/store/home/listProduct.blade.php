@@ -4,15 +4,21 @@
         <div class="img-holder">
             <img src="{{asset($product->product_image)}}" alt>
         </div>
-        <div class="cart-details">
-            <ul>
-                <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-            </ul>
-        </div>
     </div>
     <div class="details">
-        <h4><a href="#">{{$product->product_name}}</a></h4>
-        <span class="price">${{$product->product_price}}</span>
+        <h4>{{$product->product_name}}</h4>
+        <p>{{$product->product_sku}}</p>
+        <button
+            class="btn btn-warning price"
+            onclick="addProductToCart(
+            '{{$product->id}}',
+            '{{$product->product_price}}',
+            '{{$product->product_name}}',
+            '{{$product->product_sku}}'
+            )"
+        >
+            ${{$product->product_price}}
+        </button>
     </div>
 </div>
 @endforeach

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use DateTime;
 
 class WebController extends Controller
 {
@@ -13,10 +14,17 @@ class WebController extends Controller
     {
         $auctions = DB::table('auctions')
             ->orderBy('auction_start_time', 'asc')
-            ->where('auction_start_time', '>', Carbon::now())
+            ->where('auction_start_time', '>', Carbon::now(new \DateTimeZone('Asia/Ho_Chi_Minh')))
             ->paginate(4);
+
+        $categories = DB::table('donate_categories')
+            ->limit(6)
+            ->get();
         
-        return view('page.user.auction.list', ['auctions' => $auctions]);
+        return view('page.user.auction.list', [
+                'auctions' => $auctions,
+                'categories' => $categories,
+            ]);
     }
 
     public function detail($id)
@@ -30,12 +38,11 @@ class WebController extends Controller
 
         if (!empty($auction)) {
             $take = 1;
-
-            if ($auction->auction_start_time <= Carbon::now() && $auction->auction_end_time >= Carbon::now()) {
+            if ($auction->auction_start_time <= Carbon::now(new \DateTimeZone('Asia/Ho_Chi_Minh')) && $auction->auction_end_time >= Carbon::now(new \DateTimeZone('Asia/Ho_Chi_Minh'))) {
                 $type = 'auction';
                 $take = 5;
 
-            } else if ($auction->auction_end_time < Carbon::now()) {
+            } else if ($auction->auction_end_time < Carbon::now(new \DateTimeZone('Asia/Ho_Chi_Minh'))) {
                 $type = 'old';
             }
 
