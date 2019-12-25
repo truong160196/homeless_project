@@ -138,4 +138,25 @@ $(function() {
             }
        });
     };
+    $(document).on('click','.btn-edit-cate', function(e) {
+        openModalEditCategory();
+        e.preventDefault();
+    });
+
+    var openModalEditCategory = function () {
+        clearFormCreate();
+        $('#modal_category_edit').modal('show');
+
+        $('#birthday').daterangepicker({
+            timePicker: false,
+            singleDatePicker: true,
+            timePicker24Hour: false,
+            timePickerIncrement: 1,
+            autoUpdateInput: true,
+            locale: {
+                format: 'DD/MM/YYYY',
+                cancelLabel: 'Clear'
+            }
+        });
+    };
 });
