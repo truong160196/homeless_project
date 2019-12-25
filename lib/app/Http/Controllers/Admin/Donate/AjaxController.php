@@ -9,5 +9,5 @@ use Validator;
 
 class AjaxController extends Controller
 {
-   //
+  
 }

@@ -7,9 +7,6 @@ $(function() {
 
     $(document).ready(function() {
         loadListCategory();
-        function deleteCategory(id) {
-            alert(id);
-         };
     });
 
     var loadListCategory = () => {
