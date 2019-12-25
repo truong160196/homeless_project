@@ -1,0 +1,54 @@
+.card .card-footer
+{
+    display: inline-block;
+    border-top: 1px solid rgba(176,176,176,1) !important;
+    padding-top: 20px !important;
+}
+.card .card-footer button {
+    float: right !important;
+}
+
+.description-scroll {
+    max-height: 500px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+#summernote {
+    padding: 15px 30px;
+    border: 1px solid rgba(176,176,176,1);
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(176,176,176,1);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(176,176,176,1);
+    box-shadow: 1px 1px 1px 0px rgba(176,176,176,1);
+}
+
+.image-donate {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border: 1px solid rgba(176,176,176,1);
+    -webkit-box-shadow: 1px 1px 1px 0px rgba(176,176,176,1);
+    -moz-box-shadow: 1px 1px 1px 0px rgba(176,176,176,1);
+    box-shadow: 1px 1px 1px 0px rgba(176,176,176,1);
+    cursor: pointer;
+}
+.image-donate i {
+    position: absolute;
+    z-index: 99;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: 600;
+}
+.image-donate:hover {
+    background: rgba(246, 246, 246, 0.7);
+    color: #ac0500;
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(176,176,176,1);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(176,176,176,1);
+    box-shadow: 2px 2px 2px 0px rgba(176,176,176,1);
+}
+
+.file {
+    display: none;
+}

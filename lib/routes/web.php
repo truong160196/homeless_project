@@ -26,12 +26,15 @@ Route::group(['middleware' => ['auth.admin'], 'namespace' => 'Admin', 'prefix' =
     // auction
     Route::group(['namespace' => 'Auction', 'prefix' => 'auction'], function () {
         Route::get('/', 'WebController@index')->name('admin.page.auction');
+        Route::get('/create', 'WebController@create')->name('admin.page.auction.create');
+        Route::get('/update/{id}', 'WebController@update')->name('admin.page.auction.update');
     });
 
     // donate
     Route::group(['namespace' => 'Donate', 'prefix' => 'donate'], function () {
         Route::get('/', 'WebController@index')->name('admin.page.donate');
         Route::get('/create', 'WebController@create')->name('admin.page.donate.create');
+        Route::get('/update/{id}', 'WebController@update')->name('admin.page.donate.update');
     });
 
     // history

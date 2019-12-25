@@ -13,7 +13,7 @@ class Donate extends Model
     use SoftDeletes;
     use AutoloadsRelationships;
     protected $table = 'donates';
-    protected $dateFormat = "Y-m-d";
+    protected $dateFormat = "Y-m-d H:i:s";
     public static $snakeAttributes = false;
 
     protected $guarded = ['id'];
