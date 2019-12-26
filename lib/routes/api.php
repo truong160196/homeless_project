@@ -114,12 +114,14 @@ Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
     Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
         Route::get('/detail/{id}', 'AjaxController@detail')->name('user.account.detail');
         Route::post('/update', 'AjaxController@update')->name('user.account.update');
-    });
-
-    Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
         Route::get('/detail/{id}', 'AjaxController@detail')->name('user.account.detail');
         Route::post('/withdraw', 'AjaxController@withdraw')->name('user.account.withdraw');
         Route::post('/get-free-token', 'AjaxController@getFreeToken')->name('user.account.getFreeToken');
+    });
+
+    // donate
+    Route::group(['namespace' => 'Donate', 'prefix' => 'donate'], function () {
+        Route::post('/send', 'AjaxController@donate')->name('user.donate.send');
     });
 
     Route::group(['namespace' => 'Transaction', 'prefix' => 'transaction'], function () {

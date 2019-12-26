@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="details">
                                             <h4><a href="#">{{$auction->auction_title}}</a></h4>
-                                            <span class="date"><i class="ti-timer"></i> FROM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_start_time)->format('H\h i\'')}}</span>
+                                            <span class="date"><i class="ti-timer"></i> FROM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_start_time)->format("H\h i")}}</span>
                                             <br>
                                             <span class="date"><i class="ti-timer"></i> TO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_end_time)->format('H\h i\'')}}</span>
                                         </div>
@@ -118,10 +118,10 @@
                                     <h3><a href="#">{{$donate->donate_title}}</a> </h3>
                                     <div class="meta">
                                         <div class="goal">
-                                            <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_raised)}}$</span></p>
+                                            <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_goal)}}$</span></p>
                                         </div>
                                         <div class="raised">
-                                            <p> Raised <span class="color-green">{{number_format($donate->donate_goal)}}$</span></p>
+                                            <p> Raised <span class="color-green">{{number_format($donate->donate_raised)}}$</span></p>
                                         </div>
                                     </div>
                                     <p class="talk">{{$donate->donate_detail}}</p>
@@ -134,34 +134,65 @@
                 </div>
 
                 <div class="col col-md-4 mar-bot-20">
-                    <div class="event-slider">
-                        @foreach ($donates_right as $donate)
-                            <div class="slider">
-                                <img src="{{asset($donate->donate_image)}}" alt="" />
-                                <div class="content-meta">
-                                    <div class="skills">
-                                        <div class="skill">
-                                            <div class="progress">
-                                                <div class="progress-bar" data-percent="{{ number_format($donate->donate_raised / $donate->donate_goal * 100, 2) }}"></div>
+                    @if(count($donates_right) > 1)
+                        <div class=" event-slider">
+                            @foreach ($donates_right as $donate)
+                                <div class="slider">
+                                    <img src="{{asset($donate->donate_image)}}" alt="" />
+                                    <div class="content-meta">
+                                        <div class="skills">
+                                            <div class="skill">
+                                                <div class="progress">
+                                                    <div class="progress-bar" data-percent="{{ number_format($donate->donate_raised / $donate->donate_goal * 100, 2) }}"></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <h3><a href="#">{{$donate->donate_title}}</a> </h3>
-                                    <div class="meta">
-                                        <div class="goal">
-                                            <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_raised)}}$</span></p>
+                                        <h3><a href="#">{{$donate->donate_title}}</a> </h3>
+                                        <div class="meta">
+                                            <div class="goal">
+                                                <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_goal)}}$</span></p>
+                                            </div>
+                                            <div class="raised">
+                                                <p> Raised <span class="color-green">{{number_format($donate->donate_raised)}}$</span></p>
+                                            </div>
                                         </div>
-                                        <div class="raised">
-                                            <p> Raised <span class="color-green">{{number_format($donate->donate_goal)}}$</span></p>
-                                        </div>
+                                        <p class="talk">{{$donate->donate_detail}}</p>
+                                        <a href="{{route('user.page.donate.donate', ['id' => $donate->id])}}" class="theme-btn-s4">Donate Now</a>
+                                        <a href="{{route('user.page.donate.detail', ['id' => $donate->id])}}" class="theme-btn-s5">Read Now</a>
                                     </div>
-                                    <p class="talk">{{$donate->donate_detail}}</p>
-                                    <a href="{{route('user.page.donate.donate', ['id' => $donate->id])}}" class="theme-btn-s4">Donate Now</a>
-                                    <a href="{{route('user.page.donate.detail', ['id' => $donate->id])}}" class="theme-btn-s5">Read Now</a>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class=" event-slider-singe">
+                            @foreach ($donates_right as $donate)
+                                <div class="slider">
+                                    <img src="{{asset($donate->donate_image)}}" alt="" />
+                                    <div class="content-meta">
+                                        <div class="skills">
+                                            <div class="skill">
+                                                <div class="progress">
+                                                    <div class="progress-bar" data-percent="{{ number_format($donate->donate_raised / $donate->donate_goal * 100, 2) }}"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3><a href="#">{{$donate->donate_title}}</a> </h3>
+                                        <div class="meta">
+                                            <div class="goal">
+                                                <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_goal)}}$</span></p>
+                                            </div>
+                                            <div class="raised">
+                                                <p> Raised <span class="color-green">{{number_format($donate->donate_raised)}}$</span></p>
+                                            </div>
+                                        </div>
+                                        <p class="talk">{{$donate->donate_detail}}</p>
+                                        <a href="{{route('user.page.donate.donate', ['id' => $donate->id])}}" class="theme-btn-s4">Donate Now</a>
+                                        <a href="{{route('user.page.donate.detail', ['id' => $donate->id])}}" class="theme-btn-s5">Read Now</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

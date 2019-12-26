@@ -14,7 +14,9 @@
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12">
-                    <h2>{{ $donate->donate_title }}</h2>
+                    @if($donate)
+                        <h2>{{ $donate->donate_title }}</h2>
+                    @endif
                 </div>
             </div> <!-- end row -->
         </div> <!-- end container -->
@@ -27,76 +29,85 @@
         <div class="container">
             <div class="row">
                 <div class="col col-xs-12 col-md-8">
-                    <form class="form-horizontal form-donate">
+                    <form id="form_donate" class="form-horizontal form-donate">
+                        @if($account)
+                            <input type="hidden" id="id_user" value="{{$account->id}}">
+                        @endif
                         <fieldset>
                             <legend>Payment</legend>
-                        
+
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Card Holder's Name</label>
+                                <label class="col-md-3 col-form-label">Address Donator</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" pattern="\w+ \w+.*" title="Fill your first and last name" required>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="wallet"
+                                        name="wallet"
+                                        title="Address wallet"
+                                        readonly
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Homeless Fund</label>
+                                <div class="col-md-9">
+                                    @if($donate)
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            id="homeless_wallet"
+                                            name="homeless_wallet"
+                                            value="{{$donate->donate_address}}"
+                                            title="Address wallet"
+                                            readonly
+                                        >
+                                    @else
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            title="Address wallet"
+                                            readonly
+                                        >
+                                    @endif
                                 </div>
                             </div>
                         
                             <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Card Number</label>
+                                <label class="col-md-3 col-form-label">Donate value</label>
                                 <div class="col-md-9">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="First four digits" required>
-                                        </div>
-
-                                        <div class="col-xs-3">
-                                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Second four digits" required>
-                                        </div>
-
-                                        <div class="col-xs-3">
-                                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Third four digits" required>
-                                        </div>
-
-                                        <div class="col-xs-3">
-                                            <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Fourth four digits" required>
-                                        </div>
-                                    </div>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="amount"
+                                        name="amount"
+                                        min="0"
+                                        title="Value donate"
+                                        required
+                                    >
+                                    <button type="button" class="btn btn-balance" id="btn-max-value">
+                                        <span id="balanceDonate">Balance: 0$</span>
+                                    </button>
                                 </div>
                             </div>
-                        
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Card Expiry Date</label>
-                                <div class="col-md-9">
-                                    <div class="row">
-                                        <div class="col-xs-8">
-                                            <select class="form-control">
-                                                <option>January</option>
-                                                <option>...</option>
-                                                <option>December</option>
-                                            </select>
-                                        </div>
 
-                                        <div class="col-xs-4">
-                                            <select class="form-control">
-                                                <option>2019</option>
-                                                <option>2020</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label">Card CVV</label>
-                                <div class="col-md-9">
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-3 col-xs-6">
-                                            <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Three digits at back of your card" required>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        
                             <div class="form-group row">
                                 <div class="col-xs-12">
-                                    <button type="submit" class="btn btn-lg btn-warning pull-right">Submit</button>
+                                    <button
+                                        type="button"
+                                        id="btn_donate"
+                                        class="btn btn-lg btn-warning pull-right"
+                                        style="margin-left: 15px;"
+                                    >
+                                        Submit
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-lg btn-info pull-right"
+                                    >
+                                        Show QR Code
+                                    </button>
                                 </div>
                             </div>
                         </fieldset>
@@ -104,6 +115,7 @@
                 </div>
 
                 <div class="col-xs-12 col-md-4">
+                    @if($donate)
                     <div class="row">
                         <div class="col-xs-12 image-detail">
                             <img src="{{asset($donate->donate_image)}}" alt="" />
@@ -121,10 +133,10 @@
                                 <h3><a href="#">{{ $donate->donate_title }}</a> </h3>
                                 <div class="meta">
                                     <div class="goal">
-                                        <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_raised)}}$</span></p>
+                                        <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_goal)}}$</span></p>
                                     </div>
                                     <div class="raised">
-                                        <p> Raised <span class="color-green">{{number_format($donate->donate_goal)}}$</span></p>
+                                        <p> Raised <span class="color-green">{{number_format($donate->donate_raised)}}$</span></p>
                                     </div>
                                 </div>
                                 <h3>Help us by share:</h3>
@@ -140,6 +152,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -149,6 +162,6 @@
 @endsection
 
 @section('js')
-{{--    <script src="{{asset('assets/js_user/page/donate.js')}}"></script>--}}
+    <script src="{{asset('assets/js_user/page/donate.js')}}"></script>
 @endsection
 
