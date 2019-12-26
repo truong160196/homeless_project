@@ -147,6 +147,7 @@ Route::group(['namespace' => 'Store', 'prefix' => 'store'], function () {
 
     // User
     Route::group(['namespace' => 'Order', 'prefix' => 'order'], function () {
+        Route::get('/list', 'AjaxController@list')->name('store.order.list');
         Route::post('/create', 'AjaxController@order')->name('store.order.create');
     });
 
