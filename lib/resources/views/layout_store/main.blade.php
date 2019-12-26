@@ -11,11 +11,6 @@
   </head>
   <body>
   <div class="page-wrapper">
-      <div id="hiden_qrcode" class="qrCode-over"></div>
-      <div id="over_qrcode" class="qrcode">
-          <button type="button" class="btn btn-default btn-close">x</button>
-          <div id="qrcode"></div>
-      </div>
     @include('layout_store.header')
     @yield('page_content')
     @include('layout_store.main_js')

@@ -96,6 +96,12 @@
         </div> <!-- end container -->  
     </section>
     <!-- end shop-pg-section -->
+
+    <div id="hiden_qrcode" class="qrCode-over"></div>
+    <div id="over_qrcode" class="qrcode">
+        <button type="button" id="close_qrcode" class="btn btn-default btn-close">x</button>
+        <div id="qrcode"></div>
+    </div>
 @endsection
 
 @section('js')
