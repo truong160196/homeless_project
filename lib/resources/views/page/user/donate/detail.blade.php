@@ -45,14 +45,16 @@
                                         <h3><a href="#">{{ $donate->donate_title }}</a> </h3>
                                         <div class="meta">
                                             <div class="goal">
-                                                <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_raised)}}$</span></p>
+                                                <p> Goal : <span class="color-yeollo">{{number_format($donate->donate_goal)}}$</span></p>
                                             </div>
                                             <div class="raised">
-                                                <p> Raised <span class="color-green">{{number_format($donate->donate_goal)}}$</span></p>
+                                                <p> Raised <span class="color-green">{{number_format($donate->donate_raised)}}$</span></p>
                                             </div>
                                         </div>
                                         <p class="talk">{{$donate->donate_detail}}</p>
-                                        {!! $donate->donate_content !!}
+                                        <div class="content">
+                                            {!! $donate->donate_content !!}
+                                        </div>
                                         <h3>Help us by share:</h3>
                                         <div class="social-icons">
                                             <ul>

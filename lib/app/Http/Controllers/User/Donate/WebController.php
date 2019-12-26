@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Donate;
 
 use App\Http\Controllers\Controller;
+use App\Model\MUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +25,25 @@ class WebController extends Controller
         ->where('id', $id)
         ->first();
 
-        return view('page.user.donate.detail', ['donate' => $donate]);
+        $user = auth()->user();
+
+        if (!$user) {
+            return view('page.user.donate.detail', [
+                'donate' => $donate,
+            ]);
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        dd($account);
+
+        return view('page.user.donate.detail', [
+            'donate' => $donate,
+            'account' =>$account
+        ]);
     }
 
     public function donate($id)
@@ -33,6 +52,24 @@ class WebController extends Controller
         ->where('id', $id)
         ->first();
 
-        return view('page.user.donate.donate', ['donate' => $donate]);
+
+        $user = auth()->user();
+
+        if (!$user) {
+            return view('page.user.donate.detail', [
+                'donate' => $donate,
+                'account' => null,
+            ]);
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.user.donate.donate', [
+            'donate' => $donate,
+            'account' =>$account
+        ]);
     }
 }

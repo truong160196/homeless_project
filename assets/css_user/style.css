@@ -6180,6 +6180,27 @@ img {
     float: left;
     text-align: left;
     padding-left: 20px;
+    max-width: 170px;
+}
+
+.recent-blog-section .content-meta .content {
+    width: 100%;
+    display: inline-flex;
+}
+
+.recent-blog-section .btn-balance {
+    font-size: 12px;
+    color: #c21818;
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+.recent-blog-section .btn-balance:hover,
+.recent-blog-section .btn-balance:focus {
+    color: #ff8f41;
+    box-shadow: none;
+    outline: none;
 }
 
 .recent-blog-section .recent-case-thumb .post h4 {
