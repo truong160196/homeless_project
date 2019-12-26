@@ -105,6 +105,7 @@
 @endsection
 
 @section('js')
-<script src="{{asset('assets/js_admin/page/store.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/js_user/qrcode.min.js')}}"></script>
+    <script src="{{asset('assets/js_admin/page/store.js')}}"></script>
 @endsection
 

@@ -68,22 +68,20 @@
                 <div class="col-sm-12 row">
                     <div class="col-sm-12 card-info">
                         <div class="card card-stats">
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <h4>Order History</h4>
-                                <div class="table-history">
-                                    <table id="table_order" class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">Action</th>
-                                            <th scope="col">Currency</th>
-                                            <th scope="col">Amount</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Detail</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                        </thead>
-                                    </table>
-                                </div>
+                                <table id="table_order" class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">no#</th>
+                                        <th scope="col">Order Date</th>
+                                        <th scope="col">Hash</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -94,6 +92,6 @@
 @endsection
 
 @section('js')
-{{--    <script src="{{asset('assets/js_admin/dashboard.js')}}"></script>--}}
+    <script src="{{asset('assets/js_store/page/dashboard.js')}}"></script>
 @endsection
 

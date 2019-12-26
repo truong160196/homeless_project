@@ -42,6 +42,13 @@ var listProduct = [];
         searchProduct()
     });
 
+    $(document).on('keyup', '#keyword', function(e) {
+        e.preventDefault();
+        if (e.keyCode === 13) {
+            searchProduct()
+        }
+    });
+
     var searchProduct = function () {
         run_waitMe('.shop-panel');
         const keyword = $('#keyword').val();
