@@ -46,12 +46,12 @@ class WebController extends Controller
                 $type = 'old';
             }
 
-            $auctions_history = DB::table('auction_history')
+            $auctions_history = DB::table('auction_histories')
                 ->where('auction_id', $auction->id)
                 ->orderBy('value', 'desc')
-                ->join('users', 'users.id', '=', 'auction_history.user_id')
+                ->join('users', 'users.id', '=', 'auction_histories.user_id')
                 ->take($take)
-                ->select('users.full_name as name', 'auction_history.value as value')
+                ->select('users.full_name as name', 'auction_histories.value as value')
                 ->get();
 
             if (count($auctions_history) > 0) {
