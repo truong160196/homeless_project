@@ -3,13 +3,42 @@
 namespace App\Http\Controllers\Store\Order;
 
 use App\Http\Controllers\Controller;
+use App\Model\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Validator;
+use Yajra\DataTables\DataTables;
 
 class AjaxController extends Controller
 {
+    public function list()
+    {
+        try {
+            $data = Order::query();
+
+            return Datatables::of($data)
+                          ->addColumn('action', function ($v) {
+                    $action = '';
+                    $action .= '<span data-toggle="tooltip" data-placement="top" title="View detail caterer" class="btn-action table-action-view cursor-pointer tx-info" data-id="' . $v->id . '"><i class="far fa-view"></i></span>';
+
+                    return $action;
+                })
+                ->editColumn('order_total', function ($v) {
+                    if (!empty($v->order_total)) {
+                        return '$' . number_format($v->order_total, 0);
+                    } else {
+                        return '';
+                    }
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        } catch (\Exception $e) {
+            throw new \App\Exceptions\ExceptionDatatable();
+        }
+    }
+
     public function order(Request $request)
     {
         $rules = array(
@@ -36,6 +65,7 @@ class AjaxController extends Controller
                     'order_address' => $request->address,
                     'hash' => $request->hash,
                     'status' => 'success',
+                    'created_at' => date('Y-m-d H:i:s')
                 ];
 
                 $id = DB::table('orders')->insertGetId($order);

@@ -13,13 +13,12 @@ class Order extends Model
     use SoftDeletes;
     use AutoloadsRelationships;
     protected $table = 'orders';
-    protected $dateFormat = "Y-m-d";
+    protected $dateFormat = "Y-m-d H:i:s";
     public static $snakeAttributes = false;
 
     protected $guarded = ['id'];
 
     protected $hidden = [
-        'created_at',
         'updated_at',
         'pivot'
     ];
@@ -30,5 +29,6 @@ class Order extends Model
         'order_address',
         'hash',
         'status',
+        'created_at',
     ];
 }
