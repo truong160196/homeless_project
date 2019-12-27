@@ -6,6 +6,9 @@ var listProduct = [];
 (function ($) {
     // Khai báo mảng lưu sản phẩm giỏ hàng.
     "use strict";
+    var total = 0;
+    var tax = 0;
+    var total_payment = 0;
 
     $(document).ready(function() {
         loadListProduct();
@@ -39,6 +42,13 @@ var listProduct = [];
         searchProduct()
     });
 
+    $(document).on('keyup', '#keyword', function(e) {
+        e.preventDefault();
+        if (e.keyCode === 13) {
+            searchProduct()
+        }
+    });
+
     var searchProduct = function () {
         run_waitMe('.shop-panel');
         const keyword = $('#keyword').val();
@@ -66,10 +76,6 @@ var listProduct = [];
     var loadProductCart = function () {
         var clone = document.getElementById("clone");
         document.getElementById("list_product").innerHTML = '';
-
-        var total = 0;
-        var tax = 0;
-        var total_payment = 0;
 
         listProduct.forEach(function (item) {
             var itemClone = clone.cloneNode(true);
@@ -141,54 +147,82 @@ var listProduct = [];
 
     var submitPayment = function () {
         // run_waitMe('.shop-pg-section');
-        var qrcodeElement = document.getElementById('over_qrcode');
-        var hiden_qrcodeElement = document.getElementById('hiden_qrcode');
 
-        if (qrcodeElement) {
-            qrcodeElement.style.display = 'block';
-            hiden_qrcodeElement.style.display = 'block';
-
-            qrcode.clear();
-
-            const dataQr = {
-                address: '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D',
-                total: 200
-            };
-
-            qrcode.makeCode(JSON.stringify(dataQr));
-        }
+        // var qrcodeElement = document.getElementById('over_qrcode');
+        // var hiden_qrcodeElement = document.getElementById('hiden_qrcode');
+        //
+        // if (qrcodeElement) {
+        //     qrcodeElement.style.display = 'block';
+        //     hiden_qrcodeElement.style.display = 'block';
+        //
+        //     qrcode.clear();
+        //
+        //     const dataQr = {
+        //         address: '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D',
+        //         total: 200
+        //     };
+        //
+        //     qrcode.makeCode(JSON.stringify(dataQr));
+        // }
 
 
         var url = base_ajax + '/store/order/create';
         var dataForm = new FormData();
+        dataForm.append('total', total_payment);
+        dataForm.append('tax', tax);
+        dataForm.append('hash', '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D');
+        dataForm.append('address', '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D');
+        dataForm.append('data', JSON.stringify(listProduct));
+        // for(let i = 0; i < listProduct.length; i++) {
+        //     dataForm.append('id['+ (listProduct[i].id) +']', listProduct[i].id);
+        // }
 
-        // $.ajax({
-        //     url: url,
-        //     type: "POST",
-        //     data: dataForm,
-        //     success: function(response) {
-        //         if (response.code === 200) {
-        //             Swal.fire({
-        //                 type: 'success',
-        //                 title: response.msg
-        //             });
-        //         } else {
-        //             Swal.fire({
-        //                 type: 'warning',
-        //                 title: 'Oops',
-        //                 text: response.msg
-        //             });
-        //         }
-        //         run_waitMe('.shop-pg-section', true);
-        //     },
-        //     error: function(jqXHR, textStatus, errorThrown) {
-        //         Swal.fire({
-        //             type: 'warning',
-        //             title: 'Oops',
-        //             text: 'There was an error during processing'
-        //         });
-        //         run_waitMe('.shop-pg-section', true);
-        //     }
-        // });
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: dataForm,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.code === 200) {
+                    Swal.fire({
+                        type: 'success',
+                        title: response.msg
+                    });
+                    listProduct = [];
+                    total_payment = 0;
+                    tax = 0;
+                    total = 0;
+                    loadProductCart();
+                } else {
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops',
+                        text: response.msg
+                    });
+                }
+                run_waitMe('.shop-pg-section', true);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops',
+                    text: 'There was an error during processing'
+                });
+                run_waitMe('.shop-pg-section', true);
+            }
+        });
     }
+
+    $(document).on('click', '#close_qrcode', function (e) {
+        var qrcodeElement = document.getElementById('over_qrcode');
+        var hiden_qrcodeElement = document.getElementById('hiden_qrcode');
+
+        if (qrcodeElement) {
+            qrcodeElement.style.display = 'none';
+            hiden_qrcodeElement.style.display = 'none';
+
+            qrcode.clear();
+        }
+    });
 })(jQuery);
