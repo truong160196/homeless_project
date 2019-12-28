@@ -6,7 +6,7 @@
 @endsection
 
 @section('css')
-    <link href="{{asset('assets/css_admin/page/user.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css_admin/page/order.css')}}" rel="stylesheet">
 @endsection
 
 @section('page_content')
