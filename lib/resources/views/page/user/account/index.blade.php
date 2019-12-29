@@ -17,6 +17,7 @@
                 <a href="{{route('user.page.account')}}" class="btn btn-secondary btn-tab active" data-index="0">Dashboard</a>
                 <a href="{{route('user.page.deposit')}}" class="btn btn-secondary btn-tab " data-index="1">Deposit</a>
                 <a href="{{route('user.page.withdraw')}}" class="btn btn-secondary btn-tab " data-index="2">Withdraw</a>
+                <a href="{{route('account.logout')}}" class="btn btn-secondary btn-tab ">Logout</a>
             </div>
             <div class="tab-content">
                 <div class="blog-sidebar dashboard row">

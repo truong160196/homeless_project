@@ -26,7 +26,13 @@
                 </div>
                 <div class="col col-sm-4">
                     <div class="text">
-                        <p><a href="{{route('account.page.login')}}"><span>Login</span></a> </p>
+                        @if(Auth()->user())
+                            <p>
+                                <a href="{{route('account.logout')}}"><span>Logout</span></a>
+                            </p>
+                        @else
+                            <a href="{{route('account.page.login')}}"><span>Login</span></a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -80,7 +86,11 @@
                     </div>
                 </div>
                 <div class="contact">
-                    <a href="{{route('user.page.donate.list')}}" class="theme-btn">Donate Now</a>
+                    @if(Auth()->user())
+                        <a href="{{route('account.page.login')}}" class="theme-btn">{{Auth()->user()->username}}</a>
+                    @else
+                        <a href="{{route('account.page.login')}}" class="theme-btn">Join Us</a>
+                    @endif
                 </div>
             </div>
             <div class="separator"></div>

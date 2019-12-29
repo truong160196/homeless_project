@@ -15,7 +15,7 @@ class WebController extends Controller
 
             if (Auth::check()) {
                 if ($user->role->name === 'System Admin') {
-                    return redirect()->route('admin.page.dashboard');
+                    return redirect()->route('admin.page.auction');
                 }
 
                 if ($user->role->name === 'User') {
@@ -27,13 +27,13 @@ class WebController extends Controller
                 }
 
                 if ($user->role->name === 'Store') {
-                    return redirect()->route('store.page.store.account');
+                    return redirect()->route('store.page.home');
                 }
             } else {
                 return view('page.account.login');
             }
         } catch (\Exception $e) {
-            return redirect()->route('account.page.login');
+            return view('page.account.login');
         }
     }
 
@@ -61,6 +61,18 @@ class WebController extends Controller
             } else {
                 return view('page.account.register');
             }
+        } catch (\Exception $e) {
+            return redirect()->route('account.page.login');
+        }
+    }
+
+    public function logout () {
+        try {
+            if (Auth::user()) {
+                Auth::logout();
+            }
+            session()->flush();
+            return redirect()->route('account.page.login');
         } catch (\Exception $e) {
             return redirect()->route('account.page.login');
         }

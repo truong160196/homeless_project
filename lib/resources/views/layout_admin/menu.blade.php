@@ -11,12 +11,6 @@
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{route('admin.page.dashboard')}}">
-                    <i class="material-icons">dashboard</i>
-                    <p>Dashboard</p>
-                </a>
-            </li>
             <li class="nav-item ">
                 <a class="nav-link" href="{{route('admin.page.auction')}}">
                     <i class="material-icons">bubble_chart</i>
@@ -51,6 +45,12 @@
                 <a class="nav-link" href="{{route('admin.page.setting')}}">
                     <i class="material-icons">unarchive</i>
                     <p>Setting</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('account.logout')}}">
+                    <i class="material-icons">unarchive</i>
+                    <p>Logout</p>
                 </a>
             </li>
         </ul>

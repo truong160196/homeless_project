@@ -15,6 +15,7 @@
 //
 Route::group(['namespace' => 'Account'], function () {
     Route::get('/login', 'WebController@login')->name('account.page.login');
+    Route::get('/logout', 'WebController@logout')->name('account.logout');
     Route::get('/register', 'WebController@register')->name('account.page.register');
 });
 

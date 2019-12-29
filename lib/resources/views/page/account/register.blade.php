@@ -99,8 +99,8 @@
                 </div>
 
                 <div class="text-center p-t-90">
-                    <strong class="text-strong">Already registered?</strong>
-                    <a class="txt1" href="#">
+                    <strong class="text-strong">Already Login?</strong>
+                    <a class="txt1" href="{{route('account.page.login')}}">
                         Login
                     </a>
                 </div>

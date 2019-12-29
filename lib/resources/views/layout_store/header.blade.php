@@ -1,6 +1,8 @@
 <section class="header">
     <div class="company-name">
-        <h3>STORE</h3>
+        <a href="{{route('user.page.home')}}" class="">
+            <h3>Homeless Fund</h3>
+        </a>
     </div>
     <div class="right-header">
         <ul>
@@ -23,8 +25,10 @@
                             <img src="{{asset('assets/images/user.png')}}" />
                         </div>
                         <div class="info-user">
-                            <h5>truong160196</h5>
-                            <p>Store Owner</p>
+                            @if(auth()->user())
+                                <h5>{{auth()->user()->username}}</h5>
+                                <p>{{auth()->user()->full_name}}</p>
+                            @endif
                         </div>
                     </div>
                 </a>
