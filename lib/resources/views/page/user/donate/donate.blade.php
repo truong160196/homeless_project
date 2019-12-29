@@ -54,6 +54,7 @@
                                 <label class="col-md-3 col-form-label">Homeless Fund</label>
                                 <div class="col-md-9">
                                     @if($donate)
+                                        <input type="hidden" id="donate_id" name="donate_id" value="{{$donate->id}}">
                                         <input
                                             type="text"
                                             class="form-control"

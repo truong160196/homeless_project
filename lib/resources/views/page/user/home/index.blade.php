@@ -20,7 +20,7 @@
                     <div class="feature-grids clearfix">
                         <div class="grid">
                             <div class="header">
-                                <img src="assets/images/add/f1.png" alt="">
+                                <img src="{{asset('assets/images/add/f1.png')}}" alt>
                             </div>
                             <div class="details">
                                 <h3>Healp The Child</h3>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="grid">
                             <div class="header">
-                                <img src="assets/images/add/f4.png" alt="">
+                                <img src="{{asset('assets/images/add/f4.png')}}" alt>
                             </div>
                             <div class="details">
                                 <h3>Become a Volunteer</h3>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="grid">
                             <div class="header">
-                                <img src="assets/images/add/f2.png" alt="">
+                                <img src="{{asset('assets/images/add/f2.png')}}" alt>
                             </div>
                             <div class="details">
                                 <h3>Get Involved</h3>
@@ -48,7 +48,7 @@
 
                         <div class="grid">
                             <div class="header">
-                                <img src="assets/images/add/f3.png" alt="">
+                                <img src="{{asset('assets/images/add/f3.png')}}" alt>
                             </div>
                             <div class="details">
                                 <h3>Emergency Case</h3>
@@ -72,14 +72,17 @@
                         <h2>Bidding  <span class="theme_color">our auction &amp;</span> helping us by donation</h2>
                         
                         @foreach ($auctions as $auction)
-                            <div class="recent-case-thumb " data-case="#case-content-1">
+                            <div class="recent-case-thumb ">
                                 <div class="content">
                                     <div class="post">
                                         <div class="img-holder">
                                             <img class="auctions-img" src="{{asset($auction->product_image)}}" alt="">
                                         </div>
                                         <div class="details">
-                                            <h4><a href="#">{{$auction->auction_title}}</a></h4>
+                                            <h4><a href="{{route('user.page.auction.detail', ['id' => $auction->id])}}">
+                                                    {{$auction->auction_title}}
+                                                </a>
+                                            </h4>
                                             <span class="date"><i class="ti-timer"></i> FROM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_start_time)->format("H\h i")}}</span>
                                             <br>
                                             <span class="date"><i class="ti-timer"></i> TO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_end_time)->format('H\h i\'')}}</span>
@@ -90,11 +93,6 @@
                                         <span>
                                             {{DateTime::createFromFormat("Y-m-d H:i:s", $auction->auction_start_time)->format('M')}}
                                         </span></p>
-                                    </div>
-                                </div>
-                                <div class="overlay-text">
-                                    <div class="text-inner">
-                                        <h3>{{$auction->auction_title}}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +210,7 @@
 
                         </div>
                         <div class="img-holder">
-                            <img src="assets/images/about/about.jpg" alt>
+                            <img src="{{asset('assets/images/about/about.jpg')}}" alt>
                             <div class="video-holder">
                                 <a href="https://www.youtube.com/embed/7e90gBu4pas?autoplay=1" class="video-btn"  data-type="iframe" tabindex="0"><i class="fi flaticon-play-button-3"></i></a>
                             </div>
@@ -222,13 +220,13 @@
                 <div class="col col-md-6">
                     <div class="grid-right">
                         <div class="img-holder-2">
-                            <img src="assets/images/about/img-1.jpg" alt>
+                            <img src="{{asset('assets/images/about/img-1.jpg')}}" alt>
                         </div>
                         <div class="details">
 
                             <h3><a href="#"><span>All they wanted was the chance to do good for others.</span> </a></h3>
                             <p>Help the homeless better access basic daily human necessities such as food, clothing, and shelter</p>
-                            <a href="#" class="theme-btn-s2">Read More About</a>
+                            <a href="{{route('user.page.donate.list')}}" class="theme-btn-s2">Read More About</a>
                         </div>
                     </div>
                 </div>
@@ -246,13 +244,13 @@
                         <h2>Join your hand with us for a better life and  beautiful future</h2>
                     </div>
                     <div class="icon">
-                        <img src="assets/images/add/c-1.png" alt="">
+                        <img src="{{asset('assets/images/add/c-1.png')}}" alt>
                     </div>
                 </div>
                 <div class="col col-lg-2 col-sm-4">
                     <div class="contact-info">
 
-                        <a href="#" class="theme-btn-s7">Join with us</a>
+                        <a href="{{route('account.page.register')}}" class="theme-btn-s7">Join with us</a>
                     </div>
                 </div>
             </div>
@@ -285,72 +283,72 @@
                         <div class="projects-grids grids-container">
                             <div class="grid interior commercial">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-1.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-1.jpg" alt>
+                                    <a href="{{asset('assets/images/portfolio/img-1.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img width="100%" src="{{asset('assets/images/portfolio/img-1.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid building residential">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-2.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-2.jpg" alt>
+                                    <a href="{{asset('assets/images/portfolio/img-2.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="{{asset('assets/images/portfolio/img-2.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid interior residential">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-3.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-3.jpg" alt>
+                                    <a href="{{asset('assets/images/portfolio/img-3.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="{{asset('assets/images/portfolio/img-3.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid building commercial">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-4.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-4.jpg" alt>
+                                    <a href="{{asset('assets/images/portfolio/img-4.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="{{asset('assets/images/portfolio/img-4.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid residential plants">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-5.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-5.jpg" alt>
+                                    <a href="{{asset('assets/images/portfolio/img-5.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="{{asset('assets/images/portfolio/img-5.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid commercial ">
                                 <div class="img-holder">
-                                    <a href="assets/images/project-single/img-1.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/project-single/img-1.jpg" alt>
+                                    <a href="{{asset('assets/images/project-single/img-1.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="{{asset('assets/images/project-single/img-1.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid residential plants">
                                 <div class="img-holder">
-                                    <a href="assets/images/project-single/img-5.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/project-single/img-5.jpg" alt>
+                                    <a href="{{asset('assets/images/project-single/img-5.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="{{asset('assets/images/project-single/img-5.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid building commercial plants">
                                 <div class="img-holder">
-                                    <a href="assets/images/project-single/img-4.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/project-single/img-4.jpg" alt>
+                                    <a href="{{asset('assets/images/project-single/img-4.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="{{asset('assets/images/project-single/img-4.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid interior commercial">
                                 <div class="img-holder">
-                                    <a href="assets/images/project-single/img-2.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/project-single/img-2.jpg" alt>
+                                    <a href="{{asset('assets/images/project-single/img-2.jpg')}}" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="{{asset('assets/images/project-single/img-2.jpg')}}" alt>
                                 </div>
                                 <div class="details">
                                 </div>

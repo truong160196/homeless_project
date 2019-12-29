@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Donate;
 
 use App\Http\Controllers\Controller;
+use App\Model\Donate;
 use App\Model\JoinTransactionsUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,7 +50,23 @@ class AjaxController extends Controller
                 'transaction_id' => $id
             ];
 
-            JoinTransactionsUser::create($transaction_user);
+            $result = JoinTransactionsUser::create($transaction_user);
+
+            if (!$result) {
+                return $this->JsonExport(500, 'Save information transaction error');
+            }
+
+            $donate = Donate::find($request->donate_id);
+
+            if (!$donate) {
+                return $this->JsonExport(500, 'Save information transaction error');
+            }
+
+            if ($request->amount) {
+                $donate->donate_raised += $request->amount;
+            }
+
+            $donate->save();
 
             DB::commit();
             return $this->JsonExport(200, 'You are donate successfully');

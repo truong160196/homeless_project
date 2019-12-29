@@ -9,7 +9,6 @@
                             <li>
                                 <a href="{{route('user.page.faq')}}">Faq</a>
                             </li>
-                            <li><a href="{{route('user.page.account')}}">Account</a></li>
                         </ul>
                     </div>
                 </div>
