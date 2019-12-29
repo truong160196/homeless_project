@@ -26,12 +26,12 @@
     <section class="recent-blog-section section-padding">
         <div class="container">
             <div class="row">
-                <div class="col col-xs-12 col-md-8">
+                <div class="col col-xs-12">
                     <div class="recent-cases-content-outer">
                         <div class="recent-case-data active-case-data" >
                             <div class="row">
                                 <div class="col col-xs-12">
-                                    <img src="{{ asset($donate->donate_image) }}" alt="" />
+                                    <img style="width: 100%" src="{{ asset($donate->donate_image) }}" alt="" />
                                 </div>
                                 <div class="col col-xs-12">
                                     <div class="content-meta">
@@ -52,9 +52,6 @@
                                             </div>
                                         </div>
                                         <p class="talk">{{$donate->donate_detail}}</p>
-                                        <div class="content">
-                                            {!! $donate->donate_content !!}
-                                        </div>
                                         <h3>Help us by share:</h3>
                                         <div class="social-icons">
                                             <ul>
@@ -65,18 +62,18 @@
                                                 <li><a href="#"><i class="ti-vimeo-alt"></i></a></li>
                                             </ul>
                                         </div>
-                                        
-                                        <a href="{{route('user.page.donate.donate', ['id' => $donate->id])}}" class="theme-btn-s4">Donate Now</a>
+
+                                        <div class="form-group">
+                                            <a href="{{route('user.page.donate.donate', ['id' => $donate->id])}}" class="theme-btn-s4">Donate Now</a>
+                                        </div>
+
+                                        <div class="content">
+                                            {!! $donate->donate_content !!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-md-4">
-                    <div class="image-detail">
-                        <img src="/{{$donate->donate_image}}" alt="" />
                     </div>
                 </div>
             </div>

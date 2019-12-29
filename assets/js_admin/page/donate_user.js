@@ -42,7 +42,7 @@ $(function() {
 
         var accountWallet = blockchain.createAddress();
 
-        dataForm.append('hash', accountWallet.address);
+        dataForm.append('hash', '0x06d5dc5fe616d8e72eb2feaa34b263c6add0910252918368ce85aa859ab0ac05');
         dataForm.append('donate_id', donate_id);
 
         $.ajax({

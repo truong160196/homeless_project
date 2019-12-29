@@ -226,8 +226,8 @@
                         </div>
                         <div class="details">
 
-                            <h3><a href="#">Over <span class="color-yeollo">250 Million</span>  Children Around The World Are <span>Out Of School.</span> </a></h3>
-                            <p>Vestibulum id ligula porta felis euismod semper. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus auctor fringilla. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+                            <h3><a href="#"><span>All they wanted was the chance to do good for others.</span> </a></h3>
+                            <p>Help the homeless better access basic daily human necessities such as food, clothing, and shelter</p>
                             <a href="#" class="theme-btn-s2">Read More About</a>
                         </div>
                     </div>
@@ -325,32 +325,32 @@
                             </div>
                             <div class="grid commercial ">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-1.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-1.jpg" alt>
+                                    <a href="assets/images/project-single/img-1.jpg" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="assets/images/project-single/img-1.jpg" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid residential plants">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-5.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-5.jpg" alt>
+                                    <a href="assets/images/project-single/img-5.jpg" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="assets/images/project-single/img-5.jpg" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid building commercial plants">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-4.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-4.jpg" alt>
+                                    <a href="assets/images/project-single/img-4.jpg" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="assets/images/project-single/img-4.jpg" alt>
                                 </div>
                                 <div class="details">
                                 </div>
                             </div>
                             <div class="grid interior commercial">
                                 <div class="img-holder">
-                                    <a href="assets/images/portfolio/img-1.jpg" class="fancybox"><i class="ti-move"></i></a>
-                                    <img src="assets/images/portfolio/img-1.jpg" alt>
+                                    <a href="assets/images/project-single/img-2.jpg" class="fancybox"><i class="ti-move"></i></a>
+                                    <img src="assets/images/project-single/img-2.jpg" alt>
                                 </div>
                                 <div class="details">
                                 </div>

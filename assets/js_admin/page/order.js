@@ -48,10 +48,30 @@ $(function() {
                     "data": "order_tax"
                 },
                 {
-                    "data": "hash"
+                    "data": "hash",
+                    "render": function ( data, type, row, meta ) {
+                        if (data) {
+                            var dataHash = data.slice(0, 10) + '...' + data.slice(data.length - 10, data.length);
+                            return '<a href="https://ropsten.etherscan.io/tx/'+data+'" target="_blank">' + dataHash +'</a>';
+                        } else {
+                            return '';
+                        }
+                    }
                 },
                 {
-                    "data": "status"
+                    "data": "status",
+                    "render": function ( data, type, row, meta ) {
+                        if (data === 'pending') {
+                            return '<span class="badge badge-warning">'+ data + '</span>'
+                        }
+                        if (data === 'success') {
+                            return '<span class="badge badge-success">'+ data + '</span>'
+                        }
+                        if (data === 'fail') {
+                            return '<span class="badge badge-danger">'+ data + '</span>'
+                        }
+                        return '';
+                    }
                 },
                 {
                     "data": "action",

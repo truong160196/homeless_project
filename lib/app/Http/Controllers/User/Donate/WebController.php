@@ -13,7 +13,6 @@ class WebController extends Controller
     {
         $donates = DB::table('donates')
             ->orderBy('donate_end_time', 'desc')
-            ->where('donate_status', 'donate')
             ->paginate(6);
 
         return view('page.user.donate.list', ['donates' => $donates]);
@@ -37,8 +36,6 @@ class WebController extends Controller
             ->with('wallets')
             ->where('username', '=', $user->username)
             ->first();
-
-        dd($account);
 
         return view('page.user.donate.detail', [
             'donate' => $donate,

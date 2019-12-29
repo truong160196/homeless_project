@@ -131,7 +131,18 @@ var qrcode;
     $(document).on('click', '.btn-remove', function (e) {
         const id = $(this).attr('data-id');
 
-        listProduct = listProduct.filter(x => x.id !== id)
+        const objIndex = listProduct.find(x => x.id === id);
+
+        listProduct = listProduct.filter(x => x.id !== id);
+
+        if (objIndex > -1) {
+            total = total - (objIndex.qty * objIndex.price);
+        }
+
+        total = 0;
+        total_payment = 0;
+        tax = 0;
+        
         loadProductCart();
     });
 
@@ -155,26 +166,7 @@ var qrcode;
 
     var submitPayment = function () {
         // run_waitMe('.shop-pg-section');
-
-        // var qrcodeElement = document.getElementById('over_qrcode');
-        // var hiden_qrcodeElement = document.getElementById('hiden_qrcode');
-        //
-        // if (qrcodeElement) {
-        //     qrcodeElement.style.display = 'block';
-        //     hiden_qrcodeElement.style.display = 'block';
-        //
-        //     qrcode.clear();
-        //
-        //     const dataQr = {
-        //         address: '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D',
-        //         total: total_payment
-        //     };
-        //
-        //     qrcode.makeCode(JSON.stringify(dataQr));
-        // }
-
-
-        var url = base_ajax + '/store/order/create';
+                var url = base_ajax + '/store/order/create';
         var dataForm = new FormData();
         dataForm.append('total', total_payment);
         dataForm.append('tax', tax);
@@ -193,15 +185,28 @@ var qrcode;
             contentType: false,
             success: function(response) {
                 if (response.code === 200) {
-                    Swal.fire({
-                        type: 'success',
-                        title: response.msg
-                    });
-                    listProduct = [];
-                    total_payment = 0;
-                    tax = 0;
-                    total = 0;
-                    loadProductCart();
+                    var qrcodeElement = document.getElementById('over_qrcode');
+                    var hiden_qrcodeElement = document.getElementById('hiden_qrcode');
+
+                    if (qrcodeElement) {
+                        qrcodeElement.style.display = 'block';
+                        hiden_qrcodeElement.style.display = 'block';
+
+                        qrcode.clear();
+
+                        const dataQr = {
+                            address: '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D',
+                            total: total_payment,
+                            payment: true,
+                        };
+
+                        qrcode.makeCode(JSON.stringify(dataQr));
+                    }
+                    // listProduct = [];
+                    // total_payment = 0;
+                    // tax = 0;
+                    // total = 0;
+                    // loadProductCart();
                 } else {
                     Swal.fire({
                         type: 'warning',

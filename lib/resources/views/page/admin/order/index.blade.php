@@ -39,6 +39,7 @@
                                 <th>Tax</th>
                                 <th>Hash</th>
                                 <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                         </table>
