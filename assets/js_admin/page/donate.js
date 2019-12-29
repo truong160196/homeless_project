@@ -78,15 +78,29 @@ $(function() {
                     "orderable": false
                 },
                 {
+                    "data": "is_delete",
+                    "render": function ( data, type, row, meta ) {
+                        if (data == '0') {
+                            return '<span class="badge badge-success"> Open </span>'
+                        }
+
+                        if (data == '1') {
+                            return '<span class="badge badge-danger"> Close </span>'
+                        }
+
+                        return '';
+                    }
+                },
+                {
                     "data": "actions",
                     "searchable": false,
                     "orderable": false
                 },
             ],
             columnDefs: [
-                { "width": "15%", "targets": [2, 3, 4, 5] },
-                { "width": "30%", "class": "text-left",  "targets": [0] },
-                { "width": "10%", "targets": [1] }
+                { "width": "15%", "targets": [2, 3, 4] },
+                { "width": "25%", "class": "text-left",  "targets": [0] },
+                { "width": "10%", "targets": [1, 5, 6] }
             ],
             "initComplete": function(settings, json) {
                 run_waitMe('.main-panel', true);
@@ -202,6 +216,7 @@ $(function() {
                         text: response.msg
                     });
                 }
+                run_waitMe('.main-panel', true);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 Swal.fire({
@@ -209,9 +224,9 @@ $(function() {
                     title: 'Oops',
                     text: 'There was an error during processing'
                 });
+                run_waitMe('.main-panel', true);
             }
         });
-        run_waitMe('.main-panel', true);
     }
 
     //update
@@ -238,13 +253,7 @@ $(function() {
 
         var aHTML = $('#summernote').summernote('code');
 
-        var accountWallet = blockchain.createAddress();
-
-        dataForm.append('address', accountWallet.address);
-        dataForm.append('privateKey', accountWallet.privateKey);
-        dataForm.append('publicKey', accountWallet.publicKey);
         dataForm.append('donate_content', aHTML);
-        // dataForm.append('file', files);
 
         $.ajax({
             url: url,
@@ -267,6 +276,7 @@ $(function() {
                         text: response.msg
                     });
                 }
+                run_waitMe('.main-panel', true);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 Swal.fire({
@@ -274,8 +284,8 @@ $(function() {
                     title: 'Oops',
                     text: 'There was an error during processing'
                 });
+                run_waitMe('.main-panel', true);
             }
         });
-        run_waitMe('.main-panel', true);
     }
 });

@@ -34,6 +34,7 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Product</th>
+                                <th>Status Fund</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

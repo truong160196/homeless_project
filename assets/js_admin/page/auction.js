@@ -62,23 +62,32 @@ $(function() {
             "columns": [
                 {
                     "data": "auction_title",
-                    "width": "30%"
                 },
                 {
                     "data": "auction_raised",
-                    "width": "10%"
                 },
                 {
                     "data": "auction_start_time",
-                    "width": "20%"
                 },
                 {
                     "data": "auction_end_time",
-                    "width": "20%"
                 },
                 {
                     "data": "product_title",
-                    "width": "20%"
+                },
+                {
+                    "data": "is_delete",
+                    "render": function ( data, type, row, meta ) {
+                        if (data == '0') {
+                            return '<span class="badge badge-success"> Open </span>'
+                        }
+
+                        if (data == '1') {
+                            return '<span class="badge badge-danger"> Close </span>'
+                        }
+
+                        return '';
+                    }
                 },
                 {
                     "data": "actions",
@@ -87,9 +96,9 @@ $(function() {
                 },
             ],
             columnDefs: [
-                { "width": "15%", "targets": [2, 3, 4] },
-                { "width": "35%", "targets": [0] },
-                { "width": "10%", "targets": [1, 5] },
+                { "width": "10%", "targets": [1,5, 6] },
+                { "width": "15%", "targets": [2, 3] },
+                { "width": "20%", "targets": [0, 4] },
                 {"class": "text-left", "targets": [0, 4]}
             ],
             "initComplete": function(settings, json) {
@@ -202,11 +211,11 @@ $(function() {
         var form = $(this);
         form.parsley().validate();
         if (form.parsley().isValid()) {
-            createDonateSubmitFrom();
+            createAuctionSubmitFrom();
         }
     });
 
-    var createDonateSubmitFrom = function () {
+    var createAuctionSubmitFrom = function () {
         run_waitMe('.main-panel');
         var url = base_ajax + '/admin/auction/create';
         const formElem = document.getElementById('form_create_donate');
@@ -258,36 +267,32 @@ $(function() {
     }
 
     //update
-    $(document).on('click', '#btn_update_donate', function(e) {
+    $(document).on('click', '#btn_update_auction', function(e) {
         e.preventDefault();
-        $('#form_update_donate').submit();
+        $('#form_update_acution').submit();
     });
 
 
-    $("#form_update_donate").on('submit', function(e) {
+    $("#form_update_acution").on('submit', function(e) {
         e.preventDefault();
         var form = $(this);
         form.parsley().validate();
         if (form.parsley().isValid()) {
-            updateDonateSubmitFrom();
+            updateAuctionSubmitFrom();
         }
     });
 
-    var updateDonateSubmitFrom = function () {
+    var updateAuctionSubmitFrom = function () {
         run_waitMe('.main-panel');
         var url = base_ajax + '/admin/auction/update';
-        const formElem = document.getElementById('form_update_donate');
+        const formElem = document.getElementById('form_update_acution');
         var dataForm = new FormData(formElem);
 
-        var aHTML = $('#summernote').summernote('code');
+        var auctionDescription = $('#auction_description').summernote('code');
+        var productDetail = $('#product_detail').summernote('code');
 
-        var accountWallet = blockchain.createAddress();
-
-        dataForm.append('address', accountWallet.address);
-        dataForm.append('privateKey', accountWallet.privateKey);
-        dataForm.append('publicKey', accountWallet.publicKey);
-        dataForm.append('donate_detail', aHTML);
-        // dataForm.append('file', files);
+        dataForm.append('auction_content', auctionDescription);
+        dataForm.append('product_detail', productDetail);
 
         $.ajax({
             url: url,
@@ -310,6 +315,7 @@ $(function() {
                         text: response.msg
                     });
                 }
+                run_waitMe('.main-panel', true);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 Swal.fire({
@@ -317,8 +323,8 @@ $(function() {
                     title: 'Oops',
                     text: 'There was an error during processing'
                 });
+                run_waitMe('.main-panel', true);
             }
         });
-        run_waitMe('.main-panel', true);
     }
 });

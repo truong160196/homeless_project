@@ -215,8 +215,6 @@ class AjaxController extends Controller
         $rules = array(
             'donate_id' => 'required',
             'donate_title' => 'required',
-            'address' => 'required',
-            'privateKey' => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -260,20 +258,8 @@ class AjaxController extends Controller
                     $donate->donate_end_time = $end_date;
                 }
 
-                if ($request->donate_goal) {
-                    $donate->donate_goal = $request->donate_goal;
-                }
-
-                if ($request->donate_address) {
-                    $donate->donate_address = $request->donate_address;
-                }
-
-                if ($request->donate_private_key) {
-                    $donate->donate_private_key = $request->donate_private_key;
-                }
-
-                if ($request->donate_public_key) {
-                    $donate->donate_public_key = $request->donate_public_key;
+                if ($request->goal) {
+                    $donate->donate_goal = $request->goal;
                 }
 
                 if ($request->category_id) {

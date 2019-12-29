@@ -23,7 +23,7 @@ class AjaxController extends Controller
             return Datatables::of($data)
                  ->editColumn('auction_start_time', function ($v) {
                     if (!empty($v->auction_start_time)) {
-                        return Carbon::createFromFormat("Y-m-d H:i:s", $v->auction_start_time)->format("Y-m-d");
+                        return Carbon::createFromFormat("Y-m-d H:i:s", $v->auction_start_time)->format("M d H:i");
                     } else {
                         return '';
                     }
@@ -31,7 +31,7 @@ class AjaxController extends Controller
 
                 ->editColumn('auction_end_time', function ($v) {
                     if (!empty($v->auction_end_time)) {
-                        return Carbon::createFromFormat("Y-m-d H:i:s", $v->auction_end_time)->format("Y-m-d");
+                        return Carbon::createFromFormat("Y-m-d H:i:s", $v->auction_end_time)->format("M d H:i");
                     } else {
                         return '';
                     }
@@ -86,7 +86,7 @@ class AjaxController extends Controller
                 $start_date = Carbon::createFromFormat('Y/m/d', $request->start_date)->format('Y-m-d');
                 $end_date = Carbon::createFromFormat('Y/m/d', $request->end_date)->format('Y-m-d');
 
-                $donates = [
+                $auctions = [
                     'auction_title' => $request->auction_title,
                     'auction_detail' => $request->auction_detail,
                     'auction_content' => $request->auction_content,
@@ -102,7 +102,7 @@ class AjaxController extends Controller
                     'product_image' => $path,
                 ];
 
-                $id = Auction::create($donates);
+                $id = Auction::create($auctions);
 
                 if (!$id) {
                     DB::rollback();
@@ -122,10 +122,8 @@ class AjaxController extends Controller
     public function update(Request $request)
     {
         $rules = array(
-            'donate_id' => 'required',
-            'donate_title' => 'required',
-            'address' => 'required',
-            'privateKey' => 'required',
+            'auction_id' => 'required',
+            'auction_title' => 'required',
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -135,57 +133,66 @@ class AjaxController extends Controller
         } else {
             try {
                 DB::beginTransaction();
-                $donate = Donate::find($request->donate_id);
+                $auction = Auction::find($request->auction_id);
 
-                if (!$donate) {
+                if (!$auction) {
                     return $this->JsonExport(404, 'Can not update fund');
                 }
 
                 $path = $this->upload($request);
+
                 if ($path) {
-                    $donate->donate_image = $path;
+                    $auction->product_image = $path;
                 }
 
-                if ($request->donate_title) {
-                    $donate->donate_title = $request->donate_title;
+                if ($request->auction_title) {
+                    $auction->auction_title = $request->auction_title;
                 }
 
                 if ($request->donate_detail) {
-                    $donate->donate_detail = $request->donate_detail;
+                    $auction->donate_detail = $request->donate_detail;
+                }
+
+                if ($request->auction_content) {
+                    $auction->auction_content = $request->auction_content;
                 }
 
                 if ($request->start_date) {
                     $start_date = Carbon::createFromFormat('Y/m/d', $request->start_date)->format('Y-m-d');
-                    $donate->donate_start_time = $start_date;
+                    $auction->auction_start_time = $start_date;
                 }
 
                 if ($request->end_date) {
                     $end_date = Carbon::createFromFormat('Y/m/d', $request->end_date)->format('Y-m-d');
 
-                    $donate->donate_end_time = $end_date;
+                    $auction->auction_end_time = $end_date;
                 }
 
-                if ($request->donate_goal) {
-                    $donate->donate_goal = $request->donate_goal;
+                if ($request->auction_raised) {
+                    $auction->auction_raised = $request->raised;
                 }
 
-                if ($request->donate_address) {
-                    $donate->donate_address = $request->donate_address;
+                if ($request->product_title) {
+                    $auction->product_title = $request->product_title;
                 }
 
-                if ($request->donate_private_key) {
-                    $donate->donate_private_key = $request->donate_private_key;
+                if ($request->product_detail) {
+                    $auction->product_detail = $request->product_detail;
                 }
 
-                if ($request->donate_public_key) {
-                    $donate->donate_public_key = $request->donate_public_key;
+                if ($request->production_author) {
+                    $auction->production_author = $request->production_author;
                 }
 
                 if ($request->category_id) {
-                    $donate->category_id = $request->category_id;
+                    $auction->category_id = $request->category_id;
                 }
 
-                $result = $donate->save();
+                if ($request->status) {
+                    $auction->is_delete = $request->status;
+                }
+
+                $result = $auction->save();
 
                 if (!$result) {
                     DB::rollback();

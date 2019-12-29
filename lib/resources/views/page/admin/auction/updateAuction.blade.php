@@ -10,8 +10,8 @@
 @endsection
 
 @section('page_content')
-    <form id="form_create_donate" enctype="multipart/form-data">
-        <input type="hidden" id="auction_id" name="donate_id" value="{{$auction->id}}">
+    <form id="form_update_acution" enctype="multipart/form-data">
+        <input type="hidden" id="auction_id" name="auction_id" value="{{$auction->id}}">
         <div class="card">
             <div class="card-header">
                 <h3>Auction Information</h3>
@@ -90,13 +90,38 @@
                             />
                         </div>
                     </div>
+                    <div class="col-sm-12  margin-top-10">
+                        <label>
+                            Status
+                        </label>
+                        <div class="form-group bmd-form-group">
+                            <select
+                                class="form-control"
+                                id="status"
+                                name="status"
+                            >
+                                <option class="">Select Status Fund</option>
+                                @if ($auction->is_delete == 0)
+                                    <option selected value="0">Open</option>
+                                @else
+                                    <option value="0">Open</option>
+                                @endif
+                                @if ($auction->is_delete == 1)
+                                    <option selected value="1">Close</option>
+                                @else
+                                    <option value="1">Close</option>
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="col-md-12 margin-top-10">
                         <label>
                             Description
                         </label>
                         <div class="description-scroll">
                             <div id="auction_description">
-                                {!! $auction->auction_content !!}}
+                                {!! $auction->auction_content !!}
                             </div>
                         </div>
                         <button
@@ -217,7 +242,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="card-footer">
-                <button type="button" id="btn_create_donate" class="btn btn-primary pull-right">Update Fund</button>
+                <button type="button" id="btn_update_auction" class="btn btn-primary pull-right">Update Fund</button>
             </div>
         </div>
     </form>
