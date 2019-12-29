@@ -196,7 +196,8 @@ var qrcode;
 
                         const dataQr = {
                             address: '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D',
-                            total: total_payment,
+                            amount: 10,
+                            title: 'Payent Bill',
                             payment: true,
                         };
 

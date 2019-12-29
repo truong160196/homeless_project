@@ -19,6 +19,8 @@ var loadAddress;
 
 var getDonateFree;
 
+var qrcode;
+
 $(function() {
     'use strict';
 
@@ -39,8 +41,24 @@ $(function() {
             blockchain.subscriptionLog(function (data) {
                 initLoadDataBlockchain();
             })
+            loadQrCodeUser();
         }), 1800);
+
     });
+
+    var loadQrCodeUser = async function () {
+        qrcode = new QRCode("userCode", {
+            width: 200,
+            height: 200,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        const wallet = blockchain.accountCurrent;
+
+        qrcode.makeCode(JSON.stringify(wallet));
+    };
 
     var initLoadDataBlockchain = function () {
         loadBalanceEth();
@@ -245,7 +263,7 @@ $(function() {
         });
         run_waitMe('.page-wrapper', true);
     };
-    
+
     var eidtUserSubmitFrom = function () {
         run_waitMe('.page-wrapper');
         var url = base_ajax + '/user/account/update';

@@ -24,10 +24,11 @@
                     <div class="col-sm-12 col-lg-6">
                         <div class="widget about-widget">
                             <h3>About</h3>
-                            <div class="img-holder">
-                                <img src="{{asset('assets/images/user.png')}}" alt="">
-                            </div>
-                            @if($account)
+                            {{--<div class="img-holder">--}}
+                                {{--<div id="qrcode"></div>--}}
+                            {{--</div>--}}
+                            <div id="userCode"></div>
+                        @if($account)
                                 <input type="hidden" id="id_user" value="{{$account->id}}">
                             <table>
                                 <tbody>
@@ -124,6 +125,7 @@
 @endsection
 
 @section('js')
+    <script type="text/javascript" src="{{asset('assets/js_user/qrcode.min.js')}}"></script>
     <script src="{{asset('assets/js_user/page/account.js')}}"></script>
 @endsection
 

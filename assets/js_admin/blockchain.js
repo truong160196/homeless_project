@@ -11,6 +11,12 @@ var blockchain = {};
 (function ($) {
     "use strict";
 
+    var myAccount = {
+        username: '',
+        address: '',
+        pk: '',
+    }
+
     $(document).ready(function () {
         connect();
     });
@@ -99,6 +105,9 @@ var blockchain = {};
                     const userData = response;
 
                     if (userData && userData.wallet && userData.wallet.pk) {
+                        myAccount.username = userData.user.username;
+                        myAccount.address = userData.wallet.address;
+                        myAccount.pk = userData.wallet.pk;
                         web3Provider.eth.accounts.wallet.add(userData.wallet.pk);
                     }
                 },
@@ -330,6 +339,7 @@ var blockchain = {};
         formatCurrency: formatCurrency,
         createAddress: createAddress,
         getWallet: getWallet,
+        accountCurrent: myAccount,
         getBalanceEth: getBalanceEth,
         getBalanceDonate: getBalanceDonate,
         withdrawEth: withdrawEth,
