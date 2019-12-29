@@ -2,7 +2,7 @@
 
 @section('page_title')
     {{--{{$page_title}}--}}
-    Donate
+    Auction
 @endsection
 
 @section('css')
@@ -10,9 +10,115 @@
 @endsection
 
 @section('page_content')
+    <form id="form_create_donate" enctype="multipart/form-data">
     <div class="card">
+        <div class="card-header">
+            <h3>Auction Information</h3>
+        </div>
         <div class="card-body">
-            <form id="form_create_donate" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">
+                            Title
+                            <span class="tx-danger">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="auction_title"
+                            name="auction_title"
+                            autocomplete="off"
+                            data-parsley-validation-threshold="1"
+                            data-parsley-trigger="keyup"
+                            required
+                            data-parsley-required-message="Username is required."
+                            data-parsley-minlength="3"
+                        >
+                    </div>
+                </div>
+                <div class="col-md-12 margin-top-10">
+                    <label>
+                        Description
+                    </label>
+                    <textarea
+                        class="form-control"
+                        rows="3"
+                        id="auction_detail"
+                        name="auction_detail"
+                    ></textarea>
+                </div>
+                <div class="col-sm-12 margin-top-10 row" style="margin-top: 15px">
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">Start Date</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="start_date"
+                                name="start_date"
+                            >
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-6">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">End Date</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="end_date"
+                                name="end_date"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12  margin-top-10">
+                    <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">
+                            Raise
+                        </label>
+                        <input
+                            type="number"
+                            id="raised"
+                            name="raised"
+                            min="0"
+                            class="form-control"
+                        />
+                    </div>
+                </div>
+                <div class="col-md-12 margin-top-10">
+                    <label>
+                        Description
+                    </label>
+                    <div class="description-scroll">
+                        <div id="auction_description"></div>
+                    </div>
+                    <button
+                        id="edit_auction"
+                        class="btn btn-info"
+                        type="button"
+                        style="display: block"
+                    >
+                        Edit Desciption
+                    </button>
+                    <button
+                        id="save_auction"
+                        class="btn btn-success"
+                        type="button"
+                        style="display: none"
+                    >
+                        Save Content
+                    </button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h3>Product Information</h3>
+        </div>
+        <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group bmd-form-group">
@@ -23,8 +129,8 @@
                             <input
                                 type="text"
                                 class="form-control"
-                                id="donate_title"
-                                name="donate_title"
+                                id="product_title"
+                                name="product_title"
                                 autocomplete="off"
                                 data-parsley-validation-threshold="1"
                                 data-parsley-trigger="keyup"
@@ -34,48 +140,22 @@
                             >
                         </div>
                     </div>
-                    <div class="col-sm-12 margin-top-10 row">
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Start Date</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="start_date"
-                                    name="start_date"
-                                >
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">End Date</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="end_date"
-                                    name="end_date"
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12  margin-top-10">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">
-                                Goal
-                            </label>
-                            <input
-                                type="number"
-                                id="goal"
-                                name="goal"
-                                min="0"
-                                class="form-control"
-                            />
-                        </div>
+                    <div class="col-md-12 margin-top-10">
+                        <label>
+                            Author
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="production_author"
+                            name="production_author"
+                            autocomplete="off"
+                        >
                     </div>
                     <div class="col-sm-12 margin-top-10">
                         <div class="form-group">
                             <label>
-                                Image
+                                Product Image
                             </label>
                         </div>
                         <div class="uploader">
@@ -96,13 +176,13 @@
                     </div>
                     <div class="col-md-12 margin-top-10">
                         <label>
-                            Description
+                            Detail
                         </label>
                         <div class="description-scroll">
-                            <div id="summernote"></div>
+                            <div id="product_detail"></div>
                         </div>
                         <button
-                            id="edit"
+                            id="edit_product"
                             class="btn btn-info"
                             type="button"
                             style="display: block"
@@ -110,22 +190,23 @@
                             Edit Desciption
                         </button>
                         <button
-                            id="save"
+                            id="save_product"
                             class="btn btn-success"
                             type="button"
                             style="display: none"
                         >
-                            Save Conent
+                            Save Content
                         </button>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-            </form>
         </div>
         <div class="card-footer">
             <button type="button" id="btn_create_donate" class="btn btn-primary pull-right">Create Fund</button>
         </div>
     </div>
+    </form>
+
 @endsection
 
 @section('js')

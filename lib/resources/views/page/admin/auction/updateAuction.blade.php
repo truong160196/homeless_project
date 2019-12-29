@@ -2,7 +2,7 @@
 
 @section('page_title')
     {{--{{$page_title}}--}}
-    Donate
+    Auction
 @endsection
 
 @section('css')
@@ -10,10 +10,13 @@
 @endsection
 
 @section('page_content')
-    <div class="card">
-        <div class="card-body">
-            <form id="form_update_donate" enctype="multipart/form-data">
-                <input type="hidden" id="donate_id" name="donate_id" value="{{$donate->id}}">
+    <form id="form_create_donate" enctype="multipart/form-data">
+        <input type="hidden" id="auction_id" name="donate_id" value="{{$auction->id}}">
+        <div class="card">
+            <div class="card-header">
+                <h3>Auction Information</h3>
+            </div>
+            <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group bmd-form-group">
@@ -24,19 +27,29 @@
                             <input
                                 type="text"
                                 class="form-control"
-                                id="donate_title"
-                                name="donate_title"
+                                id="auction_title"
+                                name="auction_title"
                                 autocomplete="off"
                                 data-parsley-validation-threshold="1"
                                 data-parsley-trigger="keyup"
                                 required
                                 data-parsley-required-message="Username is required."
                                 data-parsley-minlength="3"
-                                value="{{$donate->donate_title}}"
-                            >
+                                value="{{$auction->auction_title}}" >
                         </div>
                     </div>
-                    <div class="col-sm-12 margin-top-10 row">
+                    <div class="col-md-12 margin-top-10">
+                        <label>
+                            Description
+                        </label>
+                        <textarea
+                            class="form-control"
+                            rows="3"
+                            id="auction_detail"
+                            name="auction_detail"
+                        >{{$auction->auction_detail}}</textarea>
+                    </div>
+                    <div class="col-sm-12 margin-top-10 row" style="margin-top: 15px">
                         <div class="col-sm-12 col-lg-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Start Date</label>
@@ -45,7 +58,7 @@
                                     class="form-control"
                                     id="start_date"
                                     name="start_date"
-                                    value="{{$donate->donate_start_time}}"
+                                    value="{{$auction->auction_start_time}}"
                                 >
                             </div>
                         </div>
@@ -57,7 +70,7 @@
                                     class="form-control"
                                     id="end_date"
                                     name="end_date"
-                                    value="{{$donate->donate_end_time}}"
+                                    value="{{$auction->auction_end_time}}"
                                 >
                             </div>
                         </div>
@@ -65,22 +78,92 @@
                     <div class="col-sm-12  margin-top-10">
                         <div class="form-group bmd-form-group">
                             <label class="bmd-label-floating">
-                                Goal
+                                Raise
                             </label>
                             <input
                                 type="number"
-                                id="goal"
-                                name="goal"
+                                id="raised"
+                                name="raised"
                                 min="0"
                                 class="form-control"
-                                value="{{$donate->donate_goal}}"
+                                value="{{$auction->auction_raised}}"
                             />
                         </div>
+                    </div>
+                    <div class="col-md-12 margin-top-10">
+                        <label>
+                            Description
+                        </label>
+                        <div class="description-scroll">
+                            <div id="auction_description">
+                                {!! $auction->auction_content !!}}
+                            </div>
+                        </div>
+                        <button
+                            id="edit_auction"
+                            class="btn btn-info"
+                            type="button"
+                            style="display: block"
+                        >
+                            Edit Desciption
+                        </button>
+                        <button
+                            id="save_auction"
+                            class="btn btn-success"
+                            type="button"
+                            style="display: none"
+                        >
+                            Save Content
+                        </button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3>Product Information</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group bmd-form-group">
+                            <label class="bmd-label-floating">
+                                Title
+                                <span class="tx-danger">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="product_title"
+                                name="product_title"
+                                autocomplete="off"
+                                data-parsley-validation-threshold="1"
+                                data-parsley-trigger="keyup"
+                                required
+                                data-parsley-required-message="Username is required."
+                                data-parsley-minlength="3"
+                                value="{{$auction->product_title}}"
+                            >
+                        </div>
+                    </div>
+                    <div class="col-md-12 margin-top-10">
+                        <label>
+                            Author
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="production_author"
+                            name="production_author"
+                            autocomplete="off"
+                            value="{{$auction->production_author}}"
+                        >
                     </div>
                     <div class="col-sm-12 margin-top-10">
                         <div class="form-group">
                             <label>
-                                Image
+                                Product Image
                             </label>
                         </div>
                         <div class="uploader">
@@ -89,13 +172,12 @@
                                 <img
                                     id="file-image"
                                     name="file-image"
-                                    src="{{asset($donate->donate_image)}}"
+                                    src="{{asset($auction->product_image)}}"
                                     width="320px"
                                     height="320px"
                                     alt="Preview"
-                                    class="block"
-                                >
-                                <div id="start" class="hidden">
+                                    class="hidden">
+                                <div id="start">
                                     <i class="fa fa-download" aria-hidden="true"></i>
                                     <div>Chọn một hình 320 x 320</div>
                                     <div id="notimage" class="hidden">Hãy chọn một hình</div>
@@ -109,15 +191,13 @@
                     </div>
                     <div class="col-md-12 margin-top-10">
                         <label>
-                            Description
+                            Detail
                         </label>
                         <div class="description-scroll">
-                            <div id="summernote">
-                                {!! $donate->donate_detail !!}
-                            </div>
+                            <div id="product_detail">{{$auction->product_detail}}</div>
                         </div>
                         <button
-                            id="edit"
+                            id="edit_product"
                             class="btn btn-info"
                             type="button"
                             style="display: block"
@@ -125,22 +205,23 @@
                             Edit Desciption
                         </button>
                         <button
-                            id="save"
+                            id="save_product"
                             class="btn btn-success"
                             type="button"
                             style="display: none"
                         >
-                            Save Conent
+                            Save Content
                         </button>
                     </div>
                 </div>
                 <div class="clearfix"></div>
-            </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" id="btn_create_donate" class="btn btn-primary pull-right">Update Fund</button>
+            </div>
         </div>
-        <div class="card-footer">
-            <button type="button" id="btn_update_donate" class="btn btn-primary pull-right">Update Fund</button>
-        </div>
-    </div>
+    </form>
+
 @endsection
 
 @section('js')

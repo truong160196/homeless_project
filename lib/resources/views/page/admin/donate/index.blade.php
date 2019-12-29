@@ -25,7 +25,7 @@
                     </a>
                 </div>
                 <div class="card card-stats">
-                    <div class="card-body table-responsive">
+                    <div class="card-body">
                         <table class="table" id="donate_table">
                             <thead>
                             <tr>

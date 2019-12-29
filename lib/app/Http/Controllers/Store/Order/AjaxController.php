@@ -11,8 +11,20 @@ use Illuminate\Support\Facades\DB;
 use Validator;
 use Yajra\DataTables\DataTables;
 
+use Web3\Web3;
+use Web3\Providers\HttpProvider;
+use Web3\RequestManagers\HttpRequestManager;
+use Web3\Utils;
+
 class AjaxController extends Controller
 {
+
+    public function __construct()
+    {
+        $url = 'https://ropsten.infura.io/v3/cde205b23d7d4a998f4ee02f652355b0';
+        $this->web3 = new Web3(new HttpProvider(new HttpRequestManager($url,  30)));
+    }
+
     public function list()
     {
         try {
@@ -99,10 +111,31 @@ class AjaxController extends Controller
                 return $this->JsonExport(200, 'Payment successfully');
 
             } catch (\Exception $e) {
-                dd($e);
                 return $this->JsonExport(500, 'Internal Server Error');
             }
         }
     }
 
+    public function getBalance(Request $request) {
+        try {
+            $eth = $this->web3->eth;
+
+            $eth->getBalance('0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D', function ($err, $result) {
+                if ($err) {
+                    return $this->JsonExport(404, 'Can not get balance');
+                }
+
+                $balace = Utils::fromWei($result->value, 'ether');
+                if ($balace && count($balace) === 2) {
+                    $this->balaceFormat = $balace[0]->toString() . '.' . $balace[1]->toString();
+                }
+
+                return $this->JsonExport(200, 'Can not receive balance token');
+            });
+
+            return $this->JsonExport(200, $this->balaceFormat);
+        } catch (\Exception $e) {
+            return $this->JsonExport(500, 'Internal Server Error');
+        }
+    }
 }

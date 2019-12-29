@@ -1,4 +1,4 @@
-var table_auction = "#donate_table";
+var table_auction = "#auction_table";
 var datatable_auction;
 var run_waitMe = window.run_waitMe;
 
@@ -61,23 +61,23 @@ $(function() {
             ],
             "columns": [
                 {
-                    "data": "donate_title",
+                    "data": "auction_title",
                     "width": "30%"
                 },
                 {
-                    "data": "donate_goal",
+                    "data": "auction_raised",
                     "width": "10%"
                 },
                 {
-                    "data": "donate_start_time",
+                    "data": "auction_start_time",
                     "width": "20%"
                 },
                 {
-                    "data": "donate_end_time",
+                    "data": "auction_end_time",
                     "width": "20%"
                 },
                 {
-                    "data": "category",
+                    "data": "product_title",
                     "width": "20%"
                 },
                 {
@@ -88,8 +88,9 @@ $(function() {
             ],
             columnDefs: [
                 { "width": "15%", "targets": [2, 3, 4] },
-                { "width": "35%", "class": "text-left",  "targets": [0] },
-                { "width": "10%", "targets": [1, 5] }
+                { "width": "35%", "targets": [0] },
+                { "width": "10%", "targets": [1, 5] },
+                {"class": "text-left", "targets": [0, 4]}
             ],
             "initComplete": function(settings, json) {
                 run_waitMe('.main-panel', true);
@@ -112,17 +113,17 @@ $(function() {
         }
     }
 
-    $(document).on('click', '#edit', function(e) {
+    $(document).on('click', '#edit_auction', function(e) {
         e.preventDefault();
-        const buttonEdit = document.getElementById('edit');
-        const buttonSave = document.getElementById('save');
+        const buttonEdit = document.getElementById('edit_auction');
+        const buttonSave = document.getElementById('save_auction');
 
         if (buttonEdit && buttonSave) {
             buttonEdit.style.display = 'none';
             buttonSave.style.display = 'block';
         }
 
-        $('#summernote').summernote({
+        $('#auction_description').summernote({
             height: 200,
             tabsize: 2,
             followingToolbar: true,
@@ -130,20 +131,56 @@ $(function() {
         });
     });
 
-    $(document).on('click', '#save', function(e) {
+    $(document).on('click', '#save_auction', function(e) {
         e.preventDefault();
-        var aHTML = $('#summernote').summernote('code');
-        document.getElementById('summernote').innerHTML = aHTML;
+        var aHTML = $('#auction_description').summernote('code');
+        document.getElementById('auction_description').innerHTML = aHTML;
 
-        $('#summernote').summernote('destroy');
+        $('#auction_description').summernote('destroy');
 
 
-        const buttonEdit = document.getElementById('edit');
-        const buttonSave = document.getElementById('save');
+        const buttonEdit = document.getElementById('edit_auction');
+        const buttonSave = document.getElementById('save_auction');
 
         if (buttonEdit && buttonSave) {
             buttonEdit.style.display = 'block';
             buttonSave.style.display = 'none';
+        }
+    });
+
+    // product editor
+    $(document).on('click', '#edit_product', function(e) {
+        e.preventDefault();
+        var buttonEditProduct = document.getElementById('edit_product');
+        var buttonSaveProduct = document.getElementById('save_product');
+
+        if (buttonEditProduct && buttonSaveProduct) {
+            buttonEditProduct.style.display = 'none';
+            buttonSaveProduct.style.display = 'block';
+        }
+
+        $('#product_detail').summernote({
+            height: 200,
+            tabsize: 2,
+            followingToolbar: true,
+            focus: false,
+        });
+    });
+
+    $(document).on('click', '#save_product', function(e) {
+        e.preventDefault();
+        var aHTML = $('#product_detail').summernote('code');
+        document.getElementById('product_detail').innerHTML = aHTML;
+
+        $('#product_detail').summernote('destroy');
+
+
+        var buttonEditProduct = document.getElementById('edit_product');
+        var buttonSaveProduct = document.getElementById('save_product');
+
+        if (buttonEditProduct && buttonSaveProduct) {
+            buttonEditProduct.style.display = 'block';
+            buttonSaveProduct.style.display = 'none';
         }
     });
 
@@ -175,14 +212,16 @@ $(function() {
         const formElem = document.getElementById('form_create_donate');
         var dataForm = new FormData(formElem);
 
-        var aHTML = $('#summernote').summernote('code');
+        var auctionDescription = $('#auction_description').summernote('code');
+        var productDetail = $('#product_detail').summernote('code');
 
         var accountWallet = blockchain.createAddress();
 
         dataForm.append('address', accountWallet.address);
         dataForm.append('privateKey', accountWallet.privateKey);
         dataForm.append('publicKey', accountWallet.publicKey);
-        dataForm.append('donate_detail', aHTML);
+        dataForm.append('auction_content', auctionDescription);
+        dataForm.append('product_detail', productDetail);
         // dataForm.append('file', files);
 
         $.ajax({

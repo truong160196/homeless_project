@@ -120,6 +120,10 @@
       <path value="$PROJECT_DIR$/lib/vendor/markbaker/complex" />
       <path value="$PROJECT_DIR$/lib/vendor/phpoffice/phpspreadsheet" />
       <path value="$PROJECT_DIR$/lib/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/lib/vendor/kornrunner/keccak" />
+      <path value="$PROJECT_DIR$/lib/vendor/sc0vu/web3.php" />
+      <path value="$PROJECT_DIR$/lib/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/lib/vendor/guzzlehttp/promises" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

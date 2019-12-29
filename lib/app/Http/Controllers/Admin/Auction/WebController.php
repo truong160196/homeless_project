@@ -20,11 +20,11 @@ class WebController extends Controller
 
     public function update($id)
     {
-        $donate = Auction::query()
+        $auction = Auction::query()
             ->where('id', '=', $id)
             ->first();
 
         return view('page.admin.auction.updateAuction',
-            ['donate' => $donate]);
+            ['auction' => $auction]);
     }
 }

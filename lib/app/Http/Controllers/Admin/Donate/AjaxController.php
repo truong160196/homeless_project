@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\Donate;
 
 use App\Http\Controllers\Controller;
 use App\Model\Donate;
+use App\Model\JoinDonatesUsers;
+use App\Model\Role;
+use App\Model\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -58,7 +61,10 @@ class AjaxController extends Controller
                         . route('admin.page.donate.update', ['id' => $v->id])
                         .'" data-toggle="tooltip" data-placement="top" title="View detail Fund" class="btn-action table-action-view cursor-pointer tx-info" data-id="'
                         . $v->id . '"><i class="far fa-edit"></i></a>';
-//                    $action .= '<a data-toggle="tooltip" data-placement="top" title="Remove Fund" class="btn-action table-action-delete cursor-pointer tx-danger mg-l-5 " data-id="' . $v->id . '"><i class="fa fa-trash"></i></a>';
+                    $action .= '<a href="'
+                        . route('admin.page.donate.add.homeless', ['id' => $v->id])
+                        .'" data-toggle="tooltip" data-placement="top" title="Add homeless" class="btn-action table-action-add cursor-pointer tx-success mg-l-5" data-id="'
+                        . $v->id . '"><i class="far fa-plus-square"></i></a>';
 
                     return $action;
                 })
@@ -67,6 +73,85 @@ class AjaxController extends Controller
         } catch (\Exception $e) {
             dd($e);
             throw new \App\Exceptions\ExceptionDatatable();
+        }
+    }
+
+    public function getListUser($id)
+    {
+        $donate = Donate::query()
+            ->where('id', '=', $id)
+            ->first();
+
+        $role = Role::query()
+            ->where('name', '=', 'Homeless')
+            ->first();
+
+        $user_funds = JoinDonatesUsers::query()
+            ->join('users', 'users.id', '=', 'join_donates_users.user_id')
+            ->join('wallets', 'wallets.user_id', '=', 'users.id')
+            ->join('donates', 'donates.id', '=', 'join_donates_users.donate_id')
+            ->where('join_donates_users.donate_id', '=', $id);
+
+        $listExitsUser = $user_funds->select('users.id')->get()->toArray();
+
+        $list_user_funds =  $user_funds->select(
+            'users.id',
+            'users.full_name',
+            'wallets.address',
+            'users.username',
+            'join_donates_users.hash',
+            'join_donates_users.status'
+        )->get();
+
+        $users = Wallet::query()
+            ->select('users.id', 'users.username', 'wallets.address')
+            ->join('users', 'users.id', '=', 'wallets.user_id')
+            ->where('role_id', '=', $role->id)
+            ->whereNotIn('users.id', $listExitsUser)
+            ->get();
+
+
+        return view('page.admin.donate.listUser', [
+            'donate' => $donate,
+            'users' => $users,
+            'user_funds' => $list_user_funds,
+        ]);
+    }
+
+
+    public function addUserToDonate(Request $request, $id)
+    {
+        $rules = array(
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return $this->JsonExport(403, 'Please check validate form');
+        } else {
+            try {
+                DB::beginTransaction();
+                $donateuser = [
+                    'donate_id' =>$request->donate_id,
+                    'user_id' =>$id,
+                    'hash' => $request->hash,
+                    'status' => 'complete',
+                ];
+
+                $result = JoinDonatesUsers::create($donateuser);
+
+                if (!$result) {
+                    DB::rollback();
+                    return $this->JsonExport(404, 'Can not create fund');
+                }
+
+                DB::commit();
+                return $this->JsonExport(200, 'Add User Successfully');
+
+            } catch (\Exception $e) {
+                dd($e);
+                return $this->JsonExport(500, 'Internal Server Error');
+            }
         }
     }
 

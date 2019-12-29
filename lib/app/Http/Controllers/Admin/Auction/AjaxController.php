@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Auction;
 
 use App\Http\Controllers\Controller;
+use App\Model\Auction;
 use App\Model\Donate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,36 +18,28 @@ class AjaxController extends Controller
     public function list()
     {
         try {
-            $data = Donate::query()->with('category');
+            $data = Auction::query();
 
             return Datatables::of($data)
-                ->editColumn('category', function ($v) {
-                    if (!empty($v->category)) {
-                        return $v->category->category_name;
+                 ->editColumn('auction_start_time', function ($v) {
+                    if (!empty($v->auction_start_time)) {
+                        return Carbon::createFromFormat("Y-m-d H:i:s", $v->auction_start_time)->format("Y-m-d");
                     } else {
                         return '';
                     }
                 })
 
-                ->editColumn('donate_start_time', function ($v) {
-                    if (!empty($v->donate_start_time)) {
-                        return Carbon::createFromFormat("Y-m-d H:i:s", $v->donate_start_time)->format("Y-m-d");
+                ->editColumn('auction_end_time', function ($v) {
+                    if (!empty($v->auction_end_time)) {
+                        return Carbon::createFromFormat("Y-m-d H:i:s", $v->auction_end_time)->format("Y-m-d");
                     } else {
                         return '';
                     }
                 })
 
-                ->editColumn('donate_end_time', function ($v) {
-                    if (!empty($v->donate_end_time)) {
-                        return Carbon::createFromFormat("Y-m-d H:i:s", $v->donate_end_time)->format("Y-m-d");
-                    } else {
-                        return '';
-                    }
-                })
-
-                ->editColumn('donate_goal', function ($v) {
-                    if (!empty($v->donate_goal)) {
-                        return number_format($v->donate_goal, 0);
+                ->editColumn('auction_raised', function ($v) {
+                    if (!empty($v->auction_raised)) {
+                        return number_format($v->auction_raised, 0);
                     } else {
                         return '';
                     }
@@ -55,10 +48,9 @@ class AjaxController extends Controller
                 ->addColumn('actions', function ($v) {
                     $action = '';
                     $action .= '<a href="'
-                        . route('admin.page.donate.update', ['id' => $v->id])
+                        . route('admin.page.auction.update', ['id' => $v->id])
                         .'" data-toggle="tooltip" data-placement="top" title="View detail Fund" class="btn-action table-action-view cursor-pointer tx-info" data-id="'
                         . $v->id . '"><i class="far fa-edit"></i></a>';
-//                    $action .= '<a data-toggle="tooltip" data-placement="top" title="Remove Fund" class="btn-action table-action-delete cursor-pointer tx-danger mg-l-5 " data-id="' . $v->id . '"><i class="fa fa-trash"></i></a>';
 
                     return $action;
                 })
@@ -73,7 +65,7 @@ class AjaxController extends Controller
     public function create(Request $request)
     {
         $rules = array(
-            'donate_title' => 'required',
+            'auction_title' => 'required',
             'address' => 'required',
             'privateKey' => 'required',
         );
@@ -95,19 +87,22 @@ class AjaxController extends Controller
                 $end_date = Carbon::createFromFormat('Y/m/d', $request->end_date)->format('Y-m-d');
 
                 $donates = [
-                    'donate_title' => $request->donate_title,
-                    'donate_detail' => $request->donate_detail,
-                    'donate_start_time' => $start_date,
-                    'donate_end_time' => $end_date,
-                    'donate_image' => $path,
-                    'donate_goal' => $request->goal,
+                    'auction_title' => $request->auction_title,
+                    'auction_detail' => $request->auction_detail,
+                    'auction_content' => $request->auction_content,
+                    'auction_start_time' => $start_date,
+                    'auction_end_time' => $end_date,
+                    'auction_raised' => $request->raised,
                     'donate_address' => $request->address,
                     'donate_private_key' => $request->privateKey,
                     'donate_public_key' => $request->publicKey,
-                    'category_id' => 1
+                    'product_title' => $request->product_title,
+                    'product_detail' => $request->product_detail,
+                    'production_author' => $request->production_author,
+                    'product_image' => $path,
                 ];
 
-                $id = Donate::create($donates);
+                $id = Auction::create($donates);
 
                 if (!$id) {
                     DB::rollback();

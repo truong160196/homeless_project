@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth.admin'], 'namespace' => 'Admin', 'prefix' =
         Route::get('/', 'WebController@index')->name('admin.page.donate');
         Route::get('/create', 'WebController@create')->name('admin.page.donate.create');
         Route::get('/update/{id}', 'WebController@update')->name('admin.page.donate.update');
+        Route::get('/add-homeless/{id}', 'WebController@addHomeless')->name('admin.page.donate.add.homeless');
     });
 
     // history

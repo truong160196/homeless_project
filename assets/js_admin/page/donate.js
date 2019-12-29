@@ -62,23 +62,20 @@ $(function() {
             "columns": [
                 {
                     "data": "donate_title",
-                    "width": "30%"
                 },
                 {
                     "data": "donate_goal",
-                    "width": "10%"
                 },
                 {
                     "data": "donate_start_time",
-                    "width": "20%"
                 },
                 {
                     "data": "donate_end_time",
-                    "width": "20%"
                 },
                 {
                     "data": "category",
-                    "width": "20%"
+                    "searchable": false,
+                    "orderable": false
                 },
                 {
                     "data": "actions",
@@ -87,9 +84,9 @@ $(function() {
                 },
             ],
             columnDefs: [
-                { "width": "15%", "targets": [2, 3, 4] },
-                { "width": "35%", "class": "text-left",  "targets": [0] },
-                { "width": "10%", "targets": [1, 5] }
+                { "width": "15%", "targets": [2, 3, 4, 5] },
+                { "width": "30%", "class": "text-left",  "targets": [0] },
+                { "width": "10%", "targets": [1] }
             ],
             "initComplete": function(settings, json) {
                 run_waitMe('.main-panel', true);
@@ -183,7 +180,6 @@ $(function() {
         dataForm.append('privateKey', accountWallet.privateKey);
         dataForm.append('publicKey', accountWallet.publicKey);
         dataForm.append('donate_content', aHTML);
-        // dataForm.append('file', files);
 
         $.ajax({
             url: url,

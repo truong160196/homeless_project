@@ -26,14 +26,14 @@
                 </div>
                 <div class="card card-stats">
                     <div class="card-body table-responsive">
-                        <table class="table" id="donate_table">
+                        <table class="table" id="auction_table">
                             <thead>
                             <tr>
                                 <th>Title</th>
                                 <th>Goal</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
-                                <th>Category</th>
+                                <th>Product</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

@@ -42,6 +42,8 @@ Route::group(['middleware' => ['cors', 'csrf'], 'namespace' => 'Admin', 'prefix'
         Route::post('/create', 'AjaxController@create')->name('admin.donate.create');
         Route::post('/update', 'AjaxController@update')->name('admin.donate.update');
         Route::delete('/delete/{id}', 'AjaxController@update')->name('admin.donate.delete');
+        Route::get('/get/users/{id}', 'AjaxController@getListUser')->name('admin.donate.get.users');
+        Route::post('/add/user/{id}', 'AjaxController@addUserToDonate')->name('admin.donate.add.users');
     });
 
     // History

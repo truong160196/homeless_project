@@ -14,6 +14,7 @@ class CreateDonateTable extends Migration
     public function up()
     {
         Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('join_donates_users');
         Schema::dropIfExists('join_donates_activities');
         Schema::dropIfExists('donate_activities');
         Schema::dropIfExists('join_donates_locations');
@@ -126,6 +127,22 @@ class CreateDonateTable extends Migration
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('join_donates_users', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('hash')->nullable();
+            $table->string('status')->nullable();
+            $table->unsignedBigInteger('donate_id');
+            $table->unsignedBigInteger('user_id');
+
+            // RELATIONSHIP
+            $table->foreign('donate_id')->references('id')->on('donates')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -136,6 +153,7 @@ class CreateDonateTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('join_donates_users');
         Schema::dropIfExists('join_donates_activities');
         Schema::dropIfExists('donate_activities');
         Schema::dropIfExists('join_donates_locations');

@@ -2,6 +2,7 @@
 var run_waitMe = window.run_waitMe;
 var addProductToCart;
 var listProduct = [];
+var qrcode;
 
 (function ($) {
     // Khai báo mảng lưu sản phẩm giỏ hàng.
@@ -12,6 +13,13 @@ var listProduct = [];
 
     $(document).ready(function() {
         loadListProduct();
+        qrcode = new QRCode("qrcode", {
+            width: 250,
+            height: 250,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
     });
 
     var loadListProduct = () => {
@@ -159,7 +167,7 @@ var listProduct = [];
         //
         //     const dataQr = {
         //         address: '0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D',
-        //         total: 200
+        //         total: total_payment
         //     };
         //
         //     qrcode.makeCode(JSON.stringify(dataQr));
