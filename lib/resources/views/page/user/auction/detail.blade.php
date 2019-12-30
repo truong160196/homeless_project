@@ -41,17 +41,17 @@
                                             @endif
                                                 
                                             </h3>
-                                            <div class="posts">
-                                                @foreach ($auctions_history as $auction_history)
+                                            <div class="posts{{ $type != 'old' ? '' : ' per-win' }}">
+                                                @foreach ($auctions_history as $auction_histories)
                                                     <div class="post">
                                                         <div class="details">
                                                             <h4>
                                                                 <i class="fas fa-user"></i>
-                                                                {{$auction_history->name}}
+                                                                {{$auction_histories->name}}
                                                             </h4>
                                                             <span class="date">
                                                                 <i class="fas fa-hand-holding-usd"></i>
-                                                                {{number_format($auction_history->value)}} $
+                                                                {{number_format($auction_histories->value)}} $
                                                             </span>
                                                         </div>
                                                     </div>

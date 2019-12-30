@@ -13,12 +13,12 @@ class AjaxController extends Controller
    //
    public function top_auction(Request $request)
     {  
-        $auctions_history = DB::table('auction_history')
+        $auctions_history = DB::table('auction_histories')
             ->where('auction_id', $request->id)
             ->orderBy('value', 'desc')
-            ->join('users', 'users.id', '=', 'auction_history.user_id')
+            ->join('users', 'users.id', '=', 'auction_histories.user_id')
             ->take(6)
-            ->select('users.full_name as name', 'auction_history.value as value')
+            ->select('users.full_name as name', 'auction_histories.value as value')
             ->get();
     
         return \Response::json($auctions_history);
@@ -30,7 +30,7 @@ class AjaxController extends Controller
         $message = 'success';
 
         try {
-            DB::table('auction_history')->insert(
+            DB::table('auction_histories')->insert(
                 ['auction_id' => $request->id, 'user_id' => $user_id, 'value' => $request->value]
             );
         } catch (Exception $e){

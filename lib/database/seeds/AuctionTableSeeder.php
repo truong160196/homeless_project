@@ -23,11 +23,11 @@ class AuctionTableSeeder extends Seeder
                     ."Donec ullamcorper nulla non metus auctor fringilla. "
                     ."Nullam quis risus eget urna mollis ornare vel eu leo. "
                     ."Aenean lacinia bibendum nulla sed consectetur.",
-                'auction_start_time'=> Carbon::createFromFormat('Y/m/d H:i:s', '2020/01/05 07:00:00')->format('Y-m-d H:i:s'),
-                'auction_end_time'=> Carbon::createFromFormat('Y/m/d H:i:s', '2020/01/05 19:00:00')->format('Y-m-d H:i:s'),
+                'auction_start_time'=> Carbon::now()->addHour(-43)->format('Y-m-d H:i:s'),
+                'auction_end_time'=> Carbon::now()->addHour(-43)->format('Y-m-d H:i:s'),
                 'auction_raised' => 7500,
                 'product_title' => "At the Auction of the Ruby Slippers",
-                'product_image' => "assets\images\project-single\img-1.jpg",
+                'product_image' => "\assets\images\product\img1.jpg",
                 'product_detail' => "The domes that West is building in Calabasas, which were reportedly inspired by the dome homes in Star War’s fictional planet “Tatooine.” | Courtesy of Los Angeles County Public Works",
                 'production_author' => "Kanye West",
                 'auction_address' => '0xaDE77C46Bab809E7cab3b0C4930d58f0F88bDaE9',
@@ -42,11 +42,11 @@ class AuctionTableSeeder extends Seeder
                     ."Donec ullamcorper nulla non metus auctor fringilla. "
                     ."Nullam quis risus eget urna mollis ornare vel eu leo. "
                     ."Aenean lacinia bibendum nulla sed consectetur.",
-                'auction_start_time'=> Carbon::createFromFormat('Y/m/d H:i:s', '2020/01/20 19:30:00')->format('Y-m-d H:i:s'),
-                'auction_end_time'=> Carbon::createFromFormat('Y/m/d H:i:s', '2020/01/20 22:30:00')->format('Y-m-d H:i:s'),
+                'auction_start_time'=> Carbon::now()->addHour(43)->format('Y-m-d H:i:s'),
+                'auction_end_time'=> Carbon::now()->addHour(46)->format('Y-m-d H:i:s'),
                 'auction_raised' => 5500,
                 'product_title' => "At the Auction of the Ruby Slippers",
-                'product_image' => "assets\images\project-single\img-2.jpg",
+                'product_image' => "\assets\images\product\img2.jpg",
                 'product_detail' => "The domes that West is building in Calabasas, which were reportedly inspired by the dome homes in Star War’s fictional planet “Tatooine.” | Courtesy of Los Angeles County Public Works",
                 'production_author' => "Kanye West",
                 'auction_address' => '0xaDE77C46Bab809E7cab3b0C4930d58f0F88bDaE9',
@@ -61,11 +61,11 @@ class AuctionTableSeeder extends Seeder
                     ."Donec ullamcorper nulla non metus auctor fringilla. "
                     ."Nullam quis risus eget urna mollis ornare vel eu leo. "
                     ."Aenean lacinia bibendum nulla sed consectetur.",
-                'auction_start_time'=> Carbon::createFromFormat('Y/m/d H:i:s', '2020/02/15 00:00:00')->format('Y-m-d H:i:s'),
-                'auction_end_time'=> Carbon::createFromFormat('Y/m/d H:i:s', '2020/02/17 23:29:00')->format('Y-m-d H:i:s'),
+                    'auction_start_time'=> Carbon::now()->addHour(17)->format('Y-m-d H:i:s'),
+                    'auction_end_time'=> Carbon::now()->addHour(19)->format('Y-m-d H:i:s'),
                 'auction_raised' => 1200,
                 'product_title' => "At the Auction of the Ruby Slippers",
-                'product_image' => "assets\images\project-single\img-3.jpg",
+                'product_image' => "\assets\images\product\img3.jpg",
                 'product_detail' => "The domes that West is building in Calabasas, which were reportedly inspired by the dome homes in Star War’s fictional planet “Tatooine.” | Courtesy of Los Angeles County Public Works",
                 'production_author' => "Kanye West",
                 'auction_address' => '0xaDE77C46Bab809E7cab3b0C4930d58f0F88bDaE9',
@@ -80,11 +80,11 @@ class AuctionTableSeeder extends Seeder
                     ."Donec ullamcorper nulla non metus auctor fringilla. "
                     ."Nullam quis risus eget urna mollis ornare vel eu leo. "
                     ."Aenean lacinia bibendum nulla sed consectetur.",
-                'auction_start_time'=> date("Y-m-d"),
-                'auction_end_time'=> date("Y-m-d"),
+                'auction_start_time'=> Carbon::now()->addHour(7)->format('Y-m-d H:i:s'),
+                'auction_end_time'=> Carbon::now()->addHour(9)->format('Y-m-d H:i:s'),
                 'auction_raised' => 9500,
                 'product_title' => "At the Auction of the Ruby Slippers",
-                'product_image' => "assets\images\project-single\img-4.jpg",
+                'product_image' => "\assets\images\product\img4.jpg",
                 'product_detail' => "The domes that West is building in Calabasas, which were reportedly inspired by the dome homes in Star War’s fictional planet “Tatooine.” | Courtesy of Los Angeles County Public Works",
                 'production_author' => "Kanye West",
                 'auction_address' => '0xaDE77C46Bab809E7cab3b0C4930d58f0F88bDaE9',
@@ -126,6 +126,16 @@ class AuctionTableSeeder extends Seeder
         // donate history
         Model\AuctionHistory::create([
             'value' => 1585.4545,
+            'hash' => "0x7fa55cf74e28dde06565d80f58db0d9c44560b9bb30f61d638abad85e4da8cee",
+            'auction_id' => 1,
+            'user_id' => "2",
+        ], [
+            'value' => 1785.4545,
+            'hash' => "0x7fa55cf74e28dde06565d80f58db0d9c44560b9bb30f61d638abad85e4da8cee",
+            'auction_id' => 1,
+            'user_id' => "1",
+        ], [
+            'value' => 1905.4545,
             'hash' => "0x7fa55cf74e28dde06565d80f58db0d9c44560b9bb30f61d638abad85e4da8cee",
             'auction_id' => 1,
             'user_id' => "2",

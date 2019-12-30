@@ -56,8 +56,6 @@
 }
 .top-auction .post {
     margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px #ececec solid;
 }
 .top-auction .details h4 {
     width: 50%;
@@ -104,4 +102,31 @@
 }
 .auction-valid {
     color: red;
+}
+
+.top-auction {
+    border: none;
+    box-shadow: none;
+}
+
+.widget h3:before {
+    width: 100px;
+}
+
+.per-win {
+    background-color: #4caf50;
+    color: white;
+    padding: 20px;
+}
+
+.per-win .post {
+    margin: 0px;
+}
+
+.per-win .post .details {
+    font-size: 20px;
+}
+
+.recent-post-widget .per-win .post .details h4, .recent-post-widget .per-win .post .details span {
+    color: white;
 }
