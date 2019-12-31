@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
 use App\Model\MUser;
-use App\Model\RedInvoice;
-use App\Model\Store;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+
+use Validator;
 
 class AjaxController extends Controller
 {
@@ -17,6 +17,7 @@ class AjaxController extends Controller
     {
         try {
             $data = MUser::query()->with('role');
+
             return Datatables::of($data)
                 ->editColumn('role', function ($v) {
                     if (!empty($v->role)) {
@@ -33,7 +34,7 @@ class AjaxController extends Controller
 
                     return $action;
                 })
-                ->rawColumns(['roles'])
+                ->rawColumns(['roles', 'action'])
                 ->make(true);
         } catch (\Exception $e) {
             throw new \App\Exceptions\ExceptionDatatable();
@@ -43,81 +44,83 @@ class AjaxController extends Controller
     public function detail($id)
     {
         try {
-            $data = Store::query()->with('redInvoices')
+            $data = MUser::query()
+                ->where('id','=', $id)
                 ->first();
 
             return response()
                 ->json(['data' => $data]);
         } catch (\Exception $e) {
-            $dataExample = [
-                "id" =>  1,
-                "name" => "K.O.I The.",
-              "address" =>  "521 Hồ Tùng Mậu, D1, HCM",
-                        "district" =>  "Ward 1",
-              "city" =>  "HCM",
-              "phone" =>  "3388869944",
-              "logoUrl" =>  "",
-              "red_invoice_id" =>  1,
-              "redInvoices" =>  [
-                        "id" =>  1,
-                "name" =>  "K.O.I The International Company",
-                "address" =>  "9682 Wakehurst Avenue Arlington Heights, IL, 60004",
-                "district" =>  "Heights",
-                "city" =>  "IL",
-                "taxCode" =>  "P77744944",
-              ]
-            ];
-
             return response()
-                ->json(['data' => $dataExample]);
+                ->json(['msg' => 'Can find account'], 500);
+        }
+    }
+
+    public function create(Request $request)
+    {
+        $rules = array(
+            'username' => 'required|min:3|max:16',
+            'password' => 'required|min:6|max:32',
+            'address' => 'required',
+            'privateKey' => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return $this->JsonExport(403, __('app.error_403'));
+        } else {
+            try {
+                DB::beginTransaction();
+
+                $account = [
+                    'username' => $request->username,
+                    'password' => Hash::make($request->password),
+                    'full_name' => $request->full_name,
+                    'phone' => $request->phone,
+                    'birthday' => $request->birthday,
+                    'email' => $request->email,
+                    'user_type' => $request->user_type,
+                    'address' => $request->address_user,
+                    'status' => $request->status,
+                    'role_id' => $request->role_id
+                ];
+
+                $id = DB::table('users')->insertGetId($account);
+
+                if (!$id) {
+                    DB::rollback();
+                    return $this->JsonExport(404, 'Can not register account');
+                }
+
+                $wallet = [
+                    'address' => $request->address,
+                    'pk' => $request->privateKey,
+                    'public_key' => $request->publicKey,
+                    'token' => $request->token,
+                    'type' => $request->type,
+                    'user_id' => $id
+                ];
+
+                $result = DB::table('wallets')->insert($wallet);
+
+                if (!$result) {
+                    DB::rollback();
+                    return $this->JsonExport(404, 'Can not register account');
+                }
+
+                DB::commit();
+                return $this->JsonExport(200, 'Create user successfully');
+
+            } catch (\Exception $e) {
+                return $this->JsonExport(500, 'Internal Server Error');
+            }
         }
     }
 
     public function update(Request $request)
     {
-        try {
-            DB::beginTransaction();
 
-            $data = Store::find($request->idStore);
-
-            if(!$data) {
-                DB::rollback();
-                return $this->JsonExport(500, 'User not exits');
-            }
-
-            $data->name = $request->nameStore;
-            $data->address = $request->addressStore;
-            $data->district = $request-> districtStore;
-            $data->city = $request->cityStore;
-            $data->phone = $request->phoneStore;
-            $data->logoUrl = $request->imageAvatar;
-
-            $data->save();
-
-
-            $dataRedInvoice = RedInvoice::find($request->idStore);
-
-            if(!$dataRedInvoice) {
-                DB::rollback();
-                return $this->JsonExport(500, 'Red invoice not exits');
-            }
-
-            $dataRedInvoice->name = $request->nameRedInvoice;
-            $dataRedInvoice->address = $request->addressRedInvoice;
-            $dataRedInvoice->district = $request-> districtRedInvoice;
-            $dataRedInvoice->city = $request->cityRedInvoice;
-            $dataRedInvoice->taxCode = $request->taxCodeRedInvoice;
-
-            $dataRedInvoice->save();
-
-
-            DB::commit();
-
-            return $this->JsonExport(200, "Update successfully");
-        } catch (\Exception $e) {
-            dd($e);
-            return $this->JsonExport(500, "can't not update this user");
-        }
     }
 
     public  function upload(Request $request) {

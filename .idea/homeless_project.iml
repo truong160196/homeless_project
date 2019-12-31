@@ -22,6 +22,8 @@
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/graham-campbell/throttle" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/vendor/guzzlehttp/promises" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/intervention/image" />
@@ -29,6 +31,7 @@
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/jaybizzle/crawler-detect" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/jenssegers/agent" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/vendor/kornrunner/keccak" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/lcobucci/jwt" />
@@ -73,6 +76,7 @@
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/ralouphie/getallheaders" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/ramsey/uuid" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/renatomarinho/laravel-page-speed" />
+      <excludeFolder url="file://$MODULE_DIR$/lib/vendor/sc0vu/web3.php" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/scrivo/highlight.php" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/lib/vendor/sebastian/comparator" />

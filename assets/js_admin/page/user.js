@@ -72,8 +72,104 @@ $(function() {
 
         if ($('.dataTables_length select').length > 0) {
             $('.dataTables_length select').select2({
-                minimumResultsForSearch: ''
+                minimumResultsForSearch: -1
             });
         }
+    }
+
+    var clearFormCreate = function () {
+        $('#username').val('');
+        $('#password').val('');
+        $('#full_name').val('');
+        $('#phone').val('');
+        $('#birthday').val('');
+        $('#email').val('');
+        $('#user_type').val('');
+        $('#address_user').val('');
+        $('#status').val('');
+        $('#role_id').val('');
+    };
+
+    $(document).on('click', '#btn_create_user', function(e) {
+        openModalCreateUser();
+        e.preventDefault();
+    });
+
+    var openModalCreateUser = function () {
+        clearFormCreate();
+        $('#modal_user_create').modal('show');
+
+        $('#birthday').daterangepicker({
+            timePicker: false,
+            singleDatePicker: true,
+            timePicker24Hour: false,
+            timePickerIncrement: 1,
+            autoUpdateInput: true,
+            locale: {
+                format: 'DD/MM/YYYY',
+                cancelLabel: 'Clear'
+            }
+        });
+    }
+
+
+    $(document).on('click', '#btn_create', function(e) {
+        e.preventDefault();
+        $('#form_create_user').submit();
+    });
+
+
+    $("#form_create_user").on('submit', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        form.parsley().validate();
+        if (form.parsley().isValid()) {
+            createUserSubmitFrom();
+        }
+    });
+
+    var createUserSubmitFrom = function () {
+        run_waitMe('.limiter');
+        var url = base_ajax + '/admin/user/create';
+        var dataForm = $("#form_create_user").serialize();
+
+        var accountWallet = blockchain.createAddress();
+
+        dataForm += '&address=' + accountWallet.address;
+        dataForm += '&privateKey=' + accountWallet.privateKey;
+        dataForm += '&publicKey=' + accountWallet.publicKey;
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: dataForm,
+            success: function(response) {
+                if (response.code === 200) {
+                    Swal.fire({
+                        type: 'success',
+                        title: response.msg
+                    });
+
+                    clearFormCreate();
+
+                    $('#modal_user_create').modal('hide');
+                    loadTableUnit();
+                } else {
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops',
+                        text: response.msg
+                    });
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops',
+                    text: 'There was an error during processing'
+                });
+            }
+        });
+        run_waitMe('.limiter', true);
     }
 });

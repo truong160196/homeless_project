@@ -23,6 +23,7 @@ class CreateAuctionTable extends Migration
         Schema::create('auctions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('auction_title')->nullable();
+            $table->longText('auction_content')->nullable();
             $table->longText('auction_detail')->nullable();
             $table->timestamp('auction_start_time')->nullable();
             $table->timestamp('auction_end_time')->nullable();

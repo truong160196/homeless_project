@@ -9,7 +9,6 @@
                             <li>
                                 <a href="{{route('user.page.faq')}}">Faq</a>
                             </li>
-                            <li><a href="{{route('user.page.account')}}">Account</a></li>
                         </ul>
                     </div>
                 </div>
@@ -26,7 +25,13 @@
                 </div>
                 <div class="col col-sm-4">
                     <div class="text">
-                        <p><a href="{{route('account.page.login')}}"><span>Login</span></a> </p>
+                        @if(Auth()->user())
+                            <p>
+                                <a href="{{route('account.logout')}}"><span>Logout</span></a>
+                            </p>
+                        @else
+                            <a href="{{route('account.page.login')}}"><span>Login</span></a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -42,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt></a>
+                <a class="navbar-brand" href="{{route('user.page.home')}}"><img src="{{asset('assets/images/logo.png')}}" alt></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
                 <button class="close-navbar"><i class="ti-close"></i></button>
@@ -80,7 +85,11 @@
                     </div>
                 </div>
                 <div class="contact">
-                    <a href="{{route('user.page.donate.list')}}" class="theme-btn">Donate Now</a>
+                    @if(Auth()->user())
+                        <a href="{{route('account.page.login')}}" class="theme-btn">{{Auth()->user()->username}}</a>
+                    @else
+                        <a href="{{route('account.page.login')}}" class="theme-btn">Join Us</a>
+                    @endif
                 </div>
             </div>
             <div class="separator"></div>

@@ -16,3 +16,69 @@
 .table.dataTable thead th, .table.dataTable thead td {
     padding-right: 1.4rem;
 }
+
+#user_table > tbody > tr > td {
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
+    text-align: left;
+}
+
+#form_create_user .btn-datetime {
+    padding: 5px;
+}
+
+
+.modal .modal-dialog {
+    width: 100%;
+}
+
+
+@media (min-width: 280px) {
+    .modal-dialog {
+        max-width: 280px;
+        margin: 0.5rem auto;
+    }
+}
+
+@media (min-width: 480px) {
+    .modal-dialog {
+        max-width: 480px;
+        margin: 0.75rem auto;
+    }
+}
+
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 576px;
+        margin: 1.75rem auto;
+    }
+}
+
+@media (min-width: 960px) {
+    .modal-dialog {
+        max-width: 768px;
+        margin: 1.75rem auto;
+    }
+
+    .modal.show .modal-dialog {
+        transform: translate(0, -15%) !important;
+    }
+}
+
+@media (min-width: 1368px) {
+    .modal-dialog {
+        max-width: 1200px;
+        margin: 1.75rem auto;
+    }
+}
+
+
+@media (min-width: 1600px) {
+    .modal-dialog {
+        max-width: 1368px;
+        margin: 1.75rem auto;
+    }
+}

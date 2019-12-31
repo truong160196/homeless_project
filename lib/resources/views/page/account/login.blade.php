@@ -1,4 +1,4 @@
-@extends('layout_admin.main')
+@extends('layout_admin.mainLogin')
 
 @section('page_title')
 {{--{{$page_title}}--}}
@@ -16,11 +16,7 @@
                 <form class="login100-form validate-form" id="form_login">
                 <span class="login100-form-logo">
                     <i class="zmdi zmdi-landscape"></i>
-                </span>
-                    <div class="button-group">
-                        <button type="button" class="btn btn-secondary btn-login">Login</button>
-                        <button type="button" class="btn btn-secondary btn-login">Register</button>
-                    </div>
+                </span>>
                     <div class="login-body">
                         <div class="wrap-input100 validate-input" data-validate = "Enter username">
                             <input
@@ -81,8 +77,9 @@
                 </div>
 
                 <div class="text-center p-t-90">
-                    <a class="txt1" href="#">
-                        Forgot Password?
+                    <strong class="text-strong">Already registered?</strong>
+                    <a class="txt1" href="{{route('account.page.register')}}">
+                        Register
                     </a>
                 </div>
             </div>

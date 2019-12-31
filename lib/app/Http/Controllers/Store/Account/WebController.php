@@ -3,20 +3,62 @@
 namespace App\Http\Controllers\Store\Account;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Illuminate\Pagination\Paginator;
-use Aris\LaravelLocalization\Facades\LaravelLocalization;
+use App\Model\MUser;
 use Validator;
-use Carbon\Carbon;
 
 class WebController extends Controller
 {
      public function index()
     {
-        return view('page.store.account.index');
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('account.page.login');
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.store.account.index', [
+            'account' =>$account
+        ]);
     }
+    public function deposit()
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('account.page.login');
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.store.account.deposit', [
+            'account' =>$account
+        ]);
+    }
+
+    public function withdraw()
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return redirect()->route('account.page.login');
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.store.account.withdraw', [
+            'account' =>$account
+        ]);
+    }
+
 }

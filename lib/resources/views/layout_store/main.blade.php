@@ -11,9 +11,8 @@
   </head>
   <body>
   <div class="page-wrapper">
-{{--    @include('layout_store.header')--}}
+    @include('layout_store.header')
     @yield('page_content')
-    @include('layout_store.footer')
     @include('layout_store.main_js')
   </div>
   </body>

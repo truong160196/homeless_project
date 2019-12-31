@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{asset('assets/css_user/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/lib/font-awesome/css/fontawesome-all.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/themify-icons.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/flaticon.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/animate.css')}}">
@@ -10,6 +11,13 @@
 <link rel="stylesheet" href="{{asset('assets/css_user/owl.transitions.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/odometer-theme-default.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/jquery.fancybox.css')}}">
+<link rel="stylesheet" href="{{asset('assets/lib/bootstrap-daterangepicker/daterangepicker.css')}}">
+<link rel="stylesheet" href="{{asset('assets/lib/waitme/css/waitMe.min.css')}}"/>
+
+<link rel="stylesheet" href="{{asset('assets/lib/datatables/css/jquery.dataTables.css')}}">
+<link rel="stylesheet" href="{{asset('assets/lib/datatables-responsive/css/responsive.bootstrap4.css')}}">
+
+<link rel="stylesheet" href="{{asset('assets/lib/sweet2/sweet2.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css_user/style.css')}}">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

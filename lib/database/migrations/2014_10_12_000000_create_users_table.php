@@ -30,7 +30,6 @@ class CreateUsersTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('access_key')->nullable();
             $table->string('username')->unique();
             // password
             $table->string('password');
@@ -38,9 +37,10 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('birthday')->nullable();
             $table->string('address')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->string('user_type')->nullable();
             $table->integer('score')->nullable();
+            $table->string('access_key')->nullable();
             $table->unsignedTinyInteger('email_verify')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('code')->nullable();
@@ -51,7 +51,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('last_update_password')->nullable();
             $table->timestamp('last_local_login')->nullable();
             $table->tinyInteger('is_delete')->default(0);
-            $table->unsignedTinyInteger('status')->default(1);
+            $table->string('status')->nullable();
             // RELATIONSHIP
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')
@@ -78,6 +78,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
 
         Schema::create('transactions', function (Blueprint $table) {
@@ -86,13 +87,16 @@ class CreateUsersTable extends Migration
             $table->string('block')->nullable();
             $table->string('type')->nullable();
             $table->string('amount')->nullable();
+            $table->string('token')->nullable();
             $table->string('price')->nullable();
             $table->string('fee')->nullable();
             $table->string('tax')->nullable();
             $table->string('detail')->nullable();
             $table->string('note')->nullable();
             $table->string('status')->nullable();
+            $table->timestamp('time_transaction')->nullable();
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
 
         Schema::create('join_users_transactions', function (Blueprint $table) {
@@ -102,6 +106,7 @@ class CreateUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
 
     }

@@ -1,0 +1,16 @@
+li {
+    list-style: none;
+    text-align: left;
+}
+
+.list_product {
+    border: 1px solid #e3e4d5;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+.list_product table th {
+    text-align: left;
+}
+
+.list_product table tbody tr {
+}

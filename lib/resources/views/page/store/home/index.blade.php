@@ -12,328 +12,100 @@
     <!-- start shop-pg-section -->
     <section class="shop-pg-section">
         <div class="row">
-            <div class="col-sm-12 col-lg-5 payment-panel">
-                <div class="search-product row">
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="Enter name product">
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="button" class="btn btn-success">Search</button>
+            <div class="col-sm-12 col-lg-5">
+                <div class="card card-stats">
+                    <div class="card-body">
+                        <div class="search-product">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="keyword"
+                                name="keyword"
+                                placeholder="Enter name product or SKU"
+                            >
+                            <button type="button" class="btn btn-warning" id="btn_search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="scrollable">
-                    <table class="table table-striped table-store">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Qty</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Unlock Smart phone</td>
-                            <td>
-                                <input type="number" class="form-control" value="1" />
-                            </td>
-                            <td>10,5$</td>
-                            <td>
-                                <button type="button" class="btn btn-danger">Remove</button>
-                            </td>
-                        </tr>
-                        <tr>
-                        </tbody>
-                    </table>
+                <div class="card card-stats" style="margin-top: 20px;">
+                    <div class="card-body">
+                        <div class="scrollable">
+                            <ul id="list_product">
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
+                <li id="clone" style="display: none">
+                    <div class="title">
+                        <h4 class="title_product"></h4>
+                        <p class="title_sku"></p>
+                    </div>
+                    <div class="price">
+                        <p class="price_text"></p>
+                    </div>
+                    <div class="qty">
+                        <input
+                            type="number"
+                            class="form-control input-qty"
+                        />
+                    </div>
+                    <div class="total">
+                        <p class="total_text"></p>
+                    </div>
+                    <div class="action">
+                        <button
+                            type="button"
+                            class="btn btn-danger btn-remove"
+                        >
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </li>
+
                 <div class="pay-out">
-                    <table>
-                        <tbody>
+                        <table class="table table-hover">
+                            <tbody>
                             <tr>
                                 <td>Total</td>
-                                <td>325,45$</td>
+                                <td id="total"></td>
                             </tr>
                             <tr>
-                                <td>Tax</td>
-                                <td>3,25$</td>
+                                <td>Tax (10%)</td>
+                                <td id="tax"></td>
                             </tr>
                             <tr>
-                                <td>Tax</td>
-                                <td>3,25$</td>
+                                <td>Total Payment</td>
+                                <td id="total_payment"></td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                </div>
+                <div class="payment">
+                    <button type="button" id="submit_payment" class="btn btn-success">Payment</button>
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-7 row shop-panel">
-                <div class="col col-xs-12">
-                    <div class="shop-grids">
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-1.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Paper shopping bag</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-2.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Unlock Smart phone</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-3.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Isometric plant 3d</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-4.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">The photographer camera</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-5.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Smart watch</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-6.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">New smart shoes</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-7.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Surface headphone</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-8.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Smart watch</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
-                        <div class="grid">
-                            <div class="img-cart">
-                                <div class="img-holder">
-                                    <img src="assets/images/shop/img-9.jpg" alt>
-                                </div>
-                                <div class="cart-details">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-shopping-cart"></i></a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="details">
-                                <h4><a href="#">Blutooth speaker</a></h4>
-                                <del>$25.00</del>
-                                <span class="price">$22.00</span>
-                            </div>
-                        </div>
+            <div class="col-sm-12 col-lg-7 row" style="padding: 0 30px">
+                <div class="col col-xs-12 shop-panel">
+                    <div class="shop-grids" id="shop_grids">
                     </div>
-                    <div class="pagination-wrapper pagination-wrapper-left">
-                        <ul class="pg-pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <i class="fi flaticon-back"></i>
-                                </a>
-                            </li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <i class="fi flaticon-next"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
-        </div> <!-- end container -->
+        </div> <!-- end container -->  
     </section>
     <!-- end shop-pg-section -->
+
+    <div id="hiden_qrcode" class="qrCode-over"></div>
+    <div id="over_qrcode" class="qrcode">
+        <button type="button" id="close_qrcode" class="btn btn-default btn-close">x</button>
+        <div id="qrcode"></div>
+    </div>
 @endsection
 
 @section('js')
-{{--    <script src="{{asset('assets/js_admin/dashboard.js')}}"></script>--}}
+    <script type="text/javascript" src="{{asset('assets/js_user/qrcode.min.js')}}"></script>
+    <script src="{{asset('assets/js_admin/page/store.js')}}"></script>
 @endsection
 

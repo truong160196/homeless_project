@@ -3,17 +3,70 @@
 namespace App\Http\Controllers\User\Donate;
 
 use App\Http\Controllers\Controller;
+use App\Model\MUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WebController extends Controller
 {
-     public function list()
+     public function list(Request $request)
     {
-        return view('page.user.donate.list');
+        $donates = DB::table('donates')
+            ->orderBy('donate_end_time', 'desc')
+            ->paginate(6);
+
+        return view('page.user.donate.list', ['donates' => $donates]);
     }
 
     public function detail($id)
     {
-        return view('page.user.donate.detail');
+        $donate = DB::table('donates')
+        ->where('id', $id)
+        ->first();
+
+        $user = auth()->user();
+
+        if (!$user) {
+            return view('page.user.donate.detail', [
+                'donate' => $donate,
+            ]);
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.user.donate.detail', [
+            'donate' => $donate,
+            'account' =>$account
+        ]);
+    }
+
+    public function donate($id)
+    {
+        $donate = DB::table('donates')
+        ->where('id', $id)
+        ->first();
+
+
+        $user = auth()->user();
+
+        if (!$user) {
+            return view('page.user.donate.detail', [
+                'donate' => $donate,
+                'account' => null,
+            ]);
+        }
+
+        $account = MUser::query()
+            ->with('wallets')
+            ->where('username', '=', $user->username)
+            ->first();
+
+        return view('page.user.donate.donate', [
+            'donate' => $donate,
+            'account' =>$account
+        ]);
     }
 }

@@ -13,7 +13,7 @@ class Auction extends Model
     use SoftDeletes;
     use AutoloadsRelationships;
     protected $table = 'auctions';
-    protected $dateFormat = "Y-m-d";
+    protected $dateFormat = "Y-m-d H:i:s";
     public static $snakeAttributes = false;
 
     protected $guarded = ['id'];
@@ -27,6 +27,7 @@ class Auction extends Model
     protected $fillable = [
         'auction_title',
         'auction_detail',
+        'auction_content',
         'auction_start_time',
         'auction_end_time',
         'auction_raised',
