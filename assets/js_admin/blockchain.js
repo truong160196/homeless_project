@@ -80,19 +80,13 @@ var blockchain = {};
     };
 
     var createAddress = function () {
-        // var wallet = new ethereumjs.Wallet.generate();
-
-        // return {
-        //     address: wallet.getAddressString(),
-        //     privateKey: wallet.getPrivateKeyString(),
-        //     publicKey: wallet.getPublicKeyString()
-        // }
+        var wallet = new ethereumjs.Wallet.generate();
 
         return {
-            address: '0x35a7bbce80d11350de693716da6a4b25baa15c99',
-            privateKey: '0x9218212624e1f8a368eafcb6b60bbbebfa78a8addcc8345a6cc3bd6026d3c97c',
-            publicKey: '0x0171fba45252827d8470541a6e45767fe23d41149bd7368bc014c32cba670aac106570a1a6a122604bbe7814aa860849eca88631ac8a439a1778c92ae1edf329',
-        }
+            address: wallet.getAddressString(),
+            privateKey: wallet.getPrivateKeyString(),
+            publicKey: wallet.getPublicKeyString()
+        };
     };
 
     var getAccount = function () {
