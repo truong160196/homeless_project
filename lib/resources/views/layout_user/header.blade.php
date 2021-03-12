@@ -1,44 +1,6 @@
 <!-- Start header -->
 <header id="header" class="site-header header-style-1">
-    <div class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col col-sm-4">
-                    <div class="social">
-                        <ul>
-                            <li>
-                                <a href="{{route('user.page.faq')}}">Faq</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col col-sm-4">
-                    <div class="social center">
-                        <ul>
-                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                            <li><a href="#"><i class="ti-instagram"></i></a></li>
-                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col col-sm-4">
-                    <div class="text">
-                        @if(Auth()->user())
-                            <p>
-                                <a href="{{route('account.logout')}}"><span>Logout</span></a>
-                            </p>
-                        @else
-                            <a href="{{route('account.page.login')}}"><span>Login</span></a>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div> <!-- end container -->
-    </div> <!-- end topbar -->
-
-    <nav class="navigation navbar navbar-default">
+    <nav class="navigation navbar navbar-default original sticky-on">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="open-btn">
@@ -88,7 +50,7 @@
                     @if(Auth()->user())
                         <a href="{{route('account.page.login')}}" class="theme-btn">{{Auth()->user()->username}}</a>
                     @else
-                        <a href="{{route('account.page.login')}}" class="theme-btn">Join Us</a>
+                        <a href="{{route('account.page.login')}}" class="theme-btn"><span>Login</span></a>
                     @endif
                 </div>
             </div>

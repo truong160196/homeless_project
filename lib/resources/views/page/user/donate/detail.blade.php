@@ -63,9 +63,16 @@
                                             </ul>
                                         </div>
 
-                                        <div class="form-group">
-                                            <a href="{{route('user.page.donate.donate', ['id' => $donate->id])}}" class="theme-btn-s4">Donate Now</a>
-                                        </div>
+                                        @if(Auth()->user())
+                                            <div class="form-group">
+                                                <a href="{{route('user.page.donate.donate', ['id' => $donate->id])}}" class="theme-btn-s4">Donate Now</a>
+                                            </div>
+                                        @else
+                                            <div class="form-group">
+                                                <button onclick="enableMetaMask()" class="theme-btn-s4">Donate by MetaMask</button>
+                                            </div>
+                                        @endif
+
 
                                         <div class="content">
                                             {!! $donate->donate_content !!}

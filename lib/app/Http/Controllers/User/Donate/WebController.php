@@ -53,9 +53,9 @@ class WebController extends Controller
         $user = auth()->user();
 
         if (!$user) {
-            return view('page.user.donate.detail', [
+            return view('page.user.donate.donate', [
                 'donate' => $donate,
-                'account' => null,
+                'account' =>null
             ]);
         }
 

@@ -14,7 +14,6 @@ class WebController extends Controller
     {
         $auctions = DB::table('auctions')
             ->orderBy('auction_start_time', 'asc')
-            ->where('auction_start_time', '>', Carbon::now(new \DateTimeZone('Asia/Ho_Chi_Minh')))
             ->paginate(4);
 
         $categories = DB::table('donate_categories')

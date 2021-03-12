@@ -111,6 +111,7 @@ class AjaxController extends Controller
                     return $this->JsonExport(404, 'Can not register account');
                 }
 
+                DB::commit();
 
                 $credentials = [
                     'username' => $request->username,
@@ -121,8 +122,6 @@ class AjaxController extends Controller
                 if (!Auth::attempt($credentials, true)) {
                     return $this->JsonExport(403, 'Can not register account');
                 }
-
-                DB::commit();
 
                 return $this->JsonExport(200, 'Login success');
 
@@ -135,7 +134,6 @@ class AjaxController extends Controller
     public function admin_account_ajax(Request $request)
     {
         try {
-
             $user = auth()->user();
 
             if (!$user) {

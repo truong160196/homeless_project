@@ -37,7 +37,7 @@ CREATE TABLE `auction_histories`  (
   INDEX `auction_histories_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `auction_histories_auction_id_foreign` FOREIGN KEY (`auction_id`) REFERENCES `auctions` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `auction_histories_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of auction_histories
@@ -69,7 +69,7 @@ CREATE TABLE `auctions`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of auctions
@@ -92,7 +92,7 @@ CREATE TABLE `donate_activities`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of donate_activities
@@ -115,7 +115,7 @@ CREATE TABLE `donate_categories`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of donate_categories
@@ -144,7 +144,7 @@ CREATE TABLE `donate_histories`  (
   INDEX `donate_histories_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `donate_histories_donate_id_foreign` FOREIGN KEY (`donate_id`) REFERENCES `donates` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `donate_histories_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of donate_histories
@@ -177,7 +177,7 @@ CREATE TABLE `donates`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `donates_category_id_foreign`(`category_id`) USING BTREE,
   CONSTRAINT `donates_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `donate_categories` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of donates
@@ -201,7 +201,7 @@ CREATE TABLE `failed_jobs`  (
   `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Table structure for join_auctions_activities
@@ -219,7 +219,7 @@ CREATE TABLE `join_auctions_activities`  (
   INDEX `join_auctions_activities_activity_id_foreign`(`activity_id`) USING BTREE,
   CONSTRAINT `join_auctions_activities_activity_id_foreign` FOREIGN KEY (`activity_id`) REFERENCES `donate_activities` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_auctions_activities_auction_id_foreign` FOREIGN KEY (`auction_id`) REFERENCES `auctions` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of join_auctions_activities
@@ -245,7 +245,7 @@ CREATE TABLE `join_auctions_locations`  (
   INDEX `join_auctions_locations_location_id_foreign`(`location_id`) USING BTREE,
   CONSTRAINT `join_auctions_locations_auction_id_foreign` FOREIGN KEY (`auction_id`) REFERENCES `auctions` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_auctions_locations_location_id_foreign` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of join_auctions_locations
@@ -268,7 +268,7 @@ CREATE TABLE `join_donates_activities`  (
   INDEX `join_donates_activities_activity_id_foreign`(`activity_id`) USING BTREE,
   CONSTRAINT `join_donates_activities_activity_id_foreign` FOREIGN KEY (`activity_id`) REFERENCES `donate_activities` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_donates_activities_donate_id_foreign` FOREIGN KEY (`donate_id`) REFERENCES `donates` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of join_donates_activities
@@ -294,7 +294,7 @@ CREATE TABLE `join_donates_locations`  (
   INDEX `join_donates_locations_location_id_foreign`(`location_id`) USING BTREE,
   CONSTRAINT `join_donates_locations_donate_id_foreign` FOREIGN KEY (`donate_id`) REFERENCES `donates` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_donates_locations_location_id_foreign` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of join_donates_locations
@@ -319,7 +319,7 @@ CREATE TABLE `join_donates_users`  (
   INDEX `join_donates_users_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `join_donates_users_donate_id_foreign` FOREIGN KEY (`donate_id`) REFERENCES `donates` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_donates_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Table structure for join_orders_products
@@ -336,7 +336,7 @@ CREATE TABLE `join_orders_products`  (
   INDEX `join_orders_products_product_id_foreign`(`product_id`) USING BTREE,
   CONSTRAINT `join_orders_products_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_orders_products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of join_orders_products
@@ -361,7 +361,7 @@ CREATE TABLE `join_products_stores`  (
   INDEX `join_products_stores_product_id_foreign`(`product_id`) USING BTREE,
   CONSTRAINT `join_products_stores_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_products_stores_store_id_foreign` FOREIGN KEY (`store_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of join_products_stores
@@ -384,7 +384,7 @@ CREATE TABLE `join_products_users`  (
   INDEX `join_products_users_product_id_foreign`(`product_id`) USING BTREE,
   CONSTRAINT `join_products_users_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_products_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Table structure for join_users_transactions
@@ -400,7 +400,7 @@ CREATE TABLE `join_users_transactions`  (
   INDEX `join_users_transactions_transaction_id_foreign`(`transaction_id`) USING BTREE,
   CONSTRAINT `join_users_transactions_transaction_id_foreign` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `join_users_transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of join_users_transactions
@@ -420,7 +420,7 @@ CREATE TABLE `locations`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of locations
@@ -438,7 +438,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 302 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 302 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of migrations
@@ -467,7 +467,7 @@ CREATE TABLE `orders`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of orders
@@ -486,7 +486,7 @@ CREATE TABLE `password_resets`  (
   `token` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp(0) NULL DEFAULT NULL,
   INDEX `password_resets_email_index`(`email`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Table structure for products
@@ -503,7 +503,7 @@ CREATE TABLE `products`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of products
@@ -526,7 +526,7 @@ CREATE TABLE `roles`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of roles
@@ -558,7 +558,7 @@ CREATE TABLE `transactions`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of transactions
@@ -602,7 +602,7 @@ CREATE TABLE `users`  (
   UNIQUE INDEX `users_username_unique`(`username`) USING BTREE,
   INDEX `users_role_id_foreign`(`role_id`) USING BTREE,
   CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of users
@@ -652,7 +652,7 @@ CREATE TABLE `wallets`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `wallets_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `wallets_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC ;
 
 -- ----------------------------
 -- Records of wallets

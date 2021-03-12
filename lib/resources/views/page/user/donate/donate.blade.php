@@ -95,6 +95,7 @@
 
                             <div class="form-group row">
                                 <div class="col-xs-12">
+                                    @if(Auth()->user())
                                     <button
                                         type="button"
                                         id="btn_donate"
@@ -103,12 +104,28 @@
                                     >
                                         Submit
                                     </button>
-                                    <button
-                                        type="button"
-                                        class="btn btn-lg btn-info pull-right"
-                                    >
-                                        Show QR Code
-                                    </button>
+                                    @else
+                                        <button
+                                            type="button"
+                                            id="btn_donate_meta"
+                                            class="btn btn-lg btn-warning pull-right"
+                                            style="margin-left: 15px;"
+                                        >
+                                            Send
+                                        </button>
+                                    @endif
+                                    <p>Please enable MetaMask!!!</p>
+                                        <p>Account address demo: 0xaC8832ae0C56f638bC07822f90b24A4f8d721B2D</p>
+                                        <p>Private key: 9ecc93fb52b849de0f2010cc08bf1284df4f5a8a899f6074d894fc44d017977a</p>
+                                        <p>Network provider: Ropsten Test Network</p>
+                                        <p>Contract address: 0xb527FdE93d1dcC4F192E3eE42B219C0D81789F67</p>
+                                        <p>Token: NQT</p>
+                                    {{--<button--}}
+                                        {{--type="button"--}}
+                                        {{--class="btn btn-lg btn-info pull-right"--}}
+                                    {{-->--}}
+                                        {{--Show QR Code--}}
+                                    {{--</button>--}}
                                 </div>
                             </div>
                         </fieldset>

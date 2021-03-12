@@ -66,6 +66,13 @@ $(function() {
         $('#form_donate').submit();
     });
 
+    $(document).on('click', '#btn_donate_meta', function(e) {
+        e.preventDefault();
+        const address = $('#homeless_wallet').val();
+        const amount = $('#amount').val();
+        web3Provider.setProvider(window.web3.currentProvider);
+        blockchain.sendTokenMetaMask(address, amount);
+    });
 
     $("#form_donate").on('submit', function(e) {
         e.preventDefault();
