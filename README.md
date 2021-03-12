@@ -12,6 +12,7 @@ DoraHacks Global Hackathon Community
 | Email| truong160196@gmail.com |
 
 - follow project production: [remixwebsite.com](http://remixwebsite.com/)
+- Project Whitepaper: [whitepaper.pdf](http://remixwebsite.com/whitepaper.pdf)
 ## Introduce
 Reasons for homelessness include shortages of affordable housing, privatization of civic services, investment speculation in housing, unplanned and rapid urbanization, as well as poverty, unemployment, and family breakdown.
 
