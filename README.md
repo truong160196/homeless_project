@@ -11,7 +11,7 @@ DoraHacks Global Hackathon Community
 | Company| Skill2job Services Joint Stock Company|
 | Email| truong160196@gmail.com |
 
-- follow project production: [game.laptrinhblockchain.net](http://game.laptrinhblockchain.net)
+- follow project production: [remixwebsite.com](http://remixwebsite.com/)
 ## Introduce
 Reasons for homelessness include shortages of affordable housing, privatization of civic services, investment speculation in housing, unplanned and rapid urbanization, as well as poverty, unemployment, and family breakdown.
 
